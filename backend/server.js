@@ -1,10 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import crypto from 'crypto';
-import bcrypt from 'bcrypt';
 
-const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/authAPI';
+const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/finalproject';
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
@@ -26,10 +24,6 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
-
-const Secret = mongoose.model('Secret', {
-  message: String
-});
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -57,15 +51,15 @@ const authenticateUser = async (req, res, next) => {
 // Start defining routes here
 app.get('/', (req, res) => {
   res.send(
-    'This is the backend of Project-auth by Isabel González and Ida Aspen. Please visit <a href="https://ida-and-isabel-secrets.netlify.app/login">frontend</a> for the main page!'
+    'This is the backend of the final project by Maria Petersson and Ida Aspen. Please visit <a href="#">frontend</a> for the main page!'
   );
 });
 
-// What you see when you are logged in added here
-app.get('/secrets', authenticateUser);
-app.get('/secrets', async (req, res) => {
-  const secrets = await Secret.find({});
-  res.status(201).json({ response: secrets, success: true });
+// What you see when you are logged in added here, change "main"
+app.get('/main', authenticateUser);
+app.get('/main', (req, res) => {
+  // const secrets = await Secret.find({});
+  res.status(201).json({ response: 'ROAAAAR', success: true });
 });
 
 // POST request for creating a user

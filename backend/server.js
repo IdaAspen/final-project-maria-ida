@@ -35,8 +35,24 @@ const port = process.env.PORT || 8080;
 const app = express();
 
 // Add middlewares to enable cors and json body parsing
+// Allow all domains
 app.use(cors());
+
+// Only allow one:
+// app.use(cors({
+//   origin: 'https://my-frontend.com'
+// }));
+
 app.use(express.json());
+
+// Error handling if the server is not running
+app.use((req, res, next) => {
+  if (mongoose.connection.readyState === 1) {
+    next();
+  } else {
+    res.status(503).json({ error: 'Service unavailable' });
+  }
+});
 
 // Function for checking if user is logged in
 const authenticateUser = async (req, res, next) => {

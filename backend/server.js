@@ -5,7 +5,11 @@ import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/finalproject';
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+});
 mongoose.Promise = Promise;
 
 // create a user schema with mongoose and use crypto for accessToken

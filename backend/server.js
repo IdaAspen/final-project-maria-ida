@@ -31,6 +31,15 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+const storySchema = new mongoose.Schema({
+  id: Number,
+  label: String,
+  list: String,
+  image: String
+});
+
+const Story = mongoose.model('Story', storySchema);
+
 const port = process.env.PORT || 8080;
 const app = express();
 
@@ -44,6 +53,8 @@ app.use(cors());
 // }));
 
 app.use(express.json());
+
+// Add seedDatabase function
 
 // Error handling if the server is not running
 app.use((req, res, next) => {
@@ -138,6 +149,16 @@ app.post('/signin', async (req, res) => {
         success: false
       });
     }
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+});
+
+//app.get('story', authenticateUser)
+app.get('/story', async (req, res) => {
+  try {
+    const story = await Story.find();
+    res.status(200).json({ response: story, success: true });
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }

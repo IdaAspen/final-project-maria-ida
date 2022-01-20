@@ -9,12 +9,12 @@ import NotFound from './components/NotFound';
 
 import user from './reducers/user';
 import dynamicData from './reducers/dynamicData';
-import blueprintStory from './reducers/blueprintStory';
+import story from './reducers/story';
 
 const reducer = combineReducers({
   user: user.reducer,
   dynamicData: dynamicData.reducer,
-  blueprintStory: blueprintStory.reducer
+  story: story.reducer
 });
 
 const store = configureStore({ reducer });

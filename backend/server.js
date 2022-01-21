@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
+import dynamicData from './data/dynamicData.json';
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/finalproject';
 mongoose.connect(mongoUrl, {
@@ -20,8 +21,8 @@ const UserSchema = new mongoose.Schema({
     required: true,
     storyCollection: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'StoryCollection',
-    },
+      ref: 'StoryCollection'
+    }
   },
   password: {
     type: String,
@@ -37,10 +38,13 @@ const User = mongoose.model('User', UserSchema);
 
 // Schema for showing a users own saved stories
 const StoryCollectionSchema = mongoose.Schema({
-	description: String,
+  description: String
 });
 
-const StoryCollection = mongoose.model('StoryCollection', StoryCollectionSchema);
+const StoryCollection = mongoose.model(
+  'StoryCollection',
+  StoryCollectionSchema
+);
 
 // Schema for dynamicData.json
 const ElementSchema = new mongoose.Schema({
@@ -52,7 +56,6 @@ const ElementSchema = new mongoose.Schema({
 
 const Element = mongoose.model('Element', ElementSchema);
 
-const 
 const port = process.env.PORT || 8080;
 const app = express();
 
@@ -109,21 +112,21 @@ app.get('/main', (req, res) => {
 
 // app.get('/storycollection', authenticateUser);
 app.post('/storycollection', async (req, res) => {
-	const { description } = req.body;
+  const { description } = req.body;
 
-	try {
-		const newStoryCollection = await new StoryCollection({ description }).save();
-		res.status(201).json({ response: newStoryCollection, success: true });
-	} catch (error) {
-		res.status(400).json({ response: error, success: false });
-	}
+  try {
+    const newStoryCollection = await new StoryCollection({
+      description
+    }).save();
+    res.status(201).json({ response: newStoryCollection, success: true });
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
 });
-
 
 // POST request for creating a user CONSOLE.LOG (storycollection)
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body;
-
   try {
     const salt = bcrypt.genSaltSync(); // Create a randomizer to prevent to unhash it
     const strongPassword =
@@ -140,7 +143,6 @@ app.post('/signup', async (req, res) => {
           userId: newUser._id,
           username: newUser.username,
           accessToken: newUser.accessToken // add storycollection to response, console.log?
-
         },
         success: true
       });
@@ -148,7 +150,9 @@ app.post('/signup', async (req, res) => {
       throw 'Password must contain at least 8 characters, at least one letter, one number and one special character';
     }
   } catch (error) {
-    res.status(400).json({ response: error, success: false });
+    res
+      .status(400)
+      .json({ response: 'problem with the signup', success: false });
   }
 });
 
@@ -183,8 +187,8 @@ app.post('/signin', async (req, res) => {
 //app.get('element', authenticateUser)
 app.get('/element', async (req, res) => {
   try {
-    const elementsList = await DynamicData.find();
-    res.status(200).json({ response: elementsList, success: true });
+    // const elementsList = await DynamicData.find();
+    res.status(200).json({ response: dynamicData, success: true });
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }

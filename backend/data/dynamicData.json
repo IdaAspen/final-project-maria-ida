@@ -25,7 +25,12 @@
   {
     "id": 4,
     "label": "place",
-    "list": ["på ett moln", "i en lyftkran"]
+    "list": [
+      "på ett moln",
+      "i en lyftkran",
+      "i en helikopter",
+      "högst upp i en tornado"
+    ]
   },
   {
     "id": 4,

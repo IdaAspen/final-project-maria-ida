@@ -13,11 +13,15 @@ mongoose.connect(mongoUrl, {
 mongoose.Promise = Promise;
 
 // create a user schema with mongoose and use crypto for accessToken
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
-    required: true
+    required: true,
+    storyCollection: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'StoryCollection',
+    },
   },
   password: {
     type: String,
@@ -29,21 +33,29 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', UserSchema);
 
-const storySchema = new mongoose.Schema({
+// Schema for showing a users own saved stories
+const StoryCollectionSchema = mongoose.Schema({
+	description: String,
+});
+
+const StoryCollection = mongoose.model('StoryCollection', StoryCollectionSchema);
+
+// Schema for dynamicData.json
+const ElementSchema = new mongoose.Schema({
   id: Number,
   label: String,
   list: String,
   image: String
 });
 
-const Story = mongoose.model('Story', storySchema);
+const Element = mongoose.model('Element', ElementSchema);
 
+const 
 const port = process.env.PORT || 8080;
 const app = express();
 
-// Add middlewares to enable cors and json body parsing
 // Allow all domains
 app.use(cors());
 
@@ -95,7 +107,20 @@ app.get('/main', (req, res) => {
   res.status(201).json({ response: 'ROAAAAR', success: true });
 });
 
-// POST request for creating a user
+// app.get('/storycollection', authenticateUser);
+app.post('/storycollection', async (req, res) => {
+	const { description } = req.body;
+
+	try {
+		const newStoryCollection = await new StoryCollection({ description }).save();
+		res.status(201).json({ response: newStoryCollection, success: true });
+	} catch (error) {
+		res.status(400).json({ response: error, success: false });
+	}
+});
+
+
+// POST request for creating a user CONSOLE.LOG (storycollection)
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body;
 
@@ -114,7 +139,8 @@ app.post('/signup', async (req, res) => {
         response: {
           userId: newUser._id,
           username: newUser.username,
-          accessToken: newUser.accessToken
+          accessToken: newUser.accessToken // add storycollection to response, console.log?
+
         },
         success: true
       });
@@ -154,11 +180,11 @@ app.post('/signin', async (req, res) => {
   }
 });
 
-//app.get('story', authenticateUser)
-app.get('/story', async (req, res) => {
+//app.get('element', authenticateUser)
+app.get('/element', async (req, res) => {
   try {
-    const story = await Story.find();
-    res.status(200).json({ response: story, success: true });
+    const elementsList = await DynamicData.find();
+    res.status(200).json({ response: elementsList, success: true });
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }

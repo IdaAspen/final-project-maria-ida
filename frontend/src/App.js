@@ -3,13 +3,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-import Main from './components/Main';
+// import Main from './components/Main';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
 
 import user from './reducers/user';
-import dynamicData from './reducers/dynamicData';
+import { dynamicData } from './reducers/dynamicData';
 import story from './reducers/story';
+import CreateStory from './components/CreateStory';
 
 const reducer = combineReducers({
   user: user.reducer,
@@ -24,7 +25,7 @@ export const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<CreateStory />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

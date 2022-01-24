@@ -19,10 +19,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-    storyCollection: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'StoryCollection'
-    }
+    storyCollection: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'StoryCollection'
+      }
+    ]
   },
   password: {
     type: String,
@@ -124,7 +126,7 @@ app.post('/storycollection', async (req, res) => {
   }
 });
 
-// POST request for creating a user CONSOLE.LOG (storycollection)
+// POST request for creating a user
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -158,6 +160,7 @@ app.post('/signup', async (req, res) => {
 
 // POST request for signing in, match username and password
 // if you include accessToken in your request = you are logged in
+// TODO: include an if-statement for the storyCollection
 app.post('/signin', async (req, res) => {
   const { username, password } = req.body;
 
@@ -184,7 +187,47 @@ app.post('/signin', async (req, res) => {
   }
 });
 
-//app.get('element', authenticateUser)
+//PATCH req for adding a story-id to the user's id (the save-my-story-moment-button in the end)
+app.patch(
+  '/user/:userId/storycollection/:storyCollectionId',
+  async (req, res) => {
+    const { userId, storyCollectionId } = req.params;
+
+    try {
+      const filteredUser = await User.findById(userId);
+
+      if (filteredUser) {
+        const filteredStoryCollection = await StoryCollection.findById(
+          storyCollectionId
+        );
+        //pushes the new story in to the user's collection"
+        if (filteredStoryCollection) {
+          const updateUser = await User.findByIdAndUpdate(
+            userId,
+            {
+              $push: {
+                storyCollection: filteredStoryCollection
+              }
+            },
+            { new: true }
+          );
+
+          res.status(200).json({ response: 'User is updated', success: true });
+        } else {
+          res.status(404).json({ response: 'Story not found', success: false });
+        }
+      } else {
+        res.status(404).json({ response: 'User not found', success: false });
+      }
+    } catch (error) {
+      res
+        .status(400)
+        .json({ response: 'Some kind of error, sorry', success: false });
+    }
+  }
+);
+
+app.get('element', authenticateUser);
 app.get('/element', async (req, res) => {
   try {
     // const elementsList = await DynamicData.find();

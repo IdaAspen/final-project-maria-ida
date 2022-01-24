@@ -50,16 +50,10 @@ const Main = () => {
   //     });
   // }, [accessToken]);
 
-  // mapping over secret reducer
+  // Shows two buttons BOOKSHELF or CREATE STORY
   return (
     <div>
       <h1>It's a secret!</h1>
-      {/* <img src={secret} alt="super secret" />
-
-      {secretsItems.map((secret) => (
-        <div key={secret.id}>{secret.text}</div>
-      ))} */}
-
       <button onClick={logout}>Logout</button>
     </div>
   );

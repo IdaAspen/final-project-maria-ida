@@ -227,7 +227,7 @@ app.patch(
   }
 );
 
-app.get('element', authenticateUser);
+// app.get('/element', authenticateUser);
 app.get('/element', async (req, res) => {
   try {
     // const elementsList = await DynamicData.find();

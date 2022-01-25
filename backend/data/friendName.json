@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Ebba",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "Sixten",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Korven",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "Ingenting",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "name": "Pinnen",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "list": "Bruno",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "list": "Mattias",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "list": "Maria",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "list": "Marko",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "list": "Ida",
+    "image": ""
+  }
+]

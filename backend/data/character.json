@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Enhörningen",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "Dinosaurien",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Hajen",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "Monstret",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "name": "Bajskorven",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "label": "friendName",
+    "image": ""
+  }
+]

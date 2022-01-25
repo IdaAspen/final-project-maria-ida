@@ -5,7 +5,9 @@ import { dynamicData, showCharacters } from '../reducers/dynamicData';
 // import user from '../reducers/user';
 
 const CreateStory = () => {
-  const characterList = useSelector((store) => store.dynamicData.items[0].list);
+  const characterList = useSelector(
+    (store) => store.dynamicData.items[0]?.list
+  );
 
   const dispatch = useDispatch();
 
@@ -30,7 +32,7 @@ const CreateStory = () => {
       <div>
         <h2>Välj din huvudroll i sagan!</h2>
         <div>
-          {characterList.map((item) => (
+          {characterList?.map((item) => (
             <button
               type="submit"
               className="option-buttons"

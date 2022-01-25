@@ -3,7 +3,12 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
-import dynamicData from './data/dynamicData.json';
+import character from './data/character.json';
+import friend from './data/friend.json';
+import friendName from './data/friendName.json';
+import place from './data/place.json';
+import sound from './data/sound.json';
+import tools from './data/tools.json';
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/finalproject';
 mongoose.connect(mongoUrl, {
@@ -51,8 +56,7 @@ const StoryCollection = mongoose.model(
 // Schema for dynamicData.json
 const ElementSchema = new mongoose.Schema({
   id: Number,
-  label: String,
-  list: String,
+  name: String,
   image: String
 });
 
@@ -227,11 +231,55 @@ app.patch(
   }
 );
 
-// app.get('/element', authenticateUser);
-app.get('/element', async (req, res) => {
+// app.get('/character', authenticateUser);
+app.get('/character', async (req, res) => {
   try {
-    // const elementsList = await DynamicData.find();
-    res.status(200).json({ response: dynamicData, success: true });
+    res.status(200).json({ response: character, success: true });
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+});
+
+// app.get('/friend', authenticateUser);
+app.get('/friend', async (req, res) => {
+  try {
+    res.status(200).json({ response: friend, success: true });
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+});
+
+// app.get('/friendname', authenticateUser);
+app.get('/friendname', async (req, res) => {
+  try {
+    res.status(200).json({ response: friendName, success: true });
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+});
+
+// app.get('/place', authenticateUser);
+app.get('/place', async (req, res) => {
+  try {
+    res.status(200).json({ response: place, success: true });
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+});
+
+// app.get('/sound', authenticateUser);
+app.get('/sound', async (req, res) => {
+  try {
+    res.status(200).json({ response: sound, success: true });
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+});
+
+// app.get('/tools', authenticateUser);
+app.get('/tools', async (req, res) => {
+  try {
+    res.status(200).json({ response: tools, success: true });
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }

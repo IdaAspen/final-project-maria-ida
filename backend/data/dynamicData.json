@@ -33,12 +33,12 @@
     ]
   },
   {
-    "id": 4,
+    "id": 5,
     "label": "friend",
     "list": ["ekorre", "velociraptor", "drake", "kattunge", "jätte"]
   },
   {
-    "id": 4,
+    "id": 6,
     "label": "friendName",
     "list": ["Ebba", "Sixten", "Bruno", "Ingenting", "Korven"]
   }

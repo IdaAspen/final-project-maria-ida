@@ -277,7 +277,7 @@ app.get('/sound', async (req, res) => {
 });
 
 // app.get('/tools', authenticateUser);
-app.get('/tools', async (req, res) => {
+app.get('/tool', async (req, res) => {
   try {
     res.status(200).json({ response: tools, success: true });
   } catch (error) {

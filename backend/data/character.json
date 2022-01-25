@@ -2,31 +2,26 @@
   {
     "id": 1,
     "name": "Enhörningen",
-    "image": ""
+    "image": "🦄"
   },
   {
     "id": 2,
     "name": "Dinosaurien",
-    "image": ""
+    "image": "🦕"
   },
   {
     "id": 3,
     "name": "Hajen",
-    "image": ""
+    "image": "🦈"
   },
   {
     "id": 4,
     "name": "Monstret",
-    "image": ""
+    "image": "👹"
   },
   {
     "id": 5,
     "name": "Bajskorven",
-    "image": ""
-  },
-  {
-    "id": 4,
-    "label": "friendName",
-    "image": ""
+    "image": "💩"
   }
 ]

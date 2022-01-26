@@ -9,6 +9,7 @@ import friendName from './data/friendName.json';
 import place from './data/place.json';
 import sound from './data/sound.json';
 import tools from './data/tools.json';
+import feeling from './data/feeling.json';
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/finalproject';
 mongoose.connect(mongoUrl, {
@@ -280,6 +281,15 @@ app.get('/sound', async (req, res) => {
 app.get('/tool', async (req, res) => {
   try {
     res.status(200).json({ response: tools, success: true });
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+});
+
+// app.get('/feeling', authenticateUser);
+app.get('/feeling', async (req, res) => {
+  try {
+    res.status(200).json({ response: feeling, success: true });
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }

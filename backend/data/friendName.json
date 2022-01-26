@@ -26,27 +26,27 @@
   },
   {
     "id": 6,
-    "list": "Bruno",
+    "name": "Bruno",
     "image": ""
   },
   {
     "id": 7,
-    "list": "Mattias",
+    "name": "Mattias",
     "image": ""
   },
   {
     "id": 8,
-    "list": "Maria",
+    "name": "Maria",
     "image": ""
   },
   {
     "id": 9,
-    "list": "Marko",
+    "name": "Marko",
     "image": ""
   },
   {
     "id": 10,
-    "list": "Ida",
+    "name": "Ida",
     "image": ""
   }
 ]

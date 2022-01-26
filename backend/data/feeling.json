@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "läskigt",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "roligt",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "spännande",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "konstigt",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "name": "knasigt",
+    "image": ""
+  }
+]

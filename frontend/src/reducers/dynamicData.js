@@ -8,6 +8,7 @@ export const dynamicData = createSlice({
   initialState: {
     characters: [],
     sounds: [],
+    feelings: [],
     tools: [],
     places: [],
     friends: [],
@@ -19,6 +20,9 @@ export const dynamicData = createSlice({
     },
     setSounds: (store, action) => {
       store.sounds = action.payload;
+    },
+    setFeelings: (store, action) => {
+      store.feelings = action.payload;
     },
     setTools: (store, action) => {
       store.tools = action.payload;
@@ -65,6 +69,25 @@ export const showSounds = () => {
       .then((data) => {
         if (data.success) {
           dispatch(dynamicData.actions.setSounds(data.response));
+        } else {
+          console.log('ERROR in reducer fetch');
+        }
+      })
+      .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
+  };
+};
+
+export const showFeelings = () => {
+  return (dispatch) => {
+    dispatch(rainbowLoader.actions.setLoading(true));
+    const options = {
+      method: 'GET' // add header: accesstoken here?
+    };
+    fetch(API_URL('feeling'), options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          dispatch(dynamicData.actions.setFeelings(data.response));
         } else {
           console.log('ERROR in reducer fetch');
         }
@@ -130,7 +153,7 @@ export const showFriends = () => {
   };
 };
 
-export const showFriendsName = () => {
+export const showFriendsNames = () => {
   return (dispatch) => {
     dispatch(rainbowLoader.actions.setLoading(true));
     const options = {

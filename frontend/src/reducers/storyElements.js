@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+// reducer that stores the users selection of characters/elements
 const storyElements = createSlice({
   name: 'storyElements',
   initialState: {
@@ -16,8 +16,12 @@ const storyElements = createSlice({
 
     // save the last chosen element in history
     setSelectedElements: (store, action) => {
+      const { element } = action.payload;
       store.history = [...store.history, store.selectedElements];
-      store.selectedElements = action.payload;
+      // store.selectedElements = action.payload;
+      store.selectedElements.push({
+        element
+      });
     },
 
     goToNextPage: (store) => {

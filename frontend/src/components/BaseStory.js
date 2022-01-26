@@ -1,15 +1,31 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { API_URL } from '../utils/constants';
-// import dynamicData from '../reducers/dynamicData';
+import { useSelector, useDispatch } from 'react-redux';
+import storyElements from '../reducers/storyElements';
+import dynamicData, { showSounds } from '../reducers/dynamicData';
 // import user from '../reducers/user';
 
 const BaseStory = () => {
-  // const character = useSelector((store) => store.dynamicData.character);
-  // const elements = useSelector((store) => store.dynamicData.storyElements);
-  const accessToken = useSelector((store) => store.user.accessToken);
+  const character = useSelector(
+    (store) => store.storyElements.selectedCharacter?.name
+  );
 
-  // const dispatch = useDispatch();
+  const elements = useSelector((store) => store.storyElements.selectedElements);
+
+  const sounds = useSelector((store) => store.dynamicData.sounds);
+
+  // const accessToken = useSelector((store) => store.user.accessToken);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(showSounds());
+  }, [dispatch]);
+
+  const onAnswerSubmit = (name) => {
+    // prevent to add several sounds to a story
+
+    dispatch(storyElements.actions.setSelectedElements({ name }));
+  };
 
   //behöver vi passa in props? KAnske bara console.log först?
   // const onAnswerSubmit = () => {
@@ -19,58 +35,32 @@ const BaseStory = () => {
   //     dispatch(character.actions.setSelectedCharacter({ character }));
   //   }
   // };
-
-  useEffect(() => {
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: accessToken
-      }
-    };
-
-    fetch(API_URL('element'), options)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  });
-
-  //   fetch(API_URL('elements'), options)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         dispatch(elements.actions.setSelectedElements(data.response));
-  //       } else {
-  //         dispatch(elements.actions.setSelectedElements([]));
-  //       }
-  //     });
-  // }, [accessToken]);
-
+  console.log(sounds);
   return (
     <div>
-      {/* <section className="base-story__part1">
+      <section className="base-story__part1">
         <p>
-          `Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle
-          hända. ${character} var bara hemma och åt lite nötter, för det var $
-          {character} s bästa grej att knapra på. Ja, förutom pinnar, chips och
+          {`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle
+          hända. ${character} var bara hemma och åt lite nötter, för det var ${character}s bästa grej att knapra på. Ja, förutom pinnar, chips och
           det översta lagret på lasagne. De var också bra grejer att knapra på.
-          Men mitt i allt knaprande hörde ${character} någonting.`
+          Men mitt i allt knaprande hörde ${character} någonting.`}
         </p>
       </section>
-      <div> */}
+
       <h3>Vad var det som lät?</h3>
-      {/* <div className="button-wrapper">
-        {question.options.map((item, index) => (
+      <div>
+        {sounds.map((item) => (
           <button
+            type="submit"
             className="option-buttons"
-            key={item}
-            onClick={() => onAnswerSubmit(question.id, index)}
+            key={item.id}
+            onClick={() => onAnswerSubmit(item.name)}
           >
-            {item}
+            {item.name}
           </button>
         ))}
-      </div> */}
-      {/* </div> */}
+        {/* {selectedCharacter && <p>`You picked ${selectedCharacter}`</p>} */}
+      </div>
       <section className="base-story__part2"></section>
       <section className="base-story__part3"></section>
       <section className="base-story__part4"></section>
@@ -81,7 +71,8 @@ const BaseStory = () => {
 
 export default BaseStory;
 
-// ett LJUD. HUVUDPERSONEN stelnade till. Vad var det? Det kändes plötsligt lite KÄNSLA1. Men också KÄNSLA2.
+{
+  /* // ett LJUD. HUVUDPERSONEN stelnade till. Vad var det? Det kändes plötsligt lite KÄNSLA1. Men också KÄNSLA2.
 // HUVUDPERSONEN sprang ut för att se var ljudet kom ifrån. Och nu hördes det igen. Ett LJUD.
 // Men va?
 // Det kommer ju från taket.
@@ -92,4 +83,5 @@ export default BaseStory;
 // – Hej, säger EN BIROLL. Jag heter BIROLLSNAMN. Vill du ha en nöt av mig?
 // – hej, svarar HUVUDPERSONEN. Jättegärna. Jag älskar faktiskt nötter.
 // – Det gör jag med. Och de här låter så roligt när man skalar dem, säger EN BIROLL.
-// – Ja, jag vet, säger HUVUDPERSONEN och så skrattar de båda två.
+// – Ja, jag vet, säger HUVUDPERSONEN och så skrattar de båda två. */
+}

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import StoryPage from '../pages/StoryPage';
 // import { API_URL } from '../utils/constants';
 import { showCharacters } from '../reducers/dynamicData';
 import storyElements from '../reducers/storyElements';
-import BaseStory from './BaseStory';
+// import BaseStory from './BaseStory';
 // import user from '../reducers/user';
 // removed import of dynamicData
 
@@ -30,7 +31,7 @@ const CreateStory = () => {
   };
   // console.log(characters);
   if (selectedCharacter != null) {
-    return <BaseStory />;
+    return <StoryPage />;
   } else {
     return (
       <div>

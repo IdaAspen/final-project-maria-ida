@@ -9,7 +9,7 @@ import story from './reducers/story';
 import storyElements from './reducers/storyElements';
 
 import CreateStory from './components/CreateStory';
-import BaseStory from './components/BaseStory';
+// import BaseStory from './components/BaseStory';
 // import Main from './components/Main';
 import Login from './components/Login';
 import NotFound from './components/NotFound';

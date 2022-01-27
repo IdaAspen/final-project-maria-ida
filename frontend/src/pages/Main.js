@@ -3,7 +3,7 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import user from '../reducers/user';
-import CreateStory from './CreateStory';
+import CreateStory from '../components/CreateStory';
 // import { API_URL } from '../utils/constants';
 
 const Main = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, batch } from 'react-redux';
 import storyElements from '../reducers/storyElements';
 import {
   showFeelings,
@@ -31,28 +31,35 @@ const BaseStory = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(showSounds());
+    batch(() => {
+      dispatch(showSounds());
+      dispatch(showFeelings());
+      dispatch(showTools());
+      dispatch(showPlaces());
+      dispatch(showFriends());
+      dispatch(showFriendsNames());
+    });
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(showFeelings());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(showFeelings());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(showTools());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(showTools());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(showPlaces());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(showPlaces());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(showFriends());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(showFriends());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(showFriendsNames());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(showFriendsNames());
+  // }, [dispatch]);
 
   const onAnswerSubmit = (name) => {
     // + prevent to add several sounds to a story

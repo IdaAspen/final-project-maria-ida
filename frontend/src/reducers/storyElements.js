@@ -16,7 +16,6 @@ const storyElements = createSlice({
 
     // save the last chosen element in history
     setSelectedElements: (store, action) => {
-      console.log('ACTION', action.payload);
       const { element, image } = action.payload;
       store.history = [...store.history, store.selectedElements];
       // store.selectedElements = action.payload;

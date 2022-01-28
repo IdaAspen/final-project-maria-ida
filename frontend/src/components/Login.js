@@ -1,15 +1,9 @@
-// import React, { useState } from 'react';
-// import { batch, useDispatch } from 'react-redux';
-// // import { useNavigate } from 'react-router-dom';
-
-// import { API_URL } from '../utils/constants';
-// import user from '../reducers/user';
-
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../utils/constants';
 import user from '../reducers/user';
+import './login.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -34,9 +28,9 @@ const Login = () => {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password })
     };
 
     fetch(API_URL(mode), options)

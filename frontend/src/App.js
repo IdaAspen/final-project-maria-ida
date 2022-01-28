@@ -10,9 +10,10 @@ import storyElements from './reducers/storyElements';
 
 // import CreateStory from './components/CreateStory';
 // import BaseStory from './components/BaseStory';
-import Main from './pages/Main';
+// import Main from './pages/Main';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
+import CreateStory from './components/CreateStory';
 // import CreateStory from './components/CreateStory';
 
 const reducer = combineReducers({
@@ -29,7 +30,7 @@ export const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<CreateStory />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

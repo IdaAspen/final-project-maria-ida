@@ -41,7 +41,7 @@ const BaseStory3 = () => {
             <button
               type="submit"
               className="option-buttons"
-              onClick={() => onAnswerSubmit(item.name)}
+              onClick={() => onAnswerSubmit(item.name, item.image)}
             >
               {
                 <img

@@ -45,7 +45,7 @@ const BaseStory1 = () => {
             type="submit"
             className="option-buttons"
             key={item.name}
-            onClick={() => onAnswerSubmit(item.name)}
+            onClick={() => onAnswerSubmit(item.name, item.image)}
           >
             {item.name}
           </button>

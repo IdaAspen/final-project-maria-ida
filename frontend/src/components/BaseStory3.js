@@ -19,10 +19,12 @@ const BaseStory3 = () => {
     dispatch(showTools());
   }, [dispatch]);
 
-  const onAnswerSubmit = (name) => {
+  const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(storyElements.actions.setSelectedElements({ element: name }));
+    dispatch(
+      storyElements.actions.setSelectedElements({ element: name, image: image })
+    );
   };
 
   console.log(elements);
@@ -35,16 +37,19 @@ const BaseStory3 = () => {
       <h3>Vadå?</h3>
       <div>
         {tools.map((item) => (
-          <div>
+          <div key={item.name}>
             <button
               type="submit"
               className="option-buttons"
-              key={item.name}
               onClick={() => onAnswerSubmit(item.name)}
             >
-              {item.image}
+              {
+                <img
+                  src={`${BASE_URL}/media/images/${item.image}`}
+                  alt="tool"
+                />
+              }
             </button>
-            <img src={`${BASE_URL}/media/images/${item.image}`} alt="tool" />
           </div>
         ))}
       </div>

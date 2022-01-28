@@ -21,10 +21,12 @@ const BaseStory5 = () => {
     dispatch(showFriends());
   }, [dispatch]);
 
-  const onAnswerSubmit = (name) => {
+  const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(storyElements.actions.setSelectedElements({ element: name }));
+    dispatch(
+      storyElements.actions.setSelectedElements({ element: name, image: image })
+    );
   };
 
   console.log(elements);

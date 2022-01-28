@@ -18,13 +18,15 @@ const BaseStory1 = () => {
     dispatch(showSounds());
   }, [dispatch]);
 
-  const onAnswerSubmit = (name) => {
+  const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(storyElements.actions.setSelectedElements({ element: name }));
+    dispatch(
+      storyElements.actions.setSelectedElements({ element: name, image })
+    );
   };
-
   console.log(elements);
+  console.log(elements[0]?.image);
   return (
     <div>
       <section className="base-story__part1">

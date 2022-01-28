@@ -8,11 +8,12 @@ import { dynamicData } from './reducers/dynamicData';
 import story from './reducers/story';
 import storyElements from './reducers/storyElements';
 
-import CreateStory from './components/CreateStory';
+// import CreateStory from './components/CreateStory';
 // import BaseStory from './components/BaseStory';
-// import Main from './components/Main';
+import Main from './pages/Main';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
+// import CreateStory from './components/CreateStory';
 
 const reducer = combineReducers({
   user: user.reducer,
@@ -28,7 +29,7 @@ export const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<CreateStory />} />
+          <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

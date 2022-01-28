@@ -54,7 +54,6 @@ const Main = () => {
   // Shows two buttons BOOKSHELF or CREATE STORY
   return (
     <div>
-      <h1>It's a secret!</h1>
       <CreateStory />
       <button onClick={logout}>Logout</button>
     </div>

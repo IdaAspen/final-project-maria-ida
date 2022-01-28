@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../reducers/storyElements';
 import { showPlaces } from '../reducers/dynamicData';
+import { BASE_URL } from '../utils/constants';
 
 const BaseStory4 = () => {
   const character = useSelector(
@@ -18,10 +19,12 @@ const BaseStory4 = () => {
     dispatch(showPlaces());
   }, [dispatch]);
 
-  const onAnswerSubmit = (name) => {
+  const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(storyElements.actions.setSelectedElements({ element: name }));
+    dispatch(
+      storyElements.actions.setSelectedElements({ element: name, image: image })
+    );
   };
 
   console.log(elements);
@@ -32,6 +35,10 @@ const BaseStory4 = () => {
 
         <div>
           <p>{`${elements[2]?.element}`}</p>
+          <img
+            src={`${BASE_URL}/media/images/${elements[2]?.image}`}
+            alt="tool"
+          />
         </div>
       </section>
 

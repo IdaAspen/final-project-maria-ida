@@ -2,26 +2,26 @@
   {
     "id": 1,
     "name": "BRAK",
-    "image": ""
+    "image": "brak"
   },
   {
     "id": 2,
     "name": "BOING",
-    "image": ""
+    "image": "boing"
   },
   {
     "id": 3,
     "name": "VRÅÅÅL",
-    "image": ""
+    "image": "vråål"
   },
   {
     "id": 4,
     "name": "FNISS",
-    "image": ""
+    "image": "fniss"
   },
   {
     "id": 5,
     "name": "PRUTTLJUD",
-    "image": ""
+    "image": "prutt"
   }
 ]

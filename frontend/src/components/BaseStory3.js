@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../reducers/storyElements';
 import { showTools } from '../reducers/dynamicData';
+import { BASE_URL } from '../utils/constants';
 
 const BaseStory3 = () => {
   const character = useSelector(
@@ -34,14 +35,17 @@ const BaseStory3 = () => {
       <h3>Vadå?</h3>
       <div>
         {tools.map((item) => (
-          <button
-            type="submit"
-            className="option-buttons"
-            key={item.name}
-            onClick={() => onAnswerSubmit(item.name)}
-          >
-            {item.image}
-          </button>
+          <div>
+            {/* <button
+              type="submit"
+              className="option-buttons"
+              key={item.name}
+              onClick={() => onAnswerSubmit(item.name)}
+            >
+              {item.image}
+            </button> */}
+            <img src={`${BASE_URL}/media/images/${item.image}`} alt="tool" />
+          </div>
         ))}
       </div>
     </div>

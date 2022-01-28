@@ -75,6 +75,8 @@ app.use(cors());
 // }));
 
 app.use(express.json());
+// images
+app.use('/media', express.static('public'));
 
 // Add seedDatabase function
 

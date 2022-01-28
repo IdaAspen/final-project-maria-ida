@@ -1,32 +1,27 @@
 [
   {
-    "id": 1,
-    "name": "en ost",
-    "image": "🧀"
-  },
-  {
     "id": 2,
     "name": "en stege",
-    "image": "🪜"
+    "image": "stege.jpg"
   },
   {
     "id": 3,
-    "name": "en isbit",
-    "image": "🧊"
+    "name": "ett kylskåp",
+    "image": "kylskap.jpg"
   },
   {
     "id": 4,
     "name": "ett par vingar",
-    "image": "🧚‍♀️"
+    "image": "vingar.jpg"
   },
   {
     "id": 5,
     "name": "ett förstoringsglas",
-    "image": "🔍"
+    "image": "forstoringsglas.jpg"
   },
   {
     "id": 4,
     "name": "ett par skridskor",
-    "image": "⛸"
+    "image": "skridskor.jpg"
   }
 ]

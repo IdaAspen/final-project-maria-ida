@@ -31,7 +31,7 @@ const BaseStory1 = () => {
         <p>
           {`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle
           hända. ${character} var bara hemma och åt lite nötter, för det var ${character}s bästa grej att knapra på. Ja, förutom pinnar, chips och
-          det översta lagret på lasagne. De var också bra grejer att knapra på.
+          det översta lagret på lasagne. De var också bra grejer att knapra på. 
           Men mitt i allt knaprande hörde ${character} någonting.`}
         </p>
       </section>

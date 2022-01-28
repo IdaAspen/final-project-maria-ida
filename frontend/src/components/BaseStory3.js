@@ -36,14 +36,14 @@ const BaseStory3 = () => {
       <div>
         {tools.map((item) => (
           <div>
-            {/* <button
+            <button
               type="submit"
               className="option-buttons"
               key={item.name}
               onClick={() => onAnswerSubmit(item.name)}
             >
               {item.image}
-            </button> */}
+            </button>
             <img src={`${BASE_URL}/media/images/${item.image}`} alt="tool" />
           </div>
         ))}

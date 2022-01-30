@@ -1,26 +1,15 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch, batch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
-import user from '../reducers/user';
 import CreateStory from '../components/CreateStory';
+import Navbar from '../components/Navbar';
+import './main.css';
 // import { API_URL } from '../utils/constants';
 
 const Main = () => {
   // const secretsItems = useSelector((store) => store.secrets.items);
   const accessToken = useSelector((store) => store.user.accessToken);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // Function for logout using local storage
-  const logout = () => {
-    batch(() => {
-      dispatch(user.actions.setUsername(null));
-      dispatch(user.actions.setAccessToken(null));
-
-      localStorage.removeItem('user');
-    });
-  };
 
   // If not having accessToken, redirect to login
   useEffect(() => {
@@ -54,8 +43,10 @@ const Main = () => {
   // Shows two buttons BOOKSHELF or CREATE STORY
   return (
     <div>
-      <CreateStory />
-      <button onClick={logout}>Logout</button>
+      <Navbar />
+      <div className="main-container">
+        <CreateStory />
+      </div>
     </div>
   );
 };

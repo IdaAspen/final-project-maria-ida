@@ -1,0 +1,51 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+ul {
+  display: flex;
+}
+a {
+  text-decoration: none;
+}
+
+li {
+  color: var(--links);
+  margin: 0 0.5rem;
+  font-size: 10px;
+  position: relative;
+  list-style: none;
+}
+
+.navbar-text {
+  color: var(--attribute);
+  /* font-size: 1.3rem; */
+  font-size: 10px;
+  margin: 0;
+  align-self: center;
+  margin-left: 25px;
+  margin-right: 10px;
+}
+
+.current {
+  border-bottom: 2px solid var(--focus);
+}
+
+span {
+  color: var(--attribute);
+  font-weight: bold;
+}
+
+.logout-button {
+  all: unset;
+  cursor: pointer;
+  color: var(--links);
+  /* font-size: 1.3rem; */
+  font-size: 10px;
+}
+
+.logout-button:focus {
+  outline: var(--focus) 5px auto;
+}

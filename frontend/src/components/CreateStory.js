@@ -4,6 +4,7 @@ import StoryPage from '../pages/StoryPage';
 // import { API_URL } from '../utils/constants';
 import { showCharacters } from '../reducers/dynamicData';
 import storyElements from '../reducers/storyElements';
+import './create-story.css';
 // import BaseStory from './BaseStory';
 // import user from '../reducers/user';
 // removed import of dynamicData
@@ -34,7 +35,7 @@ const CreateStory = () => {
     return <StoryPage />;
   } else {
     return (
-      <div>
+      <div className="create-story-container">
         <h2>Välj din huvudroll i sagan!</h2>
         <div>
           {characters.map((item) => (

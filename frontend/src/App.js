@@ -8,12 +8,12 @@ import { dynamicData } from './reducers/dynamicData';
 import story from './reducers/story';
 import storyElements from './reducers/storyElements';
 
-// import CreateStory from './components/CreateStory';
 // import BaseStory from './components/BaseStory';
-// import Main from './pages/Main';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
+import Main from './pages/Main';
 import CreateStory from './components/CreateStory';
+import Bookshelf from './pages/Bookshelf';
 // import CreateStory from './components/CreateStory';
 
 const reducer = combineReducers({
@@ -30,8 +30,10 @@ export const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<CreateStory />} />
+          <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/skapasaga" element={<CreateStory />} />
+          <Route path="/bokhylla" element={<Bookshelf />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,32 @@
+.login-bg {
+  /* background-image: url('../assets/loginBg.jpg'); */
+  /* background-position: center; */
+  /* background-size: cover;
+  background-repeat: no-repeat; */
+  height: 100vh;
+  /* width: 100vw; */
+  display: grid;
+  align-items: center;
+  padding: 10%;
+  background-color: var(--background);
+  /* justify-content: center; */
+}
+
+h1 {
+  font-size: 42px;
+}
+
+.login-form {
+  /* margin: 10%; */
+  padding: 10%;
+  box-shadow: 0 1px 1px 0 rgb(66 66 66 / 8%), 0 1px 3px 1px rgb(66 66 66 / 16%);
+  border-radius: 6px;
+  background-color: #ffff;
+}
+
+.login-attribute {
+  font-size: 7px;
+  position: absolute;
+  bottom: 0;
+  color: var(--attribute);
+}

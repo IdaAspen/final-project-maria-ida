@@ -5,6 +5,7 @@ import StoryPage from '../pages/StoryPage';
 import { showCharacters } from '../reducers/dynamicData';
 import storyElements from '../reducers/storyElements';
 import './create-story.css';
+
 // import BaseStory from './BaseStory';
 // import user from '../reducers/user';
 // removed import of dynamicData
@@ -38,7 +39,7 @@ const CreateStory = () => {
       <div className="create-story-container">
         <h2>Välj din huvudroll i sagan!</h2>
         <div>
-          {characters.map((item) => (
+          {characters.slice(0, 4).map((item) => (
             <button
               type="submit"
               className="option-buttons"

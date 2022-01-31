@@ -32,7 +32,7 @@ const BaseStory5 = () => {
   console.log(elements);
   return (
     <div>
-      <section className="base-story__part5">
+      <section className="base-story">
         <p>{`Ja precis, som att vara högst upp ${elements[3]?.element} däruppe på taket. Allt ser liksom lite mystiskt och magiskt ut. Och nu hör ${elements[0]?.element} igen! Det kommer bakifrån skorstenen. ${character} går runt (men försiktig, för det är ju jättehögt upp), och ser...`}</p>
       </section>
 
@@ -40,8 +40,8 @@ const BaseStory5 = () => {
       <div>
         {friends.map((item) => (
           <button
+            className="story-btn"
             type="submit"
-            className="option-buttons"
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}
           >

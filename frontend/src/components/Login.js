@@ -78,27 +78,29 @@ const Login = () => {
         ></input>
 
         <form onSubmit={onFormSubmit}>
-          <label htmlFor="username">
-            <h3>Användarnamn</h3>
-          </label>
+          <label htmlFor="username">{/* <h3>Användarnamn</h3> */}</label>
           <input
             id="username"
             type="text"
-            placeholder="Username"
+            placeholder="Användarnamn"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-          <label htmlFor="password">
-            <h3>Lösenord</h3>
-          </label>
+          <label htmlFor="password">{/* <h3>Lösenord</h3> */}</label>
           <input
             id="password"
             type="password"
-            placeholder="Password"
+            placeholder="Lösenord"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          <button type="submit">Login</button>
+          <button
+            className="login-signup-btn"
+            type="submit"
+            disabled={password.length < 8 || password.length > 20}
+          >
+            Logga in
+          </button>
           <p> {error}</p>
         </form>
       </div>

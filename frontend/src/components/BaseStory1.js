@@ -29,7 +29,7 @@ const BaseStory1 = () => {
   console.log(elements[0]?.image);
   return (
     <div>
-      <section className="base-story__part1">
+      <section className="base-story">
         <p>
           {`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle
           hända. ${character} var bara hemma och åt lite nötter, för det var ${character}s bästa grej att knapra på. Ja, förutom pinnar, chips och
@@ -42,8 +42,8 @@ const BaseStory1 = () => {
       <div>
         {sounds.map((item) => (
           <button
+            className="story-btn"
             type="submit"
-            className="option-buttons"
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}
           >

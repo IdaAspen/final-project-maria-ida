@@ -30,7 +30,7 @@ li {
 }
 
 .current {
-  border-bottom: 2px solid var(--focus);
+  border-bottom: 2px solid #888;
 }
 
 span {

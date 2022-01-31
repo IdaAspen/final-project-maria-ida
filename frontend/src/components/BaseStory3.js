@@ -30,17 +30,17 @@ const BaseStory3 = () => {
   console.log(elements);
   return (
     <div>
-      <section className="base-story__part3">
+      <section className="base-story">
         <p>{`Ja, det kändes lite ${elements[1]?.element}. ${character} sprang ut för att se var ljudet kom ifrån. Och nu hördes det igen. Ett ${elements[0]?.element}. Men va? Det kommer ju från taket. ${character} tänker att det är bäst att försöka ta sig upp på taket. Det har ${character} inte gjort innan, men det kan väl inte vara så svårt? Men jag behöver nog... `}</p>
       </section>
 
       <h3>Vadå?</h3>
-      <div>
+      <div className="img-btn-wrapper">
         {tools.map((item) => (
           <div key={item.name}>
             <button
+              className="img-btn"
               type="submit"
-              className="option-buttons"
               onClick={() => onAnswerSubmit(item.name, item.image)}
             >
               {

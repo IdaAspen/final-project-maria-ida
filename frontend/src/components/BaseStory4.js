@@ -30,7 +30,7 @@ const BaseStory4 = () => {
   console.log(elements);
   return (
     <div>
-      <section className="base-story__part4">
+      <section className="base-story">
         <p>{`Exakt! ${elements[2]?.element}, tänker ${character}. Inne i förrådet kan det nog finnas ${elements[2]?.element}. Åhhh det är så tungt att bära ut. Det hade varit lättare om jag haft en kompis. Till slut får ${character} ut ${elements[2]?.element} från förrådet och tar sig närmare taket. Hej och hå. Det är tungt. Och ${elements[1]?.element}. Det känns som att ${character} är...`}</p>
 
         <div>
@@ -45,8 +45,8 @@ const BaseStory4 = () => {
       <div>
         {places.map((item) => (
           <button
+            className="story-btn"
             type="submit"
-            className="option-buttons"
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}
           >

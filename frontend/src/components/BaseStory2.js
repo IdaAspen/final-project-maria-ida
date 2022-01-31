@@ -29,14 +29,14 @@ const BaseStory2 = () => {
   console.log(elements);
   return (
     <div>
-      <section className="base-story__part2">{`${elements[0]?.element}!!!! ${character} stelnade till. Vad var det? Det kändes plötsligt lite... `}</section>
+      <section className="base-story">{`${elements[0]?.element}!!!! ${character} stelnade till. Vad var det? Det kändes plötsligt lite... `}</section>
 
       <h3>Hur kändes det?</h3>
       <div>
         {feelings.map((item) => (
           <button
+            className="story-btn"
             type="submit"
-            className="option-buttons"
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}
           >

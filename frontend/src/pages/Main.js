@@ -40,7 +40,8 @@ const Main = () => {
   //     });
   // }, [accessToken]);
 
-  // Shows two buttons BOOKSHELF or CREATE STORY
+  // Shows two buttons BOOKSHELF or CREATE STORY?
+  // Skapa en switch??
   return (
     <div>
       <Navbar />

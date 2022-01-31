@@ -41,8 +41,8 @@ const CreateStory = () => {
         <div>
           {characters.slice(0, 4).map((item) => (
             <button
+              className="story-btn"
               type="submit"
-              className="option-buttons"
               key={item.id}
               onClick={() => onAnswerSubmit(item.name)}
             >

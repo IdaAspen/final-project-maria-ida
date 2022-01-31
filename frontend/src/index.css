@@ -41,11 +41,18 @@ label {
 }
 
 /* DESIGN FÖR BASESTORY, CREATE STORY */
+.base-container {
+  padding: 2%;
+}
+
+.base-container h3 {
+  margin-left: 2%;
+}
 
 .base-story {
   /* width: 100vw; */
   display: grid;
-  padding: 10%;
+  padding: 3%;
 }
 
 img {

@@ -28,7 +28,7 @@ const BaseStory2 = () => {
 
   console.log(elements);
   return (
-    <div>
+    <div className="base-container">
       <section className="base-story">{`${elements[0]?.element}!!!! ${character} stelnade till. Vad var det? Det kändes plötsligt lite... `}</section>
 
       <h3>Hur kändes det?</h3>

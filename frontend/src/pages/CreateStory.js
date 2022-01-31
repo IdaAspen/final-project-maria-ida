@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import StoryPage from '../pages/StoryPage';
+import StoryPage from './StoryPage';
 // import { API_URL } from '../utils/constants';
 import { showCharacters } from '../reducers/dynamicData';
 import storyElements from '../reducers/storyElements';
+import BaseStoryRoof from '../components/BaseStoryRoof';
 import './create-story.css';
+import Navbar from '../components/Navbar';
 
 // import BaseStory from './BaseStory';
 // import user from '../reducers/user';
@@ -33,23 +35,26 @@ const CreateStory = () => {
   };
   // console.log(characters);
   if (selectedCharacter != null) {
-    return <StoryPage />;
+    return <BaseStoryRoof />;
   } else {
     return (
-      <div className="create-story-container">
-        <h2>Välj din huvudroll i sagan!</h2>
-        <div>
-          {characters.slice(0, 4).map((item) => (
-            <button
-              className="story-btn"
-              type="submit"
-              key={item.id}
-              onClick={() => onAnswerSubmit(item.name)}
-            >
-              {item.image}
-            </button>
-          ))}
-          {/* {selectedCharacter && <p>`You picked ${selectedCharacter}`</p>} */}
+      <div>
+        <Navbar />
+        <div className="create-story-container">
+          <h2>Välj din huvudroll i sagan!</h2>
+          <div>
+            {characters.slice(0, 4).map((item) => (
+              <button
+                className="story-btn"
+                type="submit"
+                key={item.id}
+                onClick={() => onAnswerSubmit(item.name)}
+              >
+                {item.image}
+              </button>
+            ))}
+            {/* {selectedCharacter && <p>`You picked ${selectedCharacter}`</p>} */}
+          </div>
         </div>
       </div>
     );

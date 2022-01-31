@@ -28,7 +28,7 @@ const BaseStory1 = () => {
   console.log(elements);
   console.log(elements[0]?.image);
   return (
-    <div>
+    <div className="base-container">
       <section className="base-story">
         <p>
           {`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle

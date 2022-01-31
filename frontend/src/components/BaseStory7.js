@@ -21,7 +21,7 @@ const BaseStory7 = () => {
 
   console.log(elements);
   return (
-    <div>
+    <div className="base-container">
       <section className="base-story">
         <p>{`Jo, jag heter ${elements[5]?.element}. Vill du ha en nöt av mig? – hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter. – Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${elements[4]?.element}n. – Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
       </section>

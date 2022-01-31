@@ -25,7 +25,7 @@ const BaseStory6 = () => {
 
   console.log(elements);
   return (
-    <div>
+    <div className="base-container">
       <section className="base-story">
         <p>{`Där sitter en ${elements[4]?.element}  och skalar nötter. Tänk att ett ${elements[0]?.element} kom från de här små nötterna. – Hej, säger ${elements[4]?.element}n. Jag heter...`}</p>
       </section>

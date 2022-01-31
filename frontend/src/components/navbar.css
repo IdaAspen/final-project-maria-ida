@@ -12,7 +12,7 @@ a {
 }
 
 li {
-  color: var(--links);
+  color: var(--attribute);
   margin: 0 0.5rem;
   font-size: 10px;
   position: relative;
@@ -30,7 +30,7 @@ li {
 }
 
 .current {
-  border-bottom: 2px solid #888;
+  border-bottom: 2px solid #dec;
 }
 
 span {

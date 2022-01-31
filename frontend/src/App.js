@@ -12,7 +12,7 @@ import storyElements from './reducers/storyElements';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
 import Main from './pages/Main';
-import CreateStory from './components/CreateStory';
+import CreateStory from './pages/CreateStory';
 import Bookshelf from './pages/Bookshelf';
 // import CreateStory from './components/CreateStory';
 

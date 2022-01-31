@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import StoryPage from './StoryPage';
+// import StoryPage from './StoryPage';
 // import { API_URL } from '../utils/constants';
 import { showCharacters } from '../reducers/dynamicData';
 import storyElements from '../reducers/storyElements';
-import BaseStoryRoof from '../components/BaseStoryRoof';
+import BaseStoryRoof from '../components/BaseStoryRoof/BaseStoryRoof';
 import './create-story.css';
 import Navbar from '../components/Navbar';
 
@@ -39,7 +39,7 @@ const CreateStory = () => {
   } else {
     return (
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="create-story-container">
           <h2>Välj din huvudroll i sagan!</h2>
           <div>

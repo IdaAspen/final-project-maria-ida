@@ -9,7 +9,7 @@ import BaseStory5 from './BaseStory5';
 import BaseStory6 from './BaseStory6';
 import BaseStory7 from './BaseStory7';
 
-import storyElements from '../reducers/storyElements';
+// import storyElements from '../../reducers/storyElements';
 
 // import CreateStory from '../components/CreateStory';
 

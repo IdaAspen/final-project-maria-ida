@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import storyElements from '../reducers/storyElements';
-import { showTools } from '../reducers/dynamicData';
-import { BASE_URL } from '../utils/constants';
+import storyElements from '../../reducers/storyElements';
+import { showTools } from '../../reducers/dynamicData';
+import { BASE_URL } from '../../utils/constants';
 
 const BaseStory3 = () => {
   const character = useSelector(

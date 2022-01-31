@@ -1,46 +1,39 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import storyElements from '../reducers/storyElements';
-import { showSounds } from '../reducers/dynamicData';
+import storyElements from '../../reducers/storyElements';
+import { showFeelings } from '../../reducers/dynamicData';
 
-const BaseStory1 = () => {
+const BaseStory2 = () => {
   const character = useSelector(
     (store) => store.storyElements.selectedCharacter?.name
   );
   const elements = useSelector((store) => store.storyElements.selectedElements);
-  const sounds = useSelector((store) => store.dynamicData.sounds);
+  const feelings = useSelector((store) => store.dynamicData.feelings);
 
   // const accessToken = useSelector((store) => store.user.accessToken);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(showSounds());
+    dispatch(showFeelings());
   }, [dispatch]);
 
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
     dispatch(
-      storyElements.actions.setSelectedElements({ element: name, image })
+      storyElements.actions.setSelectedElements({ element: name, image: image })
     );
   };
+
   console.log(elements);
-  console.log(elements[0]?.image);
   return (
     <div className="base-container">
-      <section className="base-story">
-        <p>
-          {`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle
-          hända. ${character} var bara hemma och åt lite nötter, för det var ${character}s bästa grej att knapra på. Ja, förutom pinnar, chips och
-          det översta lagret på lasagne. De var också bra grejer att knapra på. 
-          Men mitt i allt knaprande hörde ${character} någonting.`}
-        </p>
-      </section>
+      <section className="base-story">{`${elements[0]?.element}!!!! ${character} stelnade till. Vad var det? Det kändes plötsligt lite... `}</section>
 
-      <h3>Vad var det som lät?</h3>
+      <h3>Hur kändes det?</h3>
       <div>
-        {sounds.map((item) => (
+        {feelings.map((item) => (
           <button
             className="story-btn"
             type="submit"
@@ -55,4 +48,4 @@ const BaseStory1 = () => {
   );
 };
 
-export default BaseStory1;
+export default BaseStory2;

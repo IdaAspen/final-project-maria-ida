@@ -44,7 +44,7 @@ const Main = () => {
   // Skapa en switch??
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="main-container">
         <CreateStory />
       </div>

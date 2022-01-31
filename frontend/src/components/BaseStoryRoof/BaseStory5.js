@@ -1,22 +1,24 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import storyElements from '../reducers/storyElements';
-import { showPlaces } from '../reducers/dynamicData';
-import { BASE_URL } from '../utils/constants';
+import storyElements from '../../reducers/storyElements';
+import { showFriends } from '../../reducers/dynamicData';
 
-const BaseStory4 = () => {
+const BaseStory5 = () => {
   const character = useSelector(
     (store) => store.storyElements.selectedCharacter?.name
   );
 
+  // const elements = useSelector(
+  //   (store) => store.storyElements.selectedElements?.name
+  // );
   const elements = useSelector((store) => store.storyElements.selectedElements);
-  const places = useSelector((store) => store.dynamicData.places);
+  const friends = useSelector((store) => store.dynamicData.friends);
   // const accessToken = useSelector((store) => store.user.accessToken);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(showPlaces());
+    dispatch(showFriends());
   }, [dispatch]);
 
   const onAnswerSubmit = (name, image) => {
@@ -31,19 +33,12 @@ const BaseStory4 = () => {
   return (
     <div className="base-container">
       <section className="base-story">
-        <p>{`Exakt! ${elements[2]?.element}, tänker ${character}. Inne i förrådet kan det nog finnas ${elements[2]?.element}. Åhhh det är så tungt att bära ut. Det hade varit lättare om jag haft en kompis. Till slut får ${character} ut ${elements[2]?.element} från förrådet och tar sig närmare taket. Hej och hå. Det är tungt. Och ${elements[1]?.element}. Det känns som att ${character} är...`}</p>
-
-        <div>
-          <img
-            src={`${BASE_URL}/media/images/${elements[2]?.image}`}
-            alt="tool"
-          />
-        </div>
+        <p>{`Ja precis, som att vara högst upp ${elements[3]?.element} däruppe på taket. Allt ser liksom lite mystiskt och magiskt ut. Och nu hör ${elements[0]?.element} igen! Det kommer bakifrån skorstenen. ${character} går runt (men försiktig, för det är ju jättehögt upp), och ser...`}</p>
       </section>
 
-      <h3>Vartdå?</h3>
+      <h3>Vem då?</h3>
       <div>
-        {places.map((item) => (
+        {friends.map((item) => (
           <button
             className="story-btn"
             type="submit"
@@ -58,4 +53,4 @@ const BaseStory4 = () => {
   );
 };
 
-export default BaseStory4;
+export default BaseStory5;

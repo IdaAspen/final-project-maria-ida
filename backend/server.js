@@ -3,6 +3,11 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
+import cloudinaryFramework from 'cloudinary';
+import multer from 'multer';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+
 import character from './data/character.json';
 import friend from './data/friend.json';
 import friendName from './data/friendName.json';
@@ -11,13 +16,33 @@ import sound from './data/sound.json';
 import tools from './data/tools.json';
 import feeling from './data/feeling.json';
 
+dotenv.config();
+
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/finalproject';
 mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
 });
 mongoose.Promise = Promise;
+
+// //Image upload storage cloudinary
+const cloudinary = cloudinaryFramework.v2;
+cloudinary.config({
+  cloud_name: 'cloudinary-story', // this needs to be whatever you get from cloudinary
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'storyimg',
+    allowedFormats: ['jpg', 'png'],
+    transformation: [{ width: 500, height: 500, crop: 'limit' }],
+  },
+});
+const parser = multer({ storage });
 
 // create a user schema with mongoose and use crypto for accessToken
 const UserSchema = new mongoose.Schema({
@@ -28,25 +53,25 @@ const UserSchema = new mongoose.Schema({
     storyCollection: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'StoryCollection'
-      }
-    ]
+        ref: 'StoryCollection',
+      },
+    ],
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   accessToken: {
     type: String,
-    default: () => crypto.randomBytes(128).toString('hex')
-  }
+    default: () => crypto.randomBytes(128).toString('hex'),
+  },
 });
 
 const User = mongoose.model('User', UserSchema);
 
 // Schema for showing a users own saved stories
 const StoryCollectionSchema = mongoose.Schema({
-  description: String
+  description: String,
 });
 
 const StoryCollection = mongoose.model(
@@ -58,10 +83,16 @@ const StoryCollection = mongoose.model(
 const ElementSchema = new mongoose.Schema({
   id: Number,
   name: String,
-  image: String
+  image: String,
 });
 
 const Element = mongoose.model('Element', ElementSchema);
+
+// schema for uploaded images
+const StoryImg = mongoose.model('StoryImg', {
+  name: String,
+  imageUrl: String,
+});
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -112,6 +143,20 @@ app.get('/', (req, res) => {
   );
 });
 
+// endpoint for images iported with cloudinary
+
+app.post('/storyimg', parser.single('image'), async (req, res) => {
+  try {
+    const storyimg = await new StoryImg({
+      name: req.body.filename,
+      imageUrl: req.file.path,
+    }).save();
+    res.json(storyimg);
+  } catch (err) {
+    res.status(400).json({ errors: err.errors });
+  }
+});
+
 // What you see when you are logged in added here, change "main"
 app.get('/main', authenticateUser);
 app.get('/main', (req, res) => {
@@ -125,7 +170,7 @@ app.post('/storycollection', async (req, res) => {
 
   try {
     const newStoryCollection = await new StoryCollection({
-      description
+      description,
     }).save();
     res.status(201).json({ response: newStoryCollection, success: true });
   } catch (error) {
@@ -145,15 +190,15 @@ app.post('/signup', async (req, res) => {
     if (password.match(strongPassword)) {
       const newUser = await new User({
         username,
-        password: bcrypt.hashSync(password, salt)
+        password: bcrypt.hashSync(password, salt),
       }).save();
       res.status(201).json({
         response: {
           userId: newUser._id,
           username: newUser.username,
-          accessToken: newUser.accessToken // add storycollection to response, console.log?
+          accessToken: newUser.accessToken, // add storycollection to response, console.log?
         },
-        success: true
+        success: true,
       });
     } else {
       throw 'Password must contain at least 8 characters, at least one letter, one number and one special character';
@@ -179,14 +224,14 @@ app.post('/signin', async (req, res) => {
         response: {
           userId: user._id,
           username: user.username,
-          accessToken: user.accessToken
+          accessToken: user.accessToken,
         },
-        success: true
+        success: true,
       });
     } else {
       res.status(404).json({
         response: "Username or password doesn't match.",
-        success: false
+        success: false,
       });
     }
   } catch (error) {
@@ -213,8 +258,8 @@ app.patch(
             userId,
             {
               $push: {
-                storyCollection: filteredStoryCollection
-              }
+                storyCollection: filteredStoryCollection,
+              },
             },
             { new: true }
           );

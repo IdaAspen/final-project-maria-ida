@@ -107,7 +107,7 @@ app.use(cors());
 
 app.use(express.json());
 // images
-app.use('/media', express.static('public'));
+// app.use('/media', express.static('public')); /////////////////// media //////////////
 
 // Add seedDatabase function
 

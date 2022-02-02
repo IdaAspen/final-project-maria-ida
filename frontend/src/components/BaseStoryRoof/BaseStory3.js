@@ -45,7 +45,8 @@ const BaseStory3 = () => {
             >
               {
                 <img
-                  src={`${BASE_URL}/media/images/${item.image}`}
+                  // src={`${BASE_URL}/media/images/${item.image}`}
+                  src={item.image}
                   alt="tool"
                 />
               }

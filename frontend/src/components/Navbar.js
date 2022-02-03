@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch, batch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './navbar.css';
+import Header from './Header';
 import user from '../reducers/user';
 
 // const NavList = styled.ul`
@@ -26,21 +27,16 @@ import user from '../reducers/user';
 //   }
 // `;
 
-// Add Logout link?
 const Navbar = () => {
   const username = useSelector((store) => store.user.username);
-
-  // const accessToken = useSelector((store) => store.user.accessToken);
+  const navigate = useNavigate();
+  const accessToken = useSelector((store) => store.user.accessToken);
   const dispatch = useDispatch();
 
-  // Function for logout using local storage
   const logout = () => {
-    batch(() => {
-      dispatch(user.actions.setUsername(null));
-      dispatch(user.actions.setAccessToken(null));
-
-      localStorage.removeItem('user');
-    });
+    dispatch(user.actions.setUsername(null));
+    dispatch(user.actions.setAccessToken(null));
+    navigate('/');
   };
 
   const links = [
@@ -48,28 +44,31 @@ const Navbar = () => {
     { name: 'Skapa saga', path: '/skapasaga' },
     { name: 'Bokhylla', path: '/bokhylla' }
   ];
-
-  return (
-    <nav>
-      <ul>
-        {links.map((link, index) => (
-          <NavLink
-            key={index}
-            to={link.path}
-            className={(navData) => (navData.isActive ? 'current' : '')}
-          >
-            <li>{link.name}</li>
-          </NavLink>
-        ))}
-      </ul>
-      <p className="navbar-text">
-        inloggad som: <span>{username}</span>
-      </p>
-      <button className="logout-button" onClick={logout}>
-        Logout
-      </button>
-    </nav>
-  );
+  if (!accessToken) {
+    return <Header />;
+  } else {
+    return (
+      <nav>
+        <ul>
+          {links.map((link, index) => (
+            <NavLink
+              key={index}
+              to={link.path}
+              className={(navData) => (navData.isActive ? 'current' : '')}
+            >
+              <li>{link.name}</li>
+            </NavLink>
+          ))}
+        </ul>
+        <p className="navbar-text">
+          inloggad som: <span>{username}</span>
+        </p>
+        <button className="logout-button" onClick={logout}>
+          Logout
+        </button>
+      </nav>
+    );
+  }
 };
 
 export default Navbar;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../../reducers/storyElements';
 import { showPlaces } from '../../reducers/dynamicData';
-import { BASE_URL } from '../../utils/constants';
+// import { BASE_URL } from '../../utils/constants';
 
 const BaseStory4 = () => {
   const character = useSelector(

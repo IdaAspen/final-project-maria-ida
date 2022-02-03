@@ -14,6 +14,8 @@ import NotFound from './components/NotFound';
 import Main from './pages/Main';
 import CreateStory from './pages/CreateStory';
 import Bookshelf from './pages/Bookshelf';
+
+import Navbar from './components/Navbar';
 // import CreateStory from './components/CreateStory';
 
 const reducer = combineReducers({
@@ -29,6 +31,7 @@ export const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />

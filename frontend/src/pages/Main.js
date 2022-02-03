@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CreateStory from './CreateStory';
-import Navbar from '../components/Navbar';
+
 import './main.css';
 // import { API_URL } from '../utils/constants';
 
@@ -44,7 +44,6 @@ const Main = () => {
   // Skapa en switch??
   return (
     <div>
-      <Navbar />
       <div className="main-container">
         <CreateStory />
       </div>

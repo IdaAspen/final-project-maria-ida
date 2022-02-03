@@ -6,7 +6,6 @@ import { showCharacters } from '../reducers/dynamicData';
 import storyElements from '../reducers/storyElements';
 import BaseStoryRoof from '../components/BaseStoryRoof/BaseStoryRoof';
 import './create-story.css';
-import Navbar from '../components/Navbar';
 
 // import BaseStory from './BaseStory';
 // import user from '../reducers/user';

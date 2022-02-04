@@ -39,7 +39,7 @@ const storage = new CloudinaryStorage({
   params: {
     folder: 'storyimg',
     allowedFormats: ['jpg', 'png'],
-    transformation: [{ width: 500, height: 500, crop: 'limit' }],
+    // transformation: [{ width: 500, height: 500, crop: 'limit' }],
   },
 });
 const parser = multer({ storage });

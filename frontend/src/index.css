@@ -52,19 +52,22 @@ label {
   padding: 2%;
   width: 80%;
   margin: 0 auto;
-  border: 1px solid hotpink;
 }
 
 .base-container h3 {
   margin-left: 2%;
-  border: 1px solid green;
 }
 
 .base-story {
   /* width: 100vw; */
+
   display: grid;
-  padding: 3%;
-  border: 1px solid blue;
+  padding: 9%;
+  background-image: url('https://res.cloudinary.com/cloudinary-story/image/upload/v1643999308/storyimg/pph64hpjepdygcinxjbs.jpg');
+  background-size: cover;
+  background-position: 70%;
+
+  background-repeat: no-repeat;
 }
 
 img {
@@ -78,7 +81,6 @@ img {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  border: 1px solid orange;
 }
 
 .img-btn {

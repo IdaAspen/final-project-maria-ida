@@ -6,7 +6,7 @@ const storyElements = createSlice({
     selectedCharacter: null,
     selectedElements: [],
     history: [],
-    storyPage: 0
+    storyPage: 0,
     // storyId:
   },
   reducers: {
@@ -21,17 +21,17 @@ const storyElements = createSlice({
       // store.selectedElements = action.payload;
       store.selectedElements.push({
         element,
-        image
+        image,
       });
     },
 
     goToNextPage: (store) => {
       store.storyPage += 1;
-    }
+    },
     // submitDynamicData: (state, action) => {
     //   // Code that triggers when the user selects data for their story
     // }
-  }
+  },
 });
 
 export default storyElements;

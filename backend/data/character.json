@@ -2,26 +2,26 @@
   {
     "id": 1,
     "name": "Enhörningen",
-    "image": "🦄"
+    "image": "https://res.cloudinary.com/cloudinary-story/image/upload/v1643960720/storyimg/irwyi7fvl8b6ut6exaso.jpg"
   },
   {
     "id": 2,
     "name": "Dinosaurien",
-    "image": "🦕"
+    "image": "https://res.cloudinary.com/cloudinary-story/image/upload/v1643960639/storyimg/kx0sfdzsbdcgrnvl6yae.jpg"
   },
   {
     "id": 3,
     "name": "Hajen",
-    "image": "🦈"
+    "image": "https://res.cloudinary.com/cloudinary-story/image/upload/v1643960694/storyimg/qcopqqhocnuogltzyafs.jpg"
   },
   {
     "id": 4,
     "name": "Monstret",
-    "image": "👹"
+    "image": "https://res.cloudinary.com/cloudinary-story/image/upload/v1643960753/storyimg/vfea3rpraj2gogghu77y.jpg"
   },
   {
     "id": 5,
     "name": "Bajskorven",
-    "image": "💩"
+    "image": "https://res.cloudinary.com/cloudinary-story/image/upload/v1643960671/storyimg/bfwjqucsectakzqxbc8w.jpg"
   }
 ]

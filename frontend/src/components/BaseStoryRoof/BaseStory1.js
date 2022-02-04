@@ -25,8 +25,8 @@ const BaseStory1 = () => {
       storyElements.actions.setSelectedElements({ element: name, image })
     );
   };
-  console.log(elements);
-  console.log(elements[0]?.image);
+  console.log('ELEMENTS HERE', elements);
+  console.log('IMAGE HERE', elements[0]?.image);
   return (
     <div className="base-container">
       <section className="base-story">
@@ -36,10 +36,14 @@ const BaseStory1 = () => {
           det översta lagret på lasagne. De var också bra grejer att knapra på. 
           Men mitt i allt knaprande hörde ${character} någonting.`}
         </p>
+
+        <div>
+          <img src={elements[0]?.image} alt="character" />
+        </div>
       </section>
 
       <h3>Vad var det som lät?</h3>
-      <div>
+      <div class="button-container">
         {sounds.map((item) => (
           <button
             className="story-btn"

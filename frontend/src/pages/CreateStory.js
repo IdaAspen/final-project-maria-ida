@@ -26,11 +26,13 @@ const CreateStory = () => {
   // const accessToken = useSelector((store) => store.user.accessToken);
 
   // Listens to onClick and set the selectedCharacter
-  const onAnswerSubmit = (name) => {
+  const onAnswerSubmit = (name, image) => {
     // if (selectedCharacter) return;
     // preventing to add several characters to a story
 
-    dispatch(storyElements.actions.setSelectedCharacter({ name }));
+    dispatch(
+      storyElements.actions.setSelectedCharacter({ name, image: image })
+    );
   };
   // console.log(characters);
   if (selectedCharacter != null) {
@@ -42,14 +44,14 @@ const CreateStory = () => {
         <div className="create-story-container">
           <h2>Välj din huvudroll i sagan!</h2>
           <div>
-            {characters.slice(0, 4).map((item) => (
+            {characters.slice(0, 5).map((item) => (
               <button
-                className="story-btn"
+                className="img-btn"
                 type="submit"
                 key={item.id}
-                onClick={() => onAnswerSubmit(item.name)}
+                onClick={() => onAnswerSubmit(item.name, item.image)}
               >
-                {item.image}
+                {<img src={item.image} alt="character" />}
               </button>
             ))}
             {/* {selectedCharacter && <p>`You picked ${selectedCharacter}`</p>} */}

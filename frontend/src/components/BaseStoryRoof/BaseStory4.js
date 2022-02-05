@@ -6,10 +6,14 @@ import { showPlaces } from '../../reducers/dynamicData';
 
 const BaseStory4 = () => {
   const character = useSelector(
-    (store) => store.storyElements.selectedCharacter?.name
+    (store) => store.storyElements.selectedCharacter.name
   );
-
-  const elements = useSelector((store) => store.storyElements.selectedElements);
+  const feeling = useSelector(
+    (store) => store.storyElements.selectedElements.feeling
+  );
+  const tool = useSelector(
+    (store) => store.storyElements.selectedElements.tool
+  );
   const places = useSelector((store) => store.dynamicData.places);
   // const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -22,21 +26,19 @@ const BaseStory4 = () => {
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(
-      storyElements.actions.setSelectedElements({ element: name, image: image })
-    );
+    dispatch(storyElements.actions.setSelectedPlace({ name, image }));
+    dispatch(storyElements.actions.setStoryPage());
   };
 
-  console.log(elements);
   return (
     <div className="base-container">
       <section className="base-story">
-        <p>{`Exakt! ${elements[2]?.element}, tänker ${character}. Inne i förrådet kan det nog finnas ${elements[2]?.element}. Åhhh det är så tungt att bära ut. Det hade varit lättare om jag haft en kompis. Till slut får ${character} ut ${elements[2]?.element} från förrådet och tar sig närmare taket. Hej och hå. Det är tungt. Och ${elements[1]?.element}. Det känns som att ${character} är...`}</p>
+        <p>{`Exakt! ${tool.name}, tänker ${character}. Inne i förrådet kan det nog finnas ${tool.name}. Åhhh det är så tungt att bära ut. Det hade varit lättare om jag haft en kompis. Till slut får ${character} ut ${tool.name} från förrådet och tar sig närmare taket. Hej och hå. Det är tungt. Och ${feeling.name}. Det känns som att ${character} är...`}</p>
 
         <div>
           <img
             // src={`${BASE_URL}/media/images/${elements[2]?.image}`}
-            src={elements[2]?.image}
+            src={tool.image}
             alt="tool"
           />
         </div>

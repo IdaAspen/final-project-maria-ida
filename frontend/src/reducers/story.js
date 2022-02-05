@@ -11,7 +11,9 @@ const story = createSlice({
   name: 'story',
   initialState,
   reducers: {
-    setCurrentStory: (store, action) => {}
+    setCurrentStory: (store, action) => {
+      store.storyList = action.payload;
+    }
   }
 });
 

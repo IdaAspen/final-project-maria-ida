@@ -5,7 +5,12 @@ import { showFriendsNames } from '../../reducers/dynamicData';
 // import user from '../reducers/user';
 
 const BaseStory6 = () => {
-  const elements = useSelector((store) => store.storyElements.selectedElements);
+  const sound = useSelector(
+    (store) => store.storyElements.selectedElements.sound
+  );
+  const friend = useSelector(
+    (store) => store.storyElements.selectedElements.friend
+  );
   const friendsNames = useSelector((store) => store.dynamicData.friendsNames);
   // const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -18,16 +23,14 @@ const BaseStory6 = () => {
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(
-      storyElements.actions.setSelectedElements({ element: name, image })
-    );
+    dispatch(storyElements.actions.setSelectedFriendsName({ name, image }));
+    dispatch(storyElements.actions.setStoryPage());
   };
 
-  console.log(elements);
   return (
     <div className="base-container">
       <section className="base-story">
-        <p>{`Där sitter en ${elements[4]?.element}  och skalar nötter. Tänk att ett ${elements[0]?.element} kom från de här små nötterna. – Hej, säger ${elements[4]?.element}n. Jag heter...`}</p>
+        <p>{`Där sitter en ${friend.name}  och skalar nötter. Tänk att ett ${sound.name} kom från de här små nötterna. – Hej, säger ${friend.name}n. Jag heter...`}</p>
       </section>
 
       <h3>Vad heter den?</h3>

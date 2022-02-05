@@ -33,7 +33,7 @@ const Navbar = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const dispatch = useDispatch();
 
-  const logout = () => {
+  const onLogout = () => {
     dispatch(user.actions.setUsername(null));
     dispatch(user.actions.setAccessToken(null));
     navigate('/');
@@ -63,7 +63,7 @@ const Navbar = () => {
         <p className="navbar-text">
           inloggad som: <span>{username}</span>
         </p>
-        <button className="logout-button" onClick={logout}>
+        <button className="logout-button" onClick={onLogout}>
           Logout
         </button>
       </nav>

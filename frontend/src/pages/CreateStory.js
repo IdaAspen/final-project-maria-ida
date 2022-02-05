@@ -15,8 +15,10 @@ const CreateStory = () => {
   const characters = useSelector((store) => store.dynamicData?.characters);
 
   const selectedCharacter = useSelector(
-    (store) => store.storyElements?.selectedCharacter
+    (store) => store.storyElements.selectedCharacter
   );
+
+  const storyPage = useSelector((store) => store.storyElements.storyPage);
 
   const dispatch = useDispatch();
 
@@ -30,11 +32,10 @@ const CreateStory = () => {
     // if (selectedCharacter) return;
     // preventing to add several characters to a story
 
-    dispatch(
-      storyElements.actions.setSelectedCharacter({ name, image: image })
-    );
+    dispatch(storyElements.actions.setSelectedCharacter({ name, image }));
+    dispatch(storyElements.actions.setStoryPage());
   };
-  // console.log(characters);
+  console.log('selectedCharacter', selectedCharacter);
   if (selectedCharacter != null) {
     return <BaseStoryRoof />;
   } else {

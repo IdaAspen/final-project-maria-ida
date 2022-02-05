@@ -5,9 +5,11 @@ import { showFeelings } from '../../reducers/dynamicData';
 
 const BaseStory2 = () => {
   const character = useSelector(
-    (store) => store.storyElements.selectedCharacter?.name
+    (store) => store.storyElements.selectedCharacter.name
   );
-  const elements = useSelector((store) => store.storyElements.selectedElements);
+  const sound = useSelector(
+    (store) => store.storyElements.selectedElements.sound
+  );
   const feelings = useSelector((store) => store.dynamicData.feelings);
 
   // const accessToken = useSelector((store) => store.user.accessToken);
@@ -21,16 +23,15 @@ const BaseStory2 = () => {
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(
-      storyElements.actions.setSelectedElements({ element: name, image: image })
-    );
+    dispatch(storyElements.actions.setSelectedFeeling({ name, image }));
+    dispatch(storyElements.actions.setStoryPage());
   };
 
-  console.log(elements);
+  console.log('SOUND', sound);
   return (
     <div className="base-container">
       <section className="base-story">
-        <p>{`${elements[0]?.element}!!!! ${character} stelnade till. Vad var det? Det kändes plötsligt lite... `}</p>
+        <p>{`${sound.name}!!!! ${character} stelnade till. Vad var det? Det kändes plötsligt lite... `}</p>
       </section>
 
       <h3>Hur kändes det?</h3>

@@ -6,9 +6,14 @@ import { showTools } from '../../reducers/dynamicData';
 
 const BaseStory3 = () => {
   const character = useSelector(
-    (store) => store.storyElements.selectedCharacter?.name
+    (store) => store.storyElements.selectedCharacter.name
   );
-  const elements = useSelector((store) => store.storyElements.selectedElements);
+  const feeling = useSelector(
+    (store) => store.storyElements.selectedElements.feeling
+  );
+  const sound = useSelector(
+    (store) => store.storyElements.selectedElements.sound
+  );
   const tools = useSelector((store) => store.dynamicData.tools);
 
   // const accessToken = useSelector((store) => store.user.accessToken);
@@ -22,16 +27,14 @@ const BaseStory3 = () => {
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(
-      storyElements.actions.setSelectedElements({ element: name, image: image })
-    );
+    dispatch(storyElements.actions.setSelectedTool({ name, image }));
+    dispatch(storyElements.actions.setStoryPage());
   };
 
-  console.log(elements);
   return (
     <div className="base-container">
       <section className="base-story">
-        <p>{`Ja, det kändes lite ${elements[1]?.element}. ${character} sprang ut för att se var ljudet kom ifrån. Och nu hördes det igen. Ett ${elements[0]?.element}. Men va? Det kommer ju från taket. ${character} tänker att det är bäst att försöka ta sig upp på taket. Det har ${character} inte gjort innan, men det kan väl inte vara så svårt? Men jag behöver nog... `}</p>
+        <p>{`Ja, det kändes lite ${feeling.name}. ${character} sprang ut för att se var ljudet kom ifrån. Och nu hördes det igen. Ett ${sound.name}. Men va? Det kommer ju från taket. ${character} tänker att det är bäst att försöka ta sig upp på taket. Det har ${character} inte gjort innan, men det kan väl inte vara så svårt? Men jag behöver nog... `}</p>
       </section>
 
       <h3>Vadå?</h3>

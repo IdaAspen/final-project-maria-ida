@@ -5,13 +5,14 @@ import { showFriends } from '../../reducers/dynamicData';
 
 const BaseStory5 = () => {
   const character = useSelector(
-    (store) => store.storyElements.selectedCharacter?.name
+    (store) => store.storyElements.selectedCharacter.name
   );
-
-  // const elements = useSelector(
-  //   (store) => store.storyElements.selectedElements?.name
-  // );
-  const elements = useSelector((store) => store.storyElements.selectedElements);
+  const sound = useSelector(
+    (store) => store.storyElements.selectedElements.sound
+  );
+  const place = useSelector(
+    (store) => store.storyElements.selectedElements.place
+  );
   const friends = useSelector((store) => store.dynamicData.friends);
   // const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -24,16 +25,14 @@ const BaseStory5 = () => {
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(
-      storyElements.actions.setSelectedElements({ element: name, image: image })
-    );
+    dispatch(storyElements.actions.setSelectedFriend({ name, image }));
+    dispatch(storyElements.actions.setStoryPage());
   };
 
-  console.log(elements);
   return (
     <div className="base-container">
       <section className="base-story">
-        <p>{`Ja precis, som att vara högst upp ${elements[3]?.element} däruppe på taket. Allt ser liksom lite mystiskt och magiskt ut. Och nu hör ${elements[0]?.element} igen! Det kommer bakifrån skorstenen. ${character} går runt (men försiktig, för det är ju jättehögt upp), och ser...`}</p>
+        <p>{`Ja precis, som att vara högst upp ${place.name} däruppe på taket. Allt ser liksom lite mystiskt och magiskt ut. Och nu hör ${sound.name} igen! Det kommer bakifrån skorstenen. ${character} går runt (men försiktig, för det är ju jättehögt upp), och ser...`}</p>
       </section>
 
       <h3>Vem då?</h3>

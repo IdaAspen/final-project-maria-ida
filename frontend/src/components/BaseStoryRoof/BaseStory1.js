@@ -5,7 +5,7 @@ import { showSounds } from '../../reducers/dynamicData';
 
 const BaseStory1 = () => {
   const character = useSelector(
-    (store) => store.storyElements.selectedCharacter?.name
+    (store) => store.storyElements.selectedCharacter
   );
   const elements = useSelector((store) => store.storyElements.selectedElements);
   const sounds = useSelector((store) => store.dynamicData.sounds);
@@ -21,29 +21,27 @@ const BaseStory1 = () => {
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
-    dispatch(
-      storyElements.actions.setSelectedElements({ element: name, image })
-    );
+    dispatch(storyElements.actions.setSelectedSound({ name, image }));
+    dispatch(storyElements.actions.setStoryPage());
   };
   console.log('ELEMENTS HERE', elements);
-  console.log('IMAGE HERE', elements[0]?.image);
   return (
     <div className="base-container">
       <section className="base-story">
         <p>
           {`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle
-          hända. ${character} var bara hemma och åt lite nötter, för det var ${character}s bästa grej att knapra på. Ja, förutom pinnar, chips och
+          hända. ${character.name} var bara hemma och åt lite nötter, för det var ${character.name}s bästa grej att knapra på. Ja, förutom pinnar, chips och
           det översta lagret på lasagne. De var också bra grejer att knapra på. 
-          Men mitt i allt knaprande hörde ${character} någonting.`}
+          Men mitt i allt knaprande hörde ${character.name} någonting.`}
         </p>
 
         <div>
-          <img src={elements[0]?.image} alt="character" />
+          <img src={character.image} alt="character" />
         </div>
       </section>
 
       <h3>Vad var det som lät?</h3>
-      <div class="button-container">
+      <div className="button-container">
         {sounds.map((item) => (
           <button
             className="story-btn"

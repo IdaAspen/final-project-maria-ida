@@ -11,6 +11,7 @@ const BaseStory2 = () => {
     (store) => store.storyElements.selectedElements.sound
   );
   const feelings = useSelector((store) => store.dynamicData.feelings);
+  const elements = useSelector((store) => store.storyElements.selectedElements);
 
   // const accessToken = useSelector((store) => store.user.accessToken);
 
@@ -26,7 +27,7 @@ const BaseStory2 = () => {
     dispatch(storyElements.actions.setSelectedFeeling({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-
+  console.log('ELEMENTS HERE', elements);
   console.log('SOUND', sound);
   return (
     <div className="base-container">

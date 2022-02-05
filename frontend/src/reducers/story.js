@@ -12,7 +12,7 @@ const story = createSlice({
   initialState,
   reducers: {
     setCurrentStory: (store, action) => {
-      store.storyList = action.payload;
+      // store.storyList = action.payload;
     }
   }
 });

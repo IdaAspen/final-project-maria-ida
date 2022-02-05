@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import storyElements from '../reducers/storyElements';
 
 const Summary = () => {
@@ -26,13 +26,13 @@ const Summary = () => {
     (store) => store.storyElements.selectedElements.friendsName.name
   );
 
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  // const onRestart = () => {
-  //   dispatch(storyElements.actions.restartGame());
-  //   navigate('/skapasaga');
-  // };
+  const onRestart = () => {
+    dispatch(storyElements.actions.restartGame());
+    navigate('/skapasaga');
+  };
 
   const save = () => {
     // add code here
@@ -61,7 +61,7 @@ const Summary = () => {
       <p>{`– Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friend}n.`}</p>
       <p>{`– Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
 
-      <button className="story-btn" onClick={{}}>
+      <button className="story-btn" onClick={onRestart}>
         Börja om
       </button>
       <button className="story-btn" onClick={save}>

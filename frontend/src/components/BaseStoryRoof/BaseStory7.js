@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import storyElements from '../../reducers/storyElements';
 
 const BaseStory7 = () => {
@@ -13,6 +13,7 @@ const BaseStory7 = () => {
   // const accessToken = useSelector((store) => store.user.accessToken);
   // const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
@@ -20,10 +21,10 @@ const BaseStory7 = () => {
     dispatch(storyElements.actions.setStoryPage());
   };
 
-  // const onRestart = () => {
-  //   dispatch(storyElements.actions.restartGame());
-  //   navigate('/skapasaga');
-  // };
+  const onRestart = () => {
+    dispatch(storyElements.actions.restartGame());
+    navigate('/skapasaga');
+  };
 
   return (
     <>
@@ -43,7 +44,7 @@ const BaseStory7 = () => {
         >
           Visa hela sagan
         </button>
-        <button className="story-btn" type="submit" onClick={() => ({})}>
+        <button className="story-btn" type="submit" onClick={onRestart}>
           Börja om
         </button>
       </div>

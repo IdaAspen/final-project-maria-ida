@@ -15,7 +15,7 @@ const BaseStory3 = () => {
     (store) => store.storyElements.selectedElements.sound
   );
   const tools = useSelector((store) => store.dynamicData.tools);
-
+  const elements = useSelector((store) => store.storyElements.selectedElements);
   // const accessToken = useSelector((store) => store.user.accessToken);
 
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const BaseStory3 = () => {
     dispatch(storyElements.actions.setSelectedTool({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-
+  console.log('ELEMENTS HERE', elements);
   return (
     <div className="base-container">
       <section className="base-story">

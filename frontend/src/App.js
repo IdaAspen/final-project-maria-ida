@@ -5,6 +5,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import user from './reducers/user';
 import { dynamicData } from './reducers/dynamicData';
+import story from './reducers/story';
 import storyElements from './reducers/storyElements';
 
 // import BaseStory from './components/BaseStory';
@@ -20,6 +21,7 @@ import Navbar from './components/Navbar';
 const reducer = combineReducers({
   user: user.reducer,
   dynamicData: dynamicData.reducer,
+  story: story.reducer,
   storyElements: storyElements.reducer
 });
 

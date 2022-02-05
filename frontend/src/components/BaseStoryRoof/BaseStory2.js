@@ -30,7 +30,7 @@ const BaseStory2 = () => {
   console.log('ELEMENTS HERE', elements);
   console.log('SOUND', sound);
   return (
-    <div className="base-container">
+    <>
       <section className="base-story">
         <p>{`${sound.name}!!!! ${character} stelnade till. Vad var det? Det kändes plötsligt lite... `}</p>
       </section>
@@ -48,7 +48,7 @@ const BaseStory2 = () => {
           </button>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

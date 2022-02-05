@@ -43,10 +43,8 @@ const Main = () => {
   // Shows two buttons BOOKSHELF or CREATE STORY?
   // Skapa en switch??
   return (
-    <div>
-      <div className="main-container">
-        <CreateStory />
-      </div>
+    <div className="main-container">
+      <CreateStory />
     </div>
   );
 };

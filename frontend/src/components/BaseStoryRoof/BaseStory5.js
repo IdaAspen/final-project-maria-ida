@@ -22,13 +22,22 @@ const BaseStory5 = () => {
     dispatch(showFriends());
   }, [dispatch]);
 
+  // gets a random number from the movies url.
+  const randomObjects = () => {
+    // return Math.random() * (907331 - 1 + 1) + 1;
+    const randomIndex = Math.floor(Math.random() * friends.length);
+    const obj = friends[randomIndex];
+    return obj;
+  };
+
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
     dispatch(storyElements.actions.setSelectedFriend({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-
+  console.log('LÄNGD', friends.length);
+  console.log('RANDOMNUMBER', randomObjects());
   return (
     <div className="base-container">
       <section className="base-story">

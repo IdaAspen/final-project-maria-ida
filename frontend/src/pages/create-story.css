@@ -1,2 +1,6 @@
-/* .create-story-container {
-} */
+.create-story-container {
+  padding: 2%;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+}

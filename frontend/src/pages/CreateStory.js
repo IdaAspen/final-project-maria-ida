@@ -1,31 +1,29 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 // import StoryPage from './StoryPage';
 // import { API_URL } from '../utils/constants';
 import { showCharacters } from '../reducers/dynamicData';
+// import user from '../reducers/user';
+import Login from '../components/Login';
 import storyElements from '../reducers/storyElements';
 import BaseStoryRoof from '../components/BaseStoryRoof/BaseStoryRoof';
 import './create-story.css';
 
-// import BaseStory from './BaseStory';
-// import user from '../reducers/user';
-// removed import of dynamicData
-
 const CreateStory = () => {
   const characters = useSelector((store) => store.dynamicData?.characters);
-
   const selectedCharacter = useSelector(
     (store) => store.storyElements.selectedCharacter
   );
+  // const storyPage = useSelector((store) => store.storyElements.storyPage);
+  const accessToken = useSelector((store) => store.user.accessToken);
 
-  const storyPage = useSelector((store) => store.storyElements.storyPage);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(showCharacters());
   }, [dispatch]);
-  // const accessToken = useSelector((store) => store.user.accessToken);
 
   // Listens to onClick and set the selectedCharacter
   const onAnswerSubmit = (name, image) => {
@@ -34,15 +32,19 @@ const CreateStory = () => {
 
     dispatch(storyElements.actions.setSelectedCharacter({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
+    navigate('/skapasaga');
   };
   console.log('selectedCharacter', selectedCharacter);
+
+  if (!accessToken) {
+    return <Login />;
+  }
   if (selectedCharacter != null) {
     return <BaseStoryRoof />;
   } else {
     return (
-      <div>
-        {/* <Navbar /> */}
-        <div className="create-story-container">
+      <div className="create-story-container">
+        <section className="create-story">
           <h2>Välj din huvudroll i sagan!</h2>
           <div>
             {characters.slice(0, 5).map((item) => (
@@ -57,7 +59,7 @@ const CreateStory = () => {
             ))}
             {/* {selectedCharacter && <p>`You picked ${selectedCharacter}`</p>} */}
           </div>
-        </div>
+        </section>
       </div>
     );
   }

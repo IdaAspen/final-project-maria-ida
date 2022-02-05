@@ -16,6 +16,7 @@ import CreateStory from './pages/CreateStory';
 import Bookshelf from './pages/Bookshelf';
 
 import Navbar from './components/Navbar';
+
 // import CreateStory from './components/CreateStory';
 
 const reducer = combineReducers({
@@ -33,7 +34,7 @@ export const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<CreateStory />} />
+          <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />
           <Route path="/skapasaga" element={<CreateStory />} />
           <Route path="/bokhylla" element={<Bookshelf />} />

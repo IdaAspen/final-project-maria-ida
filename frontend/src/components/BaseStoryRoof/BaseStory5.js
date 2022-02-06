@@ -22,12 +22,11 @@ const BaseStory5 = () => {
     dispatch(showFriends());
   }, [dispatch]);
 
-  // gets a random number from the movies url.
+  // gets a random number from the json-array
   const randomObjects = () => {
-    // return Math.random() * (907331 - 1 + 1) + 1;
     const randomIndex = Math.floor(Math.random() * friends.length);
-    const obj = friends[randomIndex];
-    return obj;
+    const object = friends[randomIndex];
+    return object;
   };
 
   const onAnswerSubmit = (name, image) => {

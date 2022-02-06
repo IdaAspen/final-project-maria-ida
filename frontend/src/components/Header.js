@@ -6,7 +6,7 @@ const Header = () => {
     <header>
       <h1>Tjusig header</h1>
       <div className="header-links">
-        <Link to="/om">Om projektet</Link>
+        <Link to="/om">Om Sagoväljaren</Link>
       </div>
     </header>
   );

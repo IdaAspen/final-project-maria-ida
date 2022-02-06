@@ -2,7 +2,7 @@ import React from 'react';
 import BaseStoryRoof from '../components/BaseStoryRoof/BaseStoryRoof';
 
 // Stretch goal, here you can import other storys
-const StoryPageTest = () => {
+const StoryPage = () => {
   return (
     <div>
       <div className="main-container">
@@ -12,4 +12,4 @@ const StoryPageTest = () => {
   );
 };
 
-export default StoryPageTest;
+export default StoryPage;

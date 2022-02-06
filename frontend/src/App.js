@@ -14,7 +14,7 @@ import NotFound from './components/NotFound';
 import Main from './pages/Main';
 import CreateStory from './pages/CreateStory';
 import Bookshelf from './pages/Bookshelf';
-
+import About from './pages/About';
 import Navbar from './components/Navbar';
 
 // import CreateStory from './components/CreateStory';
@@ -38,6 +38,7 @@ export const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/skapasaga" element={<CreateStory />} />
           <Route path="/bokhylla" element={<Bookshelf />} />
+          <Route path="/om" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

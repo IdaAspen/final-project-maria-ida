@@ -27,21 +27,20 @@ const BaseStory1 = () => {
   console.log('ELEMENTS HERE', elements);
   return (
     <div className="base-container">
-      <section className="base-story">
+      <section className="base-story-green">
+        <div class="img-container">
+          <img src={character.image} alt="character" />
+        </div>
         <p>
           {`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle
           hända. ${character.name} var bara hemma och åt lite nötter, för det var ${character.name}s bästa grej att knapra på. Ja, förutom pinnar, chips och
           det översta lagret på lasagne. De var också bra grejer att knapra på. 
           Men mitt i allt knaprande hörde ${character.name} någonting.`}
         </p>
-
-        <div>
-          <img src={character.image} alt="character" />
-        </div>
       </section>
 
       <h3>Vad var det som lät?</h3>
-      <div className="button-container">
+      <div className="btn-container">
         {sounds.map((item) => (
           <button
             className="story-btn"

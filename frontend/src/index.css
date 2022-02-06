@@ -52,6 +52,7 @@ label {
   padding: 2%;
   width: 80%;
   margin: 0 auto;
+  border: 1px solid greenyellow;
 }
 
 .base-container h3 {
@@ -68,6 +69,8 @@ label {
   background-position: 70%;
 
   background-repeat: no-repeat;
+
+  border: 1px solid hotpink;
 }
 
 img {

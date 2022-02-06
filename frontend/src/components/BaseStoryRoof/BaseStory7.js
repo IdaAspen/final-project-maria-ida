@@ -32,13 +32,8 @@ const BaseStory7 = () => {
   return (
     <div className="base-container">
       <div className="base-container">
-<<<<<<< HEAD
-        <section className="base-story">
-          <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig? – hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter. – Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friend}n. 
-=======
         <section className="base-story-orange">
           <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig? – hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter. – Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friendsName}n. 
->>>>>>> design
           – Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
         </section>
       </div>

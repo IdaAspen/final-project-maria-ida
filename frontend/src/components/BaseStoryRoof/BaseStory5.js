@@ -44,7 +44,7 @@ const BaseStory5 = () => {
       </section>
 
       <h3>Vem då?</h3>
-      <div class="btn-container">
+      <div className="btn-container">
         {friends.map((item) => (
           <button
             className="story-btn"

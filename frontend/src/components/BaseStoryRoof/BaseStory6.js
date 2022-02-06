@@ -34,7 +34,7 @@ const BaseStory6 = () => {
       </section>
 
       <h3>Vad heter den?</h3>
-      <div class="btn-container">
+      <div className="btn-container">
         {friendsNames.map((item) => (
           <button
             className="story-btn"

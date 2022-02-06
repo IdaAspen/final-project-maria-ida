@@ -28,9 +28,9 @@ const Login = () => {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password })
     };
 
     fetch(API_URL(mode), options)
@@ -64,7 +64,7 @@ const Login = () => {
           saga.
         </h2>
         <img
-          class="start-img"
+          className="start-img"
           src="https://res.cloudinary.com/cloudinary-story/image/upload/v1644165818/storyimg/bzf7n0ju8ymbbws5jdal.jpg"
           alt="huvudbild"
         ></img>

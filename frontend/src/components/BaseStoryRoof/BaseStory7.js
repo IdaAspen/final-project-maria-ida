@@ -39,7 +39,7 @@ const BaseStory7 = () => {
       </div>
 
       <h3>Vill du läsa hela sagan och spara den, eller starta om?</h3>
-      <div class="btn-container">
+      <div className="btn-container">
         <button
           className="story-btn"
           type="submit"

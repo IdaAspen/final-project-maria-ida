@@ -40,7 +40,7 @@ const BaseStory4 = () => {
       </section>
 
       <h3>Vartdå?</h3>
-      <div class="btn-container">
+      <div className="btn-container">
         {places.map((item) => (
           <button
             className="story-btn"

@@ -42,38 +42,9 @@ const Navbar = () => {
       <nav>
         <BurgerMenu />
         {accessToken && (
-          <>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? 'styled-link-active' : 'styled-link'
-              }
-              to="/"
-            >
-              <p onClick={onStartClick}>Start</p>
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? 'styled-link-active' : 'styled-link'
-              }
-              to="/skapasaga"
-            >
-              <p onClick={onCreateStoryClick}>Ny saga</p>
-            </NavLink>
-            <NavLink
-              to="/bokhylla"
-              className={({ isActive }) =>
-                isActive ? 'styled-link-active' : 'styled-link'
-              }
-            >
-              <p onClick={onBookshelfClick}>Bokhylla</p>
-            </NavLink>
-            <p className="navbar-text">
-              inloggad som: <span>{username}</span>
-            </p>
-            {/* <button className="nav-button" onClick={onLogout}>
-           Logout
-         </button> */}
-          </>
+          <p className="navbar-text">
+            inloggad som: <span>{username}</span>
+          </p>
         )}
       </nav>
     </>

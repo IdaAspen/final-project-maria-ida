@@ -7,6 +7,7 @@
   --focus: #d9534f;
   --background: #ffeead;
   --white: #ffff;
+  --blue: #96ceb4;
 
   /* --attribute: #7c807d;
   --links: #d5e5c6;
@@ -17,6 +18,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #fdf4dc;
   overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 'Poppins', sans-serif;
@@ -49,32 +51,67 @@ label {
 
 /* DESIGN FÖR BASESTORY, CREATE STORY */
 .base-container {
+  display: grid;
+  grid-template-columns: 1fr;
   padding: 2%;
   width: 80%;
   margin: 0 auto;
+  border: 1px solid greenyellow;
 }
 
 .base-container h3 {
   margin-left: 2%;
 }
 
-.base-story {
-  /* width: 100vw; */
+.base-story-green,
+.base-story-orange,
+.base-story-red,
+.base-story-blue,
+.base-story-yellow {
+  padding: 3% 9% 3%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
+}
 
-  display: grid;
-  padding: 9%;
-  background-image: url('https://res.cloudinary.com/cloudinary-story/image/upload/v1643999308/storyimg/pph64hpjepdygcinxjbs.jpg');
-  background-size: cover;
-  background-position: 70%;
+.base-story-green {
+  background-color: var(--links);
+}
+.base-story-orange {
+  background-color: var(--orange);
+}
+.base-story-red {
+  background-color: var(--focus);
+}
+.base-story-yellow {
+  background-color: var(--background);
+}
+.base-story-blue {
+  background-color: var(--blue);
+}
 
-  background-repeat: no-repeat;
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.img-container img {
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
 }
 
 img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   margin: 5px;
   border-radius: 50%;
+  box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
+}
+
+.btn-container {
+  border: 1px solid blue;
 }
 
 .img-btn-wrapper {

@@ -33,7 +33,7 @@ const BaseStory3 = () => {
   console.log('ELEMENTS HERE', elements);
   return (
     <div className="base-container">
-      <section className="base-story">
+      <section className="base-story-red">
         <p>{`Ja, det kändes lite ${feeling.name}. ${character} sprang ut för att se var ljudet kom ifrån. Och nu hördes det igen. Ett ${sound.name}. Men va? Det kommer ju från taket. ${character} tänker att det är bäst att försöka ta sig upp på taket. Det har ${character} inte gjort innan, men det kan väl inte vara så svårt? Men jag behöver nog... `}</p>
       </section>
 
@@ -46,13 +46,7 @@ const BaseStory3 = () => {
               type="submit"
               onClick={() => onAnswerSubmit(item.name, item.image)}
             >
-              {
-                <img
-                  // src={`${BASE_URL}/media/images/${item.image}`}
-                  src={item.image}
-                  alt="tool"
-                />
-              }
+              {<img src={item.image} alt="tool" />}
             </button>
           </div>
         ))}

@@ -28,9 +28,9 @@ const Login = () => {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password }),
     };
 
     fetch(API_URL(mode), options)
@@ -57,9 +57,17 @@ const Login = () => {
 
   return (
     <div className="login-bg">
-      <div className="card">
-        <h1>LOREM IPSUM</h1>
-        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h2>
+      <div className="start-card">
+        <h1>SAGOMASKINEN</h1>
+        <h2>
+          Följ med in i sagomaskinens värld och bestäm ingredienserna i din egen
+          saga.
+        </h2>
+        <img
+          class="start-img"
+          src="https://res.cloudinary.com/cloudinary-story/image/upload/v1644165818/storyimg/bzf7n0ju8ymbbws5jdal.jpg"
+          alt="huvudbild"
+        ></img>
       </div>
       <div className="login-form card">
         <label htmlFor="signup">Registrera dig</label>

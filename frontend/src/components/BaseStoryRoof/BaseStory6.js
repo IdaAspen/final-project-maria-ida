@@ -29,12 +29,12 @@ const BaseStory6 = () => {
 
   return (
     <div className="base-container">
-      <section className="base-story">
+      <section className="base-story-green">
         <p>{`Där sitter en ${friend.name}  och skalar nötter. Tänk att ett ${sound.name} kom från de här små nötterna. – Hej, säger ${friend.name}n. Jag heter...`}</p>
       </section>
 
       <h3>Vad heter den?</h3>
-      <div>
+      <div class="btn-container">
         {friendsNames.map((item) => (
           <button
             className="story-btn"

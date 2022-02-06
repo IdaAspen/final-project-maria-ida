@@ -39,12 +39,17 @@ const BaseStory5 = () => {
   console.log('RANDOMNUMBER', randomObjects());
   return (
     <div className="base-container">
+<<<<<<< HEAD
       <section className="base-story">
         <p>{`Ja precis, som att vara högst upp ${place.name} däruppe på taket. Allt ser liksom lite mystiskt och magiskt ut. Och nu hörs ett ${sound.name} igen! Det kommer bakifrån skorstenen. ${character} går runt (men försiktig, för det är ju jättehögt upp), och ser...`}</p>
+=======
+      <section className="base-story-blue">
+        <p>{`Ja precis, som att vara högst upp ${place.name} däruppe på taket. Allt ser liksom lite mystiskt och magiskt ut. Och nu hör ${sound.name} igen! Det kommer bakifrån skorstenen. ${character} går runt (men försiktig, för det är ju jättehögt upp), och ser...`}</p>
+>>>>>>> design
       </section>
 
       <h3>Vem då?</h3>
-      <div>
+      <div class="btn-container">
         {friends.map((item) => (
           <button
             className="story-btn"

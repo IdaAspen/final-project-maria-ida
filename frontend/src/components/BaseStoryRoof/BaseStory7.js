@@ -31,12 +31,10 @@ const BaseStory7 = () => {
 
   return (
     <div className="base-container">
-      <div className="base-container">
-        <section className="base-story-orange">
-          <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig? – hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter. – Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friendsName}n. 
+      <section className="base-story-orange">
+        <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig? – hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter. – Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friendsName}n. 
           – Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
-        </section>
-      </div>
+      </section>
 
       <h3>Vill du läsa hela sagan och spara den, eller starta om?</h3>
       <div className="btn-container">

@@ -2,12 +2,18 @@
   height: 100vh;
   display: grid;
   align-items: center;
-  padding: 10%;
+  padding: 2% 10% 10% 10%;
   background-color: var(--background);
 }
 
-h1 {
+.start-card h1 {
   font-size: 42px;
+  padding-bottom: 2%;
+  text-align: center;
+}
+.start-card h2 {
+  font-size: 18px;
+  padding-bottom: 2%;
 }
 
 .start-card {
@@ -33,7 +39,7 @@ h1 {
   padding: 10%;
   box-shadow: 0 1px 1px 0 rgb(66 66 66 / 8%), 0 1px 3px 1px rgb(66 66 66 / 16%);
   border-radius: 6px;
-  background-color: #ffff;
+  background-color: var(--yellow);
 }
 
 /* .login-attribute {
@@ -46,7 +52,7 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--yellow);
 }
 input,
 button,

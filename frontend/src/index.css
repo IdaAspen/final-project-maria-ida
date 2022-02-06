@@ -5,7 +5,8 @@
   --orange: #ffad60;
   --links: #96ceb4;
   --focus: #d9534f;
-  --background: #ffeead;
+  --background: #fdf4dc;
+  --yellow: #ffeead;
   --white: #ffff;
   --blue: #96ceb4;
 
@@ -40,6 +41,7 @@ button:disabled {
 h1,
 h2 {
   font-family: 'Amatic SC', cursive;
+  margin: 1%;
 }
 
 p,

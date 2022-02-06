@@ -2,8 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
-import Header from './Header';
-import user from '../reducers/user';
+// import user from '../reducers/user';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
 import storyElements from '../reducers/storyElements';
 
@@ -20,7 +19,7 @@ const Navbar = () => {
     dispatch(storyElements.actions.restartGame());
   };
   const onBookshelfClick = () => {
-    navigate('/bookshelf');
+    navigate('/bokhylla');
     // setVisible(false);
   };
   const onStartClick = () => {

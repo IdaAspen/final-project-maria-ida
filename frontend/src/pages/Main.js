@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import CreateStory from './CreateStory';
-
+import storyElements from '../reducers/storyElements';
 import './main.css';
 // import { API_URL } from '../utils/constants';
 
 const Main = () => {
-  // const secretsItems = useSelector((store) => store.secrets.items);
   const accessToken = useSelector((store) => store.user.accessToken);
+  const username = useSelector((store) => store.user.username);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // If not having accessToken, redirect to login
@@ -40,11 +40,25 @@ const Main = () => {
   //     });
   // }, [accessToken]);
 
-  // Shows two buttons BOOKSHELF or CREATE STORY?
-  // Skapa en switch??
+  const onCreateStoryClick = () => {
+    navigate('/skapasaga');
+    // setVisible(false);
+    dispatch(storyElements.actions.restartGame());
+  };
+  const onBookshelfClick = () => {
+    navigate('/bokhylla');
+    // setVisible(false);
+  };
+
   return (
     <div className="main-container">
-      <CreateStory />
+      <h1>{`VÄLKOMMEN ${username} `}</h1>
+      <button className="story-btn" onClick={onCreateStoryClick}>
+        Ny saga
+      </button>
+      <button className="story-btn" onClick={onBookshelfClick}>
+        Bokhylla
+      </button>
     </div>
   );
 };

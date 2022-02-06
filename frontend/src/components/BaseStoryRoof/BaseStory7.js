@@ -7,6 +7,9 @@ const BaseStory7 = () => {
   const character = useSelector(
     (store) => store.storyElements.selectedCharacter.name
   );
+  const friend = useSelector(
+    (store) => store.storyElements.selectedElements.friend.name
+  );
   const friendsName = useSelector(
     (store) => store.storyElements.selectedElements.friendsName.name
   );
@@ -30,7 +33,7 @@ const BaseStory7 = () => {
     <>
       <div className="base-container">
         <section className="base-story">
-          <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig? – hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter. – Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friendsName}n. 
+          <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig? – hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter. – Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friend}n. 
           – Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
         </section>
       </div>

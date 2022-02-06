@@ -8,7 +8,6 @@ const BurgerList = ({ close }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const username = useSelector((store) => store.user.username);
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const onCreateStoryClick = () => {
@@ -17,7 +16,7 @@ const BurgerList = ({ close }) => {
     dispatch(storyElements.actions.restartGame());
   };
   const onBookshelfClick = () => {
-    navigate('/bookshelf');
+    navigate('/bokhylla');
     // setVisible(false);
   };
   const onStartClick = () => {

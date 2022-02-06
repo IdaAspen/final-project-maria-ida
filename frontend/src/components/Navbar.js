@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './navbar.css';
 // import user from '../reducers/user';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
@@ -43,15 +43,30 @@ const Navbar = () => {
         <BurgerMenu />
         {accessToken && (
           <>
-            <Link className="styled-link" to="/">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? 'styled-link-active' : 'styled-link'
+              }
+              to="/"
+            >
               <p onClick={onStartClick}>Start</p>
-            </Link>
-            <Link className="styled-link" to="/skapasaga">
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? 'styled-link-active' : 'styled-link'
+              }
+              to="/skapasaga"
+            >
               <p onClick={onCreateStoryClick}>Ny saga</p>
-            </Link>
-            <Link className="styled-link" to="/bokhylla">
+            </NavLink>
+            <NavLink
+              to="/bokhylla"
+              className={({ isActive }) =>
+                isActive ? 'styled-link-active' : 'styled-link'
+              }
+            >
               <p onClick={onBookshelfClick}>Bokhylla</p>
-            </Link>
+            </NavLink>
             <p className="navbar-text">
               inloggad som: <span>{username}</span>
             </p>

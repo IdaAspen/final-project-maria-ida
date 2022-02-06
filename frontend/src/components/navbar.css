@@ -13,7 +13,17 @@ nav {
   margin: 0 0.5rem;
   font-size: 10px;
   position: relative;
-  list-style: none;
+  /* list-style: none; */
+}
+
+.styled-link-active {
+  border-bottom: 2px solid var(--focus);
+  text-decoration: none;
+
+  color: var(--links);
+  margin: 0 0.5rem;
+  font-size: 10px;
+  position: relative;
 }
 
 .navbar-text {

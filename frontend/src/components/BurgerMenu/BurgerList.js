@@ -115,7 +115,7 @@ const BurgerList = ({ close }) => {
               className={({ isActive }) =>
                 isActive ? 'menu-link-active' : 'menu-link'
               }
-              to="/"
+              to="/login"
             >
               <p onClick={onLogout}>Logga ut</p>
             </NavLink>

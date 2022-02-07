@@ -1,32 +1,28 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './navbar.css';
 // import user from '../reducers/user';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
-import storyElements from '../reducers/storyElements';
+// import storyElements from '../reducers/storyElements';
 
 const Navbar = () => {
   const username = useSelector((store) => store.user.username);
   const accessToken = useSelector((store) => store.user.accessToken);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const onCreateStoryClick = () => {
-    navigate('/skapasaga');
-    // setVisible(false);
-    dispatch(storyElements.actions.restartGame());
-  };
-  const onBookshelfClick = () => {
-    navigate('/bokhylla');
-    // setVisible(false);
-  };
-  const onStartClick = () => {
-    dispatch(storyElements.actions.restartGame());
-    navigate('/');
-    // setVisible(false);
-  };
+  // const onCreateStoryClick = () => {
+  //   navigate('/skapasaga');
+  //   dispatch(storyElements.actions.restartGame());
+  // };
+  // const onBookshelfClick = () => {
+  //   navigate('/bokhylla');
+  // };
+  // const onStartClick = () => {
+  //   dispatch(storyElements.actions.restartGame());
+  //   navigate('/');
+  // };
 
   // const links = [
   //   { name: 'Start', path: '/' },

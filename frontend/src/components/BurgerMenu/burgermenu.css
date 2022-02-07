@@ -72,3 +72,10 @@
   margin: 10px 0px;
   color: var(--focus);
 }
+
+/* .menu-link:visited,
+.menu-link-active::visited {
+  all: unset;
+  cursor: pointer;
+  margin: 10px 0px;
+} */

@@ -28,9 +28,9 @@ const Login = () => {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password })
     };
 
     fetch(API_URL(mode), options)
@@ -86,7 +86,7 @@ const Login = () => {
         ></input>
 
         <form onSubmit={onFormSubmit}>
-          <label htmlFor="username">{/* <h3>Användarnamn</h3> */}</label>
+          <label htmlFor="username"></label>
           <input
             id="username"
             type="text"
@@ -94,7 +94,7 @@ const Login = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-          <label htmlFor="password">{/* <h3>Lösenord</h3> */}</label>
+          <label htmlFor="password"></label>
           <input
             id="password"
             type="password"
@@ -112,70 +112,8 @@ const Login = () => {
           <p> {error}</p>
         </form>
       </div>
-      {/* <a
-        className="login-attribute"
-        href="https://www.vecteezy.com/free-vector/wallpaper"
-      >
-        Wallpaper Vectors by Vecteezy
-      </a> */}
     </div>
   );
 };
 
 export default Login;
-
-// return (
-//   <div className="login-bg">
-//     <div className="card">
-//       <h1>Sagomaskinen</h1>
-//       <h2>- För små viljestarka sagolyssnarne</h2>
-//     </div>
-//     <div className="login-form card">
-//       <label htmlFor="signup">Registrera dig</label>
-//       <input
-//         id="signup"
-//         type="radio"
-//         checked={mode === 'signup'}
-//         onChange={() => setMode('signup')}
-//       ></input>
-//       <label htmlFor="signin">Logga in</label>
-//       <input
-//         id="signin"
-//         type="radio"
-//         checked={mode === 'signin'}
-//         onChange={() => setMode('signin')}
-//       ></input>
-
-//       <form onSubmit={onFormSubmit}>
-//         <label htmlFor="username">
-//           <h3>Användarnamn</h3>
-//         </label>
-//         <input
-//           id="username"
-//           type="text"
-//           placeholder="Username"
-//           value={username}
-//           onChange={(e) => setUsername(e.target.value)}
-//         ></input>
-//         <label htmlFor="password">
-//           <h3>Lösenord</h3>
-//         </label>
-//         <input
-//           id="password"
-//           type="password"
-//           placeholder="Password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//         ></input>
-//         <button type="submit">Login</button>
-//         <p> {error}</p>
-//       </form>
-//     </div>
-//     {/* <a
-//       className="login-attribute"
-//       href="https://www.vecteezy.com/free-vector/wallpaper"
-//     >
-//       Wallpaper Vectors by Vecteezy
-//     </a> */}
-//   </div>
-// );

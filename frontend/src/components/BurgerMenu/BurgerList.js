@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../../reducers/storyElements';
 import user from '../../reducers/user';
 
-const BurgerList = (ref, { close }) => {
+const BurgerList = ({ close }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -45,24 +45,24 @@ const BurgerList = (ref, { close }) => {
         {/* <div className="menu" ref={forwardRef}> */}
         <ul>
           <li onClick={close}>
-            <Link
+            <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive ? 'menu-link-active' : 'menu-link'
               }
             >
               <p onClick={onLogin}>Logga in/Skapa konto</p>
-            </Link>
+            </NavLink>
           </li>
           <li onClick={close}>
-            <Link
+            <NavLink
               to="/om"
               className={({ isActive }) =>
                 isActive ? 'menu-link-active' : 'menu-link'
               }
             >
               <p onClick={onAboutClick}>Om sagoväljaren</p>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -72,55 +72,55 @@ const BurgerList = (ref, { close }) => {
       <div className="menu">
         <ul>
           <li onClick={close}>
-            <Link
+            <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive ? 'menu-link-active' : 'menu-link'
               }
             >
               <p onClick={onStartClick}>Start</p>
-            </Link>
+            </NavLink>
           </li>
           <li onClick={close}>
             {' '}
-            <Link
+            <NavLink
               to="/skapasaga"
               className={({ isActive }) =>
                 isActive ? 'menu-link-active' : 'menu-link'
               }
             >
               <p onClick={onCreateStoryClick}>Ny saga</p>
-            </Link>
+            </NavLink>
           </li>
           <li onClick={close}>
-            <Link
+            <NavLink
               to="/bokhylla"
               className={({ isActive }) =>
                 isActive ? 'menu-link-active' : 'menu-link'
               }
             >
               <p onClick={onBookshelfClick}>Bokhylla</p>
-            </Link>
+            </NavLink>
           </li>
           <li onClick={close}>
-            <Link
+            <NavLink
               to="/om"
               className={({ isActive }) =>
                 isActive ? 'menu-link-active' : 'menu-link'
               }
             >
               <p onClick={onAboutClick}>Om sagoväljaren</p>
-            </Link>
+            </NavLink>
           </li>
           <li onClick={close}>
-            <Link
+            <NavLink
               to="/login"
               className={({ isActive }) =>
                 isActive ? 'menu-link-active' : 'menu-link'
               }
             >
               <p onClick={onLogout}>Logga ut</p>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

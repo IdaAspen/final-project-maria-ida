@@ -1,5 +1,5 @@
 .login-bg {
-  height: 100vh;
+  height: 70vh;
   display: grid;
   align-items: center;
   padding: 2% 10% 10% 10%;
@@ -27,11 +27,12 @@
 }
 
 .start-img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   border-radius: 0%;
   box-shadow: none;
   margin: 0 auto;
+  padding-bottom: 2%;
   display: flex;
 }
 

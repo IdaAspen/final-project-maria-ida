@@ -1,6 +1,14 @@
 .create-story-container {
-  padding: 2%;
-  width: 100%;
-  margin: 0 auto;
   display: grid;
+  row-gap: 10%;
+  padding: 5% 2% 15% 2%;
+  width: 80%;
+  margin: 0 auto;
+  background-color: var(--yellow);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
+}
+
+.create-story {
+  text-align: center;
 }

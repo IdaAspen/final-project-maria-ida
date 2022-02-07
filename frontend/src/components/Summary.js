@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import storyElements from '../reducers/storyElements';
 import user from '../reducers/user';
+import './summary.css';
 
 const Summary = () => {
   const username = useSelector((store) => store.user.username);
@@ -43,7 +44,7 @@ const Summary = () => {
   return (
     <section className="summary">
       <h2>{`Sagan om ${character.name}s första äventyr`}</h2>
-      <h3>{`- En saga av ${username} och sagoväljaren`}</h3>
+      <h3>{`- En saga av ${username} och sagomaskinen`}.</h3>
       <img src={character.image} alt="character" />
       <p>{`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle hända. ${character.name} var bara hemma och åt lite nötter, för det var ${character.name}s bästa grej att knapra på. Ja, förutom pinnar, chips och det översta lagret på lasagne. De var också bra grejer att knapra på.
       Men mitt i allt knaprande hörde ${character.name} någonting.`}</p>

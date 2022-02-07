@@ -1,4 +1,27 @@
 .main-container {
   display: grid;
-  justify-content: center;
+  grid-template-rows: 1fr;
+  row-gap: 20%;
+
+  padding: 5% 9%;
+
+  margin: 0 auto;
+}
+
+.main-text {
+  text-align: center;
+}
+
+.main-btn {
+  display: grid;
+  grid-gap: 5%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.main-btn button {
+  padding: 0 30px;
+  font-weight: 600;
+  font-size: 18px;
+  border: 2px solid var(--links);
 }

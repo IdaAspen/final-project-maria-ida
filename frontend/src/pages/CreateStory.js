@@ -45,21 +45,21 @@ const CreateStory = () => {
     return (
       <div className="create-story-container">
         <section className="create-story">
-          <h2>Välj din huvudroll i sagan!</h2>
-          <div>
-            {characters.slice(0, 5).map((item) => (
-              <button
-                className="img-btn"
-                type="submit"
-                key={item.id}
-                onClick={() => onAnswerSubmit(item.name, item.image)}
-              >
-                {<img src={item.image} alt="character" />}
-              </button>
-            ))}
-            {/* {selectedCharacter && <p>`You picked ${selectedCharacter}`</p>} */}
-          </div>
+          <h2>Vem ska din saga handla om?</h2>
         </section>
+        <div className="img-btn-wrapper">
+          {characters.slice(0, 5).map((item) => (
+            <button
+              className="img-btn"
+              type="submit"
+              key={item.id}
+              onClick={() => onAnswerSubmit(item.name, item.image)}
+            >
+              {<img src={item.image} alt="character" />}
+            </button>
+          ))}
+          {/* {selectedCharacter && <p>`You picked ${selectedCharacter}`</p>} */}
+        </div>
       </div>
     );
   }

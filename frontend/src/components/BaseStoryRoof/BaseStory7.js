@@ -31,7 +31,7 @@ const BaseStory7 = () => {
 
   return (
     <div className="base-container">
-      <section className="base-story-orange">
+      <section className="base-story-yellow">
         <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig? – hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter. – Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friendsName}n. 
           – Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
       </section>

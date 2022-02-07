@@ -52,13 +52,18 @@ const Main = () => {
 
   return (
     <div className="main-container">
-      <h1>{`VÄLKOMMEN ${username} `}</h1>
-      <button className="story-btn" onClick={onCreateStoryClick}>
-        Ny saga
-      </button>
-      <button className="story-btn" onClick={onBookshelfClick}>
-        Bokhylla
-      </button>
+      <div className="main-text">
+        <h1>{`Hej ${username}!`}</h1>
+        <p>Vad vill du göra?</p>
+      </div>
+      <div className="main-btn">
+        <button className="story-btn" onClick={onCreateStoryClick}>
+          Ny saga
+        </button>
+        <button className="story-btn" onClick={onBookshelfClick}>
+          Min bokhylla
+        </button>
+      </div>
     </div>
   );
 };

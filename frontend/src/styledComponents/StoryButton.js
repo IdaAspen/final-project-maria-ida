@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StoryButton = ({ onClick, text }, { title }) => {
+const StoryButton = ({ onClick, text }) => {
   return <StoryBtn onClick={onClick}>{text}</StoryBtn>;
 };
 

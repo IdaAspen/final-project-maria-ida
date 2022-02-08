@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../../reducers/storyElements';
 import { showSounds } from '../../reducers/dynamicData';
 import { shuffleArray } from '../../utils/shuffleArray';
+import StoryButton from '../../styledComponents/StoryButton';
+import styled from 'styled-components';
 
 const BaseStory1 = () => {
   const character = useSelector(
@@ -27,34 +29,63 @@ const BaseStory1 = () => {
   };
 
   return (
-    <div className="base-container">
-      <section className="base-story-green">
-        <div className="img-container">
+    <BaseContainer>
+      <SectionGreen>
+        <ImageContainer>
           <img src={character.image} alt={character.name} />
-        </div>
+        </ImageContainer>
         <p>
           {`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle
           hända. ${character.name} var bara hemma och åt lite nötter, för det var ${character.name}s bästa grej att knapra på. Ja, förutom pinnar, chips och
           det översta lagret på lasagne. De var också bra grejer att knapra på. 
           Men mitt i allt knaprande hörde ${character.name} någonting.`}
         </p>
-      </section>
+      </SectionGreen>
 
       <h3>Vad var det som lät?</h3>
-      <div className="btn-container">
+      <div>
         {shuffleArray(sounds).map((item) => (
-          <button
-            className="story-btn"
-            type="submit"
+          <StoryButton
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}
-          >
-            {item.name}
-          </button>
+            text={item.name}
+          />
         ))}
       </div>
-    </div>
+    </BaseContainer>
   );
 };
 
 export default BaseStory1;
+
+const BaseContainer = styled.div`
+  display: grid;
+  padding: 2%;
+  width: 80%;
+  margin: 0 auto;
+
+  h3 {
+    margin-left: 2%;
+  }
+`;
+
+const SectionGreen = styled.div`
+  padding: 3% 9% 3%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
+  min-height: 60vh;
+  background-color: var(--green);
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
+  }
+`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// Stretch goal
+
 const StoryButton = ({ onClick, text }, { title }) => {
   return <StoryBtn onClick={onClick}>{text}</StoryBtn>;
 };

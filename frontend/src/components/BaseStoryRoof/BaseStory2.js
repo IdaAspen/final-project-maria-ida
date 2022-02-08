@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../../reducers/storyElements';
 import { showFeelings } from '../../reducers/dynamicData';
 import { shuffleArray } from '../../utils/shuffleArray';
-import ImageButton from '../ImageButton';
+import StoryButton from '../../styledComponents/StoryButton';
+import styled from 'styled-components';
 
 const BaseStory2 = () => {
   const character = useSelector(
@@ -31,10 +32,10 @@ const BaseStory2 = () => {
   };
   console.log(feelings);
   return (
-    <div className="base-container">
-      <section className="base-story-orange">
+    <BaseContainer>
+      <SectionOrange className="base-story-orange">
         <p>{`${sound.name}!!!! ${character} stelnade till. Vad var det? Det kändes plötsligt lite... `}</p>
-      </section>
+      </SectionOrange>
 
       <h3>Hur kändes det?</h3>
       <div className="btn-container">
@@ -57,8 +58,27 @@ const BaseStory2 = () => {
           </button>
         ))}
       </div>
-    </div>
+    </BaseContainer>
   );
 };
 
 export default BaseStory2;
+
+const BaseContainer = styled.div`
+  display: grid;
+  padding: 2%;
+  width: 80%;
+  margin: 0 auto;
+
+  h3 {
+    margin-left: 2%;
+  }
+`;
+
+const SectionOrange = styled.div`
+  padding: 3% 9% 3%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
+  min-height: 60vh;
+  background-color: var(--orange);
+`;

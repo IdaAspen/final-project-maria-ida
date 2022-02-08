@@ -48,9 +48,10 @@ const BaseStory3 = () => {
             <button
               className="img-btn"
               type="submit"
+              key={item.name}
               onClick={() => onAnswerSubmit(item.name, item.image)}
             >
-              {<img src={item.image} alt="tool" />}
+              {<img src={item.image} alt={item.image} />}
             </button>
           </div>
         ))}

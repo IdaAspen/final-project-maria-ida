@@ -71,7 +71,8 @@ const User = mongoose.model('User', UserSchema);
 
 // Schema for showing a users own saved stories
 const StoryCollectionSchema = mongoose.Schema({
-  description: String
+  description: Array,
+  character: Array
 });
 
 const StoryCollection = mongoose.model(
@@ -80,13 +81,13 @@ const StoryCollection = mongoose.model(
 );
 
 // Schema for dynamicData.json
-const ElementSchema = new mongoose.Schema({
-  id: Number,
-  name: String,
-  image: String
-});
+// const ElementSchema = new mongoose.Schema({
+//   id: Number,
+//   name: String,
+//   image: String
+// });
 
-const Element = mongoose.model('Element', ElementSchema);
+// const Element = mongoose.model('Element', ElementSchema);
 
 // schema for uploaded images
 const StoryImg = mongoose.model('StoryImg', {
@@ -127,6 +128,7 @@ const authenticateUser = async (req, res, next) => {
   try {
     const user = await User.findOne({ accessToken });
     if (user) {
+      req.user = user;
       next();
     } else {
       res.status(401).json({ response: 'Please log in', success: false });
@@ -164,20 +166,6 @@ app.get('/', (req, res) => {
   res.status(201).json({ response: 'ROAAAAR', success: true });
 });
 
-// app.get('/storycollection', authenticateUser);
-app.post('/storycollection', async (req, res) => {
-  const { description } = req.body;
-
-  try {
-    const newStoryCollection = await new StoryCollection({
-      description
-    }).save();
-    res.status(201).json({ response: newStoryCollection, success: true });
-  } catch (error) {
-    res.status(400).json({ response: error, success: false });
-  }
-});
-
 // POST request for creating a user
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body;
@@ -212,7 +200,6 @@ app.post('/signup', async (req, res) => {
 
 // POST request for signing in, match username and password
 // if you include accessToken in your request = you are logged in
-// TODO: include an if-statement for the storyCollection
 app.post('/signin', async (req, res) => {
   const { username, password } = req.body;
 
@@ -234,6 +221,26 @@ app.post('/signin', async (req, res) => {
         success: false
       });
     }
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+});
+
+app.post('/storycollection', authenticateUser);
+app.post('/storycollection', async (req, res) => {
+  const { description, character } = req.body;
+  console.log(description, req.user);
+  try {
+    const newStoryCollection = await new StoryCollection({
+      description,
+      character
+    }).save();
+    const user = await User.findByIdAndUpdate(req.user._id, {
+      $push: {
+        storyCollection: newStoryCollection
+      }
+    });
+    res.status(201).json({ response: newStoryCollection, success: true });
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }

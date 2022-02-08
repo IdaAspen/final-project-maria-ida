@@ -35,137 +35,168 @@ export const dynamicData = createSlice({
     },
     setFriendsNames: (store, action) => {
       store.friendsNames = action.payload;
+    },
+    setError: (store, action) => {
+      store.error = action.payload;
     }
   }
 });
 
-export const showCharacters = () => {
+export const showCharacters = (accessToken) => {
   return (dispatch) => {
     dispatch(rainbowLoader.actions.setLoading(true));
     const options = {
-      method: 'GET' // add header: accesstoken here?
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
     };
     fetch(API_URL('character'), options)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
           dispatch(dynamicData.actions.setCharacters(data.response));
+          dispatch(dynamicData.actions.setError(null));
         } else {
-          console.log('ERROR in reducer fetch');
+          dispatch(dynamicData.actions.setError(data.response));
         }
       })
       .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
   };
 };
 
-export const showSounds = () => {
+export const showSounds = (accessToken) => {
   return (dispatch) => {
     dispatch(rainbowLoader.actions.setLoading(true));
     const options = {
-      method: 'GET' // add header: accesstoken here?
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
     };
     fetch(API_URL('sound'), options)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
           dispatch(dynamicData.actions.setSounds(data.response));
+          dispatch(dynamicData.actions.setError(null));
         } else {
-          console.log('ERROR in reducer fetch');
+          dispatch(dynamicData.actions.setError(data.response));
         }
       })
       .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
   };
 };
 
-export const showFeelings = () => {
+export const showFeelings = (accessToken) => {
   return (dispatch) => {
     dispatch(rainbowLoader.actions.setLoading(true));
     const options = {
-      method: 'GET' // add header: accesstoken here?
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
     };
     fetch(API_URL('feeling'), options)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
           dispatch(dynamicData.actions.setFeelings(data.response));
+          dispatch(dynamicData.actions.setError(null));
         } else {
-          console.log('ERROR in reducer fetch');
+          dispatch(dynamicData.actions.setError(data.response));
         }
       })
       .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
   };
 };
 
-export const showTools = () => {
+export const showTools = (accessToken) => {
   return (dispatch) => {
     dispatch(rainbowLoader.actions.setLoading(true));
     const options = {
-      method: 'GET' // add header: accesstoken here?
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
     };
     fetch(API_URL('tool'), options)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
           dispatch(dynamicData.actions.setTools(data.response));
+          dispatch(dynamicData.actions.setError(null));
         } else {
-          console.log('ERROR in reducer fetch');
+          dispatch(dynamicData.actions.setError(data.response));
         }
       })
       .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
   };
 };
 
-export const showPlaces = () => {
+export const showPlaces = (accessToken) => {
   return (dispatch) => {
     dispatch(rainbowLoader.actions.setLoading(true));
     const options = {
-      method: 'GET' // add header: accesstoken here?
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
     };
     fetch(API_URL('place'), options)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
           dispatch(dynamicData.actions.setPlaces(data.response));
+          dispatch(dynamicData.actions.setError(null));
         } else {
-          console.log('ERROR in reducer fetch');
+          dispatch(dynamicData.actions.setError(data.response));
         }
       })
       .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
   };
 };
 
-export const showFriends = () => {
+export const showFriends = (accessToken) => {
   return (dispatch) => {
     dispatch(rainbowLoader.actions.setLoading(true));
     const options = {
-      method: 'GET' // add header: accesstoken here?
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
     };
     fetch(API_URL('friend'), options)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
           dispatch(dynamicData.actions.setFriends(data.response));
+          dispatch(dynamicData.actions.setError(null));
         } else {
-          console.log('ERROR in reducer fetch');
+          dispatch(dynamicData.actions.setError(data.response));
         }
       })
       .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
   };
 };
 
-export const showFriendsNames = () => {
+export const showFriendsNames = (accessToken) => {
   return (dispatch) => {
     dispatch(rainbowLoader.actions.setLoading(true));
     const options = {
-      method: 'GET' // add header: accesstoken here?
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
     };
     fetch(API_URL('friendname'), options)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
           dispatch(dynamicData.actions.setFriendsNames(data.response));
+          dispatch(dynamicData.actions.setError(null));
         } else {
-          console.log('ERROR in reducer fetch');
+          dispatch(dynamicData.actions.setError(data.response));
         }
       })
       .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));

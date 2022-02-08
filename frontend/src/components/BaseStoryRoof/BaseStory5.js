@@ -22,7 +22,7 @@ const BaseStory5 = () => {
     dispatch(showFriends());
   }, [dispatch]);
 
-  // gets a random number from the json-array
+  // gets a random number from the json-array (5 av 10!)
   const randomObjects = () => {
     const randomIndex = Math.floor(Math.random() * friends.length);
     const object = friends[randomIndex];
@@ -35,7 +35,7 @@ const BaseStory5 = () => {
     dispatch(storyElements.actions.setSelectedFriend({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-  console.log('LÄNGD', friends.length);
+
   console.log('RANDOMNUMBER', randomObjects());
   return (
     <div className="base-container">
@@ -50,12 +50,12 @@ const BaseStory5 = () => {
       <div className="btn-container">
         {friends.map((item) => (
           <button
-            className="story-btn"
+            className="img-btn"
             type="submit"
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}
           >
-            {item.name}
+            {<img src={item.image} alt={item.image} />}
           </button>
         ))}
       </div>

@@ -32,8 +32,10 @@ const BaseStory7 = () => {
   return (
     <div className="base-container">
       <section className="base-story-yellow">
-        <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig? – hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter. – Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friendsName}n. 
-          – Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
+        <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig?`}</p>{' '}
+        <p>{`– hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter.`}</p>
+        <p>{`– Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friend}n.`}</p>
+        <p>{`– Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
       </section>
 
       <h3>Vill du läsa hela sagan och spara den, eller starta om?</h3>

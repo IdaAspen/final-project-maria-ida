@@ -44,12 +44,12 @@ const BaseStory4 = () => {
       <div className="btn-container">
         {shuffleArray(places).map((item) => (
           <button
-            className="story-btn"
+            className="img-btn"
             type="submit"
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}
           >
-            {item.name}
+            {<img src={item.image} alt={item.image} />}
           </button>
         ))}
       </div>

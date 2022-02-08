@@ -9,6 +9,7 @@
   --yellow: #ffeead;
   --white: #ffff;
   --blue: #9dcbfd;
+  --button: #d5e5c6;
 
   /* --attribute: #7c807d;
   --links: #d5e5c6;
@@ -126,14 +127,12 @@ img {
   cursor: pointer;
 }
 
-.story-btn {
-  margin: 5px;
+.img-btn-text {
+  text-transform: uppercase;
 }
 
-.story-btn,
-input[type='submit'],
-input[type='reset'],
-input[type='button'] {
+.story-btn {
+  margin: 5px;
   display: inline-block;
   height: 38px;
   padding: 0 30px;
@@ -152,25 +151,20 @@ input[type='button'] {
   cursor: pointer;
   box-sizing: border-box;
 }
-.story-btn:hover,
-.story-btn:focus,
-input[type='submit']:focus,
-input[type='reset']:focus,
-input[type='button']:focus {
+/* .story-btn:hover,
+.story-btn:focus {
   color: var(--attribute);
   border-color: #888;
   outline: 0;
-}
+} */
 .story-btn,
-input[type='submit'].story-btn,
-input[type='reset'].story-btn,
-input[type='button'].story-btn {
-  color: var(--attribute);
+input[type='submit'] {
+  /* color: var(--attribute); */
   /* background-color: #d5e5c6; */
-  border-color: #d5e5c6;
+  border-color: var(--button);
 }
 .story-btn:hover {
   color: var(--focus);
-  background-color: #d5e5c6;
-  border-color: #d5e5c6;
+  background-color: var(--button);
+  /* border-color: var(--button); */
 }

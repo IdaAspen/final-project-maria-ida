@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import storyElements from '../reducers/storyElements';
-import './main.css';
+// import StoryButtonStyled from '../components/styledReusables/StoryButton';
+import styled from 'styled-components';
 // import { API_URL } from '../utils/constants';
 
 const Main = () => {
@@ -18,28 +19,6 @@ const Main = () => {
     }
   }, [accessToken, navigate]);
 
-  // useEffect(() => {
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: accessToken
-  //     }
-  //   };
-
-  //   fetch(API_URL('main'), options)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         console.log('HURRA');
-  //         //   dispatch(thoughts.actions.setItems(data.response));
-  //         //   dispatch(thoughts.actions.setError(null));
-  //         // } else {
-  //         //   dispatch(thoughts.actions.setItems([]));
-  //         //   dispatch(thoughts.actions.setError(data.response));
-  //       }
-  //     });
-  // }, [accessToken]);
-
   const onCreateStoryClick = () => {
     navigate('/skapasaga');
     // setVisible(false);
@@ -51,21 +30,67 @@ const Main = () => {
   };
 
   return (
-    <div className="main-container">
-      <div className="main-text">
+    <MainContainer>
+      <TextContainer>
         <h1>{`Hej ${username}!`}</h1>
         <p>Vad vill du göra?</p>
-      </div>
-      <div className="main-btn">
-        <button className="story-btn" onClick={onCreateStoryClick}>
+      </TextContainer>
+      <MainButtonWrapper>
+        <StoryButton className="story-btn" onClick={onCreateStoryClick}>
           Ny saga
-        </button>
-        <button className="story-btn" onClick={onBookshelfClick}>
+        </StoryButton>
+        <StoryButton className="story-btn" onClick={onBookshelfClick}>
           Min bokhylla
-        </button>
-      </div>
-    </div>
+        </StoryButton>
+      </MainButtonWrapper>
+    </MainContainer>
   );
 };
 
 export default Main;
+
+const MainContainer = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+  row-gap: 20%;
+
+  padding: 5% 9%;
+
+  margin: 0 auto;
+`;
+
+const TextContainer = styled.div`
+  text-align: center;
+`;
+
+const MainButtonWrapper = styled.div`
+  display: grid;
+  grid-gap: 5%;
+  align-items: center;
+  margin: 0 auto;
+`;
+
+const StoryButton = styled.button.attrs({ type: 'submit' })`
+  margin: 5px;
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: var(--attribute);
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover {
+    color: var(--focus);
+    background-color: var(--button);
+  }
+`;

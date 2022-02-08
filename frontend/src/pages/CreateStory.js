@@ -9,7 +9,7 @@ import { shuffleArray } from '../utils/shuffleArray';
 import Login from '../components/Login';
 import storyElements from '../reducers/storyElements';
 import BaseStoryRoof from '../components/BaseStoryRoof/BaseStoryRoof';
-import './create-story.css';
+import styled from 'styled-components';
 
 const CreateStory = () => {
   const characters = useSelector((store) => store.dynamicData?.characters);
@@ -44,26 +44,58 @@ const CreateStory = () => {
     return <BaseStoryRoof />;
   } else {
     return (
-      <div className="create-story-container">
-        <section className="create-story">
+      <CreateStoryContainer>
+        <CreateStorySection>
           <h2>Vem ska din saga handla om?</h2>
-        </section>
-        <div className="img-btn-wrapper">
+        </CreateStorySection>
+        <ImageButtonWrapper>
           {shuffleArray(characters).map((item) => (
-            <button
-              className="img-btn"
+            <ImageButton
               type="submit"
               key={item.id}
               onClick={() => onAnswerSubmit(item.name, item.image)}
             >
-              {<img src={item.image} alt="character" />}
-            </button>
+              {<img src={item.image} alt={item.image} />}
+            </ImageButton>
           ))}
           {/* {selectedCharacter && <p>`You picked ${selectedCharacter}`</p>} */}
-        </div>
-      </div>
+        </ImageButtonWrapper>
+      </CreateStoryContainer>
     );
   }
 };
 
 export default CreateStory;
+
+const CreateStoryContainer = styled.div`
+  display: grid;
+  row-gap: 10%;
+  padding: 5% 2% 15% 2%;
+  width: 80%;
+  margin: 0 auto;
+  background-color: var(--yellow);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
+`;
+
+const CreateStorySection = styled.section`
+  text-align: center;
+`;
+
+const ImageButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+`;
+
+const ImageButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  img {
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
+  }
+`;

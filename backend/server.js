@@ -325,7 +325,7 @@ app.get('/character', async (req, res) => {
   }
 });
 
-app.get('/friend', authenticateUser);
+// app.get('/friend', authenticateUser);
 app.get('/friend', async (req, res) => {
   try {
     res.status(200).json({ response: friend, success: true });
@@ -334,7 +334,7 @@ app.get('/friend', async (req, res) => {
   }
 });
 
-app.get('/friendname', authenticateUser);
+// app.get('/friendname', authenticateUser);
 app.get('/friendname', async (req, res) => {
   try {
     res.status(200).json({ response: friendName, success: true });
@@ -343,7 +343,7 @@ app.get('/friendname', async (req, res) => {
   }
 });
 
-app.get('/place', authenticateUser);
+// app.get('/place', authenticateUser);
 app.get('/place', async (req, res) => {
   try {
     res.status(200).json({ response: place, success: true });
@@ -352,7 +352,7 @@ app.get('/place', async (req, res) => {
   }
 });
 
-app.get('/sound', authenticateUser);
+// app.get('/sound', authenticateUser);
 app.get('/sound', async (req, res) => {
   try {
     res.status(200).json({ response: sound, success: true });
@@ -361,7 +361,7 @@ app.get('/sound', async (req, res) => {
   }
 });
 
-app.get('/tools', authenticateUser);
+// app.get('/tools', authenticateUser);
 app.get('/tool', async (req, res) => {
   try {
     res.status(200).json({ response: tools, success: true });
@@ -370,7 +370,7 @@ app.get('/tool', async (req, res) => {
   }
 });
 
-app.get('/feeling', authenticateUser);
+// app.get('/feeling', authenticateUser);
 app.get('/feeling', async (req, res) => {
   try {
     res.status(200).json({ response: feeling, success: true });

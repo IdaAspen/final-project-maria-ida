@@ -1,9 +1,8 @@
-# NAME OF PROJECT
+# Sago-maskinen
 
 ---
 
 This is the final project of the Technigo Bootcamp in Front End Development.
-Add description
 
 ## Project members
 

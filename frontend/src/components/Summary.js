@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import storyElements from '../reducers/storyElements';
@@ -31,18 +31,20 @@ const Summary = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const divRef = useRef();
+
+  const onSave = () => {
+    console.log(divRef.current.outerHTML);
+    // https://reactjs.org/docs/dom-elements.html
+  };
 
   const onRestart = () => {
     dispatch(storyElements.actions.restartGame());
     navigate('/skapasaga');
   };
 
-  const save = () => {
-    // add code here
-  };
-
   return (
-    <section className="summary">
+    <section className="summary" ref={divRef}>
       <h2>{`Sagan om ${character.name}s första äventyr`}</h2>
       <h3>{`- En saga av ${username} och sagomaskinen`}.</h3>
       <img src={character.image} alt="character" />
@@ -68,7 +70,7 @@ const Summary = () => {
       <button className="story-btn" onClick={onRestart}>
         Börja om
       </button>
-      <button className="story-btn" onClick={save}>
+      <button className="story-btn" onClick={onSave}>
         Spara saga
       </button>
     </section>

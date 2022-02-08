@@ -23,13 +23,28 @@ const BaseStory4 = () => {
     dispatch(showPlaces());
   }, [dispatch]);
 
+  // const shufflePlaces = places.sort((a, b) => 0.5 - Math.random());
+  // const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // const shuffleArray = array.sort((a, b) => 0.5 - Math.random());
+
+  const shuffleArray = (array) => {
+    for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  };
+
+  const shuffle = places[Math.floor(Math.random() * places.length)];
+
   const onAnswerSubmit = (name, image) => {
     // + prevent to add several sounds to a story
     // if (character) return;
     dispatch(storyElements.actions.setSelectedPlace({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-
+  console.log('shuffle', shuffle);
   return (
     <div className="base-container">
       <section className="base-story-yellow">

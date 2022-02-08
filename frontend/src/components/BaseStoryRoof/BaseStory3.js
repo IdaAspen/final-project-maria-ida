@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../../reducers/storyElements';
 import { showTools } from '../../reducers/dynamicData';
+import { shuffleArray } from '../../utils/shuffleArray';
 // import { BASE_URL } from '../../utils/constants';
 
 const BaseStory3 = () => {
@@ -30,7 +31,7 @@ const BaseStory3 = () => {
     dispatch(storyElements.actions.setSelectedTool({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-  console.log('ELEMENTS HERE', elements);
+
   return (
     <div className="base-container">
       <section className="base-story-red">
@@ -39,7 +40,7 @@ const BaseStory3 = () => {
 
       <h3>Vadå?</h3>
       <div className="img-btn-wrapper">
-        {tools.map((item) => (
+        {shuffleArray(tools).map((item) => (
           <div key={item.name}>
             <button
               className="img-btn"

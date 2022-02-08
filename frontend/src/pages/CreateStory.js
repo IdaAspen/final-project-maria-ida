@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // import StoryPage from './StoryPage';
 // import { API_URL } from '../utils/constants';
 import { showCharacters } from '../reducers/dynamicData';
+import { shuffleArray } from '../utils/shuffleArray';
 // import user from '../reducers/user';
 import Login from '../components/Login';
 import storyElements from '../reducers/storyElements';
@@ -48,7 +49,7 @@ const CreateStory = () => {
           <h2>Vem ska din saga handla om?</h2>
         </section>
         <div className="img-btn-wrapper">
-          {characters.slice(0, 5).map((item) => (
+          {shuffleArray(characters).map((item) => (
             <button
               className="img-btn"
               type="submit"

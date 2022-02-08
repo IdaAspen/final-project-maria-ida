@@ -145,20 +145,6 @@ const authenticateUser = async (req, res, next) => {
 //   );
 // });
 
-// endpoint for images iported with cloudinary
-
-app.post('/storyimg', parser.single('image'), async (req, res) => {
-  try {
-    const storyimg = await new StoryImg({
-      name: req.body.filename,
-      imageUrl: req.file.path
-    }).save();
-    res.json(storyimg);
-  } catch (err) {
-    res.status(400).json({ errors: err.errors });
-  }
-});
-
 // What you see when you are logged in added here, change "main"
 app.get('/', authenticateUser);
 app.get('/', (req, res) => {
@@ -184,7 +170,8 @@ app.post('/signup', async (req, res) => {
         response: {
           userId: newUser._id,
           username: newUser.username,
-          accessToken: newUser.accessToken // add storycollection to response, console.log?
+          accessToken: newUser.accessToken
+          // add storyCollection?
         },
         success: true
       });
@@ -212,6 +199,7 @@ app.post('/signin', async (req, res) => {
           userId: user._id,
           username: user.username,
           accessToken: user.accessToken
+          // add storyCollection
         },
         success: true
       });
@@ -223,6 +211,19 @@ app.post('/signin', async (req, res) => {
     }
   } catch (error) {
     res.status(400).json({ response: error, success: false });
+  }
+});
+
+// endpoint for images iported with cloudinary
+app.post('/storyimg', parser.single('image'), async (req, res) => {
+  try {
+    const storyimg = await new StoryImg({
+      name: req.body.filename,
+      imageUrl: req.file.path
+    }).save();
+    res.json(storyimg);
+  } catch (err) {
+    res.status(400).json({ errors: err.errors });
   }
 });
 
@@ -245,8 +246,37 @@ app.post('/storycollection', async (req, res) => {
     res.status(400).json({ response: error, success: false });
   }
 });
+// IDAS START
+// app.get("/storycollection/:categoryId", authenticateUser);
+// app.get('/storycollection/:userId', async (req, res) => {
+//   const { userId } = req.params;
+//   try {
+//     const storyList = await StoryCollection.find({userId})
+//     // mer kod
+//     res.status(200).json({ response: storyCollection, success: true });
+//   } catch (error) {
+//     res.status(400).json({ response: error, success: false });
+//   }
+// });
 
-//PATCH req for adding a story-id to the user's id (the save-my-story-moment-button in the end)
+//IDAS TEST
+// app.get('/storycollection/:userId', async (req, res) => {
+//   const { userId } = req.params;
+
+//   try {
+//     const filteredStoryList = await StoryCollection.find(userId);
+//     if (filteredStoryCollection) {
+//       res.status(200).json({ response: filteredStoryList, success: true });
+//     } else {
+//       res.status(404).json({ response: error, success: false });
+//     }
+//   } catch (error) {
+//     res.status(400).json({ response: error, success: false });
+//   }
+// });
+
+// MARIAS tidigare kod
+// PATCH req for adding a story-id to the user's id (the save-my-story-moment-button in the end)
 app.patch(
   '/user/:userId/storycollection/:storyCollectionId',
   async (req, res) => {
@@ -295,7 +325,7 @@ app.get('/character', async (req, res) => {
   }
 });
 
-// app.get('/friend', authenticateUser);
+app.get('/friend', authenticateUser);
 app.get('/friend', async (req, res) => {
   try {
     res.status(200).json({ response: friend, success: true });
@@ -304,7 +334,7 @@ app.get('/friend', async (req, res) => {
   }
 });
 
-// app.get('/friendname', authenticateUser);
+app.get('/friendname', authenticateUser);
 app.get('/friendname', async (req, res) => {
   try {
     res.status(200).json({ response: friendName, success: true });
@@ -313,7 +343,7 @@ app.get('/friendname', async (req, res) => {
   }
 });
 
-// app.get('/place', authenticateUser);
+app.get('/place', authenticateUser);
 app.get('/place', async (req, res) => {
   try {
     res.status(200).json({ response: place, success: true });
@@ -322,7 +352,7 @@ app.get('/place', async (req, res) => {
   }
 });
 
-// app.get('/sound', authenticateUser);
+app.get('/sound', authenticateUser);
 app.get('/sound', async (req, res) => {
   try {
     res.status(200).json({ response: sound, success: true });
@@ -331,7 +361,7 @@ app.get('/sound', async (req, res) => {
   }
 });
 
-// app.get('/tools', authenticateUser);
+app.get('/tools', authenticateUser);
 app.get('/tool', async (req, res) => {
   try {
     res.status(200).json({ response: tools, success: true });
@@ -340,7 +370,7 @@ app.get('/tool', async (req, res) => {
   }
 });
 
-// app.get('/feeling', authenticateUser);
+app.get('/feeling', authenticateUser);
 app.get('/feeling', async (req, res) => {
   try {
     res.status(200).json({ response: feeling, success: true });

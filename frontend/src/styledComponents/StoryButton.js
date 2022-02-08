@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 // Stretch goal
-const StoryButtonStyled = (prop) => {
-  return <StyledStoryBtn onClick={prop}></StyledStoryBtn>;
+const StoryButton = ({ onClick, text }, { title }) => {
+  return <StoryBtn onClick={onClick}>{text}</StoryBtn>;
 };
 
-export default StoryButtonStyled;
+export default StoryButton;
 
-const StyledStoryBtn = styled.button`
+const StoryBtn = styled.button.attrs({ type: 'submit' })`
   margin: 5px;
-  border-color: #d5e5c6;
   display: inline-block;
   height: 38px;
   padding: 0 30px;
@@ -24,21 +23,13 @@ const StyledStoryBtn = styled.button`
   white-space: nowrap;
   background-color: transparent;
   border-radius: 4px;
-  border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box;
-  }
+  border-color: var(--button);
+  border-style: solid;
 
-  &:hover,
-  &:focus{
-    color: var(--attribute);
-    border-color: #888;
-    outline: 0;
-  }
- 
- &:hover {
+  &:hover {
     color: var(--focus);
-    background-color: #d5e5c6;
-    border-color: #d5e5c6;
+    background-color: var(--button);
   }
 `;

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../../reducers/storyElements';
 import { showSounds } from '../../reducers/dynamicData';
+import { shuffleArray } from '../../utils/shuffleArray';
 
 const BaseStory1 = () => {
   const character = useSelector(
@@ -24,7 +25,7 @@ const BaseStory1 = () => {
     dispatch(storyElements.actions.setSelectedSound({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-  console.log('ELEMENTS HERE', elements);
+
   return (
     <div className="base-container">
       <section className="base-story-green">
@@ -41,7 +42,7 @@ const BaseStory1 = () => {
 
       <h3>Vad var det som lät?</h3>
       <div className="btn-container">
-        {sounds.map((item) => (
+        {shuffleArray(sounds).map((item) => (
           <button
             className="story-btn"
             type="submit"

@@ -7,9 +7,10 @@ import rainbowLoader from './rainbowLoader';
 export const story = createSlice({
   name: 'story',
   initialState: {
+    _id: null,
     savedStoryArray: [],
     savedCharacter: null,
-    savedStoryList: []
+    savedStoryList: [],
   },
   reducers: {
     setSavedStoryList: (store, action) => {
@@ -17,8 +18,8 @@ export const story = createSlice({
     },
     setError: (store, action) => {
       store.error = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const showStory = (accessToken, userId) => {
@@ -27,8 +28,8 @@ export const showStory = (accessToken, userId) => {
     const options = {
       method: 'GET',
       headers: {
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     };
     fetch(API_URL(`storycollection/${userId}`), options)
       .then((res) => res.json())
@@ -51,12 +52,12 @@ export const onPostStory = (accessToken, storyArray, savedCharacter) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: accessToken
+        Authorization: accessToken,
       },
       body: JSON.stringify({
         description: storyArray,
-        character: savedCharacter
-      })
+        character: savedCharacter,
+      }),
     };
     fetch(API_URL('storycollection'), options)
       .then((res) => res.json())

@@ -35,6 +35,9 @@ const BaseStory3 = () => {
   return (
     <div className="base-container">
       <section className="base-story-red">
+        <div class="img-container">
+          <img src={feeling.image} alt={feeling.name} />
+        </div>
         <p>{`Ja, det kändes lite ${feeling.name}. ${character} sprang ut för att se var ljudet kom ifrån. Och nu hördes det igen. Ett ${sound.name}. Men va? Det kommer ju från taket. ${character} tänker att det är bäst att försöka ta sig upp på taket. Det har ${character} inte gjort innan, men det kan väl inte vara så svårt? Men jag behöver nog... `}</p>
       </section>
 

@@ -35,7 +35,7 @@ const BaseStory4 = () => {
     <div className="base-container">
       <section className="base-story-yellow">
         <div class="img-container">
-          <img src={tool.image} alt="tool" />
+          <img src={tool.image} alt={tool.name} />
         </div>
         <p>{`Exakt! ${tool.name}, tänker ${character}. Inne i förrådet kan det nog finnas ${tool.name}. Åhhh det är så tungt att bära ut. Det hade varit lättare om jag haft en kompis. Till slut får ${character} ut ${tool.name} från förrådet och tar sig närmare taket. Hej och hå. Det är tungt. Och ${feeling.name}. Det känns som att ${character} är...`}</p>
       </section>

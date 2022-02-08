@@ -29,8 +29,8 @@ const BaseStory1 = () => {
   return (
     <div className="base-container">
       <section className="base-story-green">
-        <div class="img-container">
-          <img src={character.image} alt="character" />
+        <div className="img-container">
+          <img src={character.image} alt={character.name} />
         </div>
         <p>
           {`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle

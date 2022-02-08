@@ -30,7 +30,7 @@ const BaseStory6 = () => {
   return (
     <div className="base-container">
       <section className="base-story-green">
-        <div class="img-container">
+        <div className="img-container">
           <img src={friend.image} alt={friend.name} />
         </div>
         <p>{`Där sitter en ${friend.name}  och skalar nötter. Tänk att ett ${sound.name} kom från de här små nötterna. – Hej, säger ${friend.name}n. Jag heter...`}</p>

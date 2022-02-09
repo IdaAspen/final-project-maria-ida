@@ -1,22 +1,22 @@
-.login-bg {
+/* .login-bg {
   height: 70vh;
   display: grid;
   align-items: center;
   padding: 2% 10% 10% 10%;
   background-color: var(--background);
-}
+} */
 
-.start-card h1 {
+/* .start-card h1 {
   font-size: 42px;
   padding-bottom: 2%;
   text-align: center;
-}
-.start-card h2 {
+} */
+/* .start-card h2 {
   font-size: 18px;
   padding-bottom: 2%;
-}
+} */
 
-.start-card {
+/* .start-card {
   width: 100%;
   height: auto;
   margin: 0 auto;
@@ -34,14 +34,14 @@
   margin: 0 auto;
   padding-bottom: 2%;
   display: flex;
-}
+} */
 
-.login-form {
+/* .login-form {
   padding: 10%;
   box-shadow: 0 1px 1px 0 rgb(66 66 66 / 8%), 0 1px 3px 1px rgb(66 66 66 / 16%);
   border-radius: 6px;
   background-color: var(--yellow);
-}
+} */
 
 /* .login-attribute {
   font-size: 7px;
@@ -50,13 +50,12 @@
   color: var(--attribute);
 } */
 
-form {
+/* form {
   display: flex;
   flex-direction: column;
   background-color: var(--yellow);
-}
-input,
-button,
+} */
+
 label {
   margin: 5px;
 }
@@ -78,7 +77,7 @@ input[type='password']:focus {
   outline: 0;
 }
 
-.login-signup-btn,
+/* .login-signup-btn,
 input[type='submit'],
 input[type='reset'],
 input[type='button'] {
@@ -99,8 +98,8 @@ input[type='button'] {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box;
-}
-.login-signup-btn:hover,
+} */
+/* .login-signup-btn:hover,
 .login-signup-btn:focus,
 input[type='submit']:focus,
 input[type='reset']:focus,
@@ -108,16 +107,16 @@ input[type='button']:focus {
   color: #333;
   border-color: #888;
   outline: 0;
-}
-.login-signup-btn,
+} */
+/* .login-signup-btn,
 input[type='submit'].login-signup-btn,
 input[type='reset'].login-signup-btn,
 input[type='button'].login-signup-btn {
   color: black;
   background-color: #d5e5c6;
   border-color: #d5e5c6;
-}
-.login-signup-btn:hover {
+} */
+/* .login-signup-btn:hover {
   color: #d5e5c6;
   background-color: black;
   border-color: black;
@@ -127,4 +126,4 @@ input[type='button'].login-signup-btn {
   color: #888;
   cursor: not-allowed;
   background-color: rgba(213, 229, 198, 0.8);
-}
+} */

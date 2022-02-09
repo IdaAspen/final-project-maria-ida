@@ -26,6 +26,20 @@ const BaseStory6 = () => {
     dispatch(storyElements.actions.setStoryPage());
   };
 
+  // gets 4 random objects from elements-array and push it to a new array
+  const randomObjects = () => {
+    const randomFriendsName = [];
+    for (var i = 0; i < 5; i++) {
+      const randomIndex = Math.floor(Math.random() * friendsNames.length);
+      const object = friendsNames[randomIndex];
+      if (!randomFriendsName.includes(object)) {
+        randomFriendsName.push(object);
+      }
+    }
+    return randomFriendsName;
+  };
+
+  console.log(randomObjects());
   return (
     <BaseContainer>
       <SectionGreen>
@@ -37,7 +51,7 @@ const BaseStory6 = () => {
 
       <h3>Vad heter den?</h3>
       <div>
-        {friendsNames.map((item) => (
+        {randomObjects(friendsNames).map((item) => (
           <StoryButton
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}

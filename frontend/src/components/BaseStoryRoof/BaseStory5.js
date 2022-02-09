@@ -24,11 +24,17 @@ const BaseStory5 = () => {
     dispatch(showFriends());
   }, [dispatch]);
 
-  // gets a random number from the json-array (5 av 10!)
+  // gets random objects from elements-array and push it to a new array
   const randomObjects = () => {
-    const randomIndex = Math.floor(Math.random() * friends.length);
-    const object = friends[randomIndex];
-    return object;
+    const randomFriends = [];
+    for (var i = 0; i < 5; i++) {
+      const randomIndex = Math.floor(Math.random() * friends.length);
+      const object = friends[randomIndex];
+      if (!randomFriends.includes(object)) {
+        randomFriends.push(object);
+      }
+    }
+    return randomFriends;
   };
 
   const onAnswerSubmit = (name, image) => {
@@ -36,7 +42,7 @@ const BaseStory5 = () => {
     dispatch(storyElements.actions.setStoryPage());
   };
 
-  console.log('RANDOMNUMBER', randomObjects());
+  console.log('RANDOMOBJECT', randomObjects());
   return (
     <BaseContainer>
       <SectionBlue>
@@ -48,7 +54,7 @@ const BaseStory5 = () => {
 
       <h3>Vem då?</h3>
       <ImageButtonWrapper>
-        {friends.map((item) => (
+        {randomObjects(friends).map((item) => (
           <ImageButton
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}

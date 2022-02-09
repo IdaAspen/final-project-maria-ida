@@ -43,12 +43,14 @@ const Summary = () => {
 
   const onSave = () => {
     dispatch(onPostStory(accessToken, storyArray, savedCharacter));
+    navigate('/bokhylla');
   };
 
   const onRestart = () => {
     dispatch(storyElements.actions.restartGame());
     navigate('/skapasaga');
   };
+
   console.log('SELECTED ELEMETS', selectedElements);
   console.log('STORY ARRAY', storyArray);
   console.log('SAVED CHARACTER', savedCharacter);

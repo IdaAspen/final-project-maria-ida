@@ -33,7 +33,7 @@ const Bookshelf = () => {
   // };
 
   console.log('USER ID korrekt', userId);
-  console.log('SAVEDSTORYLIST', savedStoryList);
+  console.log('STORYCOLLECTION', savedStoryList);
 
   return (
     <BookshelfSection>

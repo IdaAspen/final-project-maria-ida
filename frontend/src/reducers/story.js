@@ -7,12 +7,16 @@ import rainbowLoader from './rainbowLoader';
 export const story = createSlice({
   name: 'story',
   initialState: {
+    // items: []
     _id: null,
     savedElementsArray: null,
     savedCharacter: null,
     savedStoryList: []
   },
   reducers: {
+    // setItems: (store, action) => {
+    //   store.items = action.payload;
+    // },
     setSavedElementsArray: (store, action) => {
       store.savedElementsArray = action.payload;
     },

@@ -50,13 +50,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-    storyCollection: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'StoryCollection',
-      },
-    ],
   },
+  storyCollection: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'StoryCollection',
+    },
+  ],
   password: {
     type: String,
     required: true,
@@ -71,8 +71,8 @@ const User = mongoose.model('User', UserSchema);
 
 // Schema for showing a users own saved stories
 const StoryCollectionSchema = mongoose.Schema({
-  description: Array,
-  character: Array,
+  description: Object,
+  character: Object,
 });
 
 const StoryCollection = mongoose.model(

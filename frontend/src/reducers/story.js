@@ -44,7 +44,7 @@ export const showStory = (accessToken, userId) => {
       .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
   };
 };
-
+// accessToken byts ut, använd userId sparar data
 export const onPostStory = (accessToken, storyArray, savedCharacter) => {
   return (dispatch) => {
     dispatch(rainbowLoader.actions.setLoading(true));

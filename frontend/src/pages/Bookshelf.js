@@ -1,23 +1,39 @@
 // Shows bookmarks on saved storys (endpoint needed)
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { showStory } from '../reducers/story';
+import { showStoryCollection } from '../reducers/story';
 import styled from 'styled-components';
 import StoryButton from '../styledComponents/StoryButton';
+// import { story } from '../reducers/story';
 
 const Bookshelf = () => {
   const dispatch = useDispatch();
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
   const savedStoryList = useSelector((store) => store.story.savedStoryList);
+  // const bookshelf = savedStoryList;
+  const storyCollection = useSelector((store) => store.story.savedStoryList);
 
-  const bookshelf = savedStoryList;
+  // const onShowStory = () => {
+  //   dispatch(showStory(accessToken, userId, bookshelf));
+  // };
 
-  const onShowStory = () => {
-    dispatch(showStory(accessToken, userId, bookshelf));
+  useEffect(() => {
+    dispatch(showStoryCollection(accessToken, userId));
+  }, [dispatch, accessToken, userId]);
+
+  const onShowStory = (description, character) => {
+    console.log('STORY COLLECTION', storyCollection);
+    dispatch(
+      savedStoryList.actions.setSavedStoryList({ description, character })
+    );
   };
+  // const onShowStory = (description, character) => {
+  //   dispatch(savedStoryList.actions.savedStoryList({ description, character }));
+  // };
+
   console.log('USER ID korrekt', userId);
-  console.log('STORYCOLLECTION fel', bookshelf);
+  console.log('SAVEDSTORYLIST', savedStoryList);
 
   return (
     <BookshelfSection>

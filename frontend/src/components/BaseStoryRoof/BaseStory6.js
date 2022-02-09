@@ -51,7 +51,7 @@ const BaseStory6 = () => {
 
       <h3>Vad heter den?</h3>
       <div>
-        {randomObjects(friendsNames).map((item) => (
+        {friendsNames.map((item) => (
           <StoryButton
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}

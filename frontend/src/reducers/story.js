@@ -8,19 +8,50 @@ export const story = createSlice({
   name: 'story',
   initialState: {
     _id: null,
-    savedStoryArray: [],
+    savedElementsArray: null,
     savedCharacter: null,
-    savedStoryList: [],
+    savedStoryList: []
   },
   reducers: {
+    setSavedElementsArray: (store, action) => {
+      store.savedElementsArray = action.payload;
+    },
+    setSavedCharacter: (store, action) => {
+      store.savedCharacter = action.payload;
+    },
     setSavedStoryList: (store, action) => {
       store.savedStoryList = action.payload;
     },
+
     setError: (store, action) => {
       store.error = action.payload;
-    },
-  },
+    }
+  }
 });
+
+//marias test
+export const showStoryCollection = (accessToken, userId) => {
+  return (dispatch) => {
+    dispatch(rainbowLoader.actions.setLoading(true));
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    };
+    fetch(API_URL(`storycollection/${userId}`), options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          dispatch(story.actions.setSavedStoryList(data.response));
+          dispatch(story.actions.setError(null));
+        } else {
+          dispatch(story.actions.setError(data.response));
+        }
+      })
+      .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
+  };
+};
 
 //idas sparade
 // export const showStory = (accessToken, userId) => {
@@ -54,12 +85,12 @@ export const onPostStory = (accessToken, storyArray, savedCharacter) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: accessToken,
+        Authorization: accessToken
       },
       body: JSON.stringify({
         description: storyArray,
-        character: savedCharacter,
-      }),
+        character: savedCharacter
+      })
     };
     fetch(API_URL('storycollection'), options)
       .then((res) => res.json())

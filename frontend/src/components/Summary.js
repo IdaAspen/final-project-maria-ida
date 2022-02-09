@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, batch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import storyElements from '../reducers/storyElements';
+import { story } from '../reducers/story';
 import { onPostStory } from '../reducers/story';
 import StoryButton from '../styledComponents/StoryButton';
 import styled from 'styled-components';
@@ -34,15 +35,21 @@ const Summary = () => {
   const selectedElements = useSelector(
     (store) => store.storyElements.selectedElements
   );
+  // const savedElements = useSelector((store) => store.story.savedElementsArray);
+  // const savedCharacter = useSelector((store) => store.story.savedCharacter);
 
   const storyArray = selectedElements;
-  const savedCharacter = character;
+  const storyCharacter = character;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const onSave = () => {
-    dispatch(onPostStory(accessToken, storyArray, savedCharacter));
+    batch(() => {
+      dispatch(onPostStory(accessToken, storyArray, storyCharacter));
+      dispatch(story.actions.setSavedElementsArray(storyArray));
+      dispatch(story.actions.setSavedCharacter(storyCharacter));
+    });
     navigate('/bokhylla');
   };
 
@@ -53,7 +60,7 @@ const Summary = () => {
 
   console.log('SELECTED ELEMETS', selectedElements);
   console.log('STORY ARRAY', storyArray);
-  console.log('SAVED CHARACTER', savedCharacter);
+  console.log('SAVED CHARACTER', storyCharacter);
 
   return (
     <SummarySection>

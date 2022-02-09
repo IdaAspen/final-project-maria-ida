@@ -54,7 +54,7 @@ const BaseStory5 = () => {
 
       <h3>Vem då?</h3>
       <ImageButtonWrapper>
-        {randomObjects(friends).map((item) => (
+        {friends.map((item) => (
           <ImageButton
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}

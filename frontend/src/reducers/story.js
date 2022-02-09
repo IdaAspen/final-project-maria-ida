@@ -22,28 +22,30 @@ export const story = createSlice({
   },
 });
 
-export const showStory = (accessToken, userId) => {
-  return (dispatch) => {
-    dispatch(rainbowLoader.actions.setLoading(true));
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: accessToken,
-      },
-    };
-    fetch(API_URL(`storycollection/${userId}`), options)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          dispatch(story.savedStoryList.setCharacters(data.response));
-          dispatch(story.savedStoryList.actions.setError(null));
-        } else {
-          dispatch(story.savedStoryList.actions.setError(data.response));
-        }
-      })
-      .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
-  };
-};
+//idas sparade
+// export const showStory = (accessToken, userId) => {
+//   return (dispatch) => {
+//     dispatch(rainbowLoader.actions.setLoading(true));
+//     const options = {
+//       method: 'GET',
+//       headers: {
+//         Authorization: accessToken,
+//       },
+//     };
+//     fetch(API_URL(`storycollection/${userId}`), options)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         if (data.success) {
+//           dispatch(story.savedStoryList.setCharacters(data.response));
+//           dispatch(story.savedStoryList.actions.setError(null));
+//         } else {
+//           dispatch(story.savedStoryList.actions.setError(data.response));
+//         }
+//       })
+//       .finally(() => dispatch(rainbowLoader.actions.setLoading(false)));
+//   };
+// };
+
 // accessToken byts ut, använd userId sparar data
 export const onPostStory = (accessToken, storyArray, savedCharacter) => {
   return (dispatch) => {

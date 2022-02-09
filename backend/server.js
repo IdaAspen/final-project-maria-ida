@@ -246,6 +246,29 @@ app.post('/storycollection', async (req, res) => {
     res.status(400).json({ response: error, success: false });
   }
 });
+
+//maria testar GET
+app.get('/storycollection/:userid', async (req, res) => {
+  const { userId, storyCollectionId } = req.params;
+  console.log(userId, storyCollectionId);
+  try {
+    const filteredUser = await User.findById(userId);
+
+    if (filteredUser) {
+      const filteredStoryCollection = await StoryCollection.findById(
+        storyCollectionId
+      );
+      res.status(200).json({ response: 'story found', success: true });
+    } else {
+      res.status(404).json({ response: 'User not found', success: false });
+    }
+  } catch (error) {
+    res
+      .status(400)
+      .json({ response: 'Some kind of error, sorry', success: false });
+  }
+});
+
 // IDAS START
 // app.get("/storycollection/:categoryId", authenticateUser);
 // app.get('/storycollection/:userId', async (req, res) => {

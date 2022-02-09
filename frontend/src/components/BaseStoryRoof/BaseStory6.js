@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../../reducers/storyElements';
 import { showFriendsNames } from '../../reducers/dynamicData';
-// import user from '../reducers/user';
+import StoryButton from '../../styledComponents/StoryButton';
+import styled from 'styled-components';
 
 const BaseStory6 = () => {
   const sound = useSelector(
@@ -21,36 +22,63 @@ const BaseStory6 = () => {
   }, [dispatch]);
 
   const onAnswerSubmit = (name, image) => {
-    // + prevent to add several sounds to a story
-    // if (character) return;
     dispatch(storyElements.actions.setSelectedFriendsName({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
 
   return (
-    <div className="base-container">
-      <section className="base-story-green">
-        <div className="img-container">
+    <BaseContainer>
+      <SectionGreen>
+        <ImageContainer>
           <img src={friend.image} alt={friend.name} />
-        </div>
+        </ImageContainer>
         <p>{`Där sitter en ${friend.name}  och skalar nötter. Tänk att ett ${sound.name} kom från de här små nötterna. – Hej, säger ${friend.name}n. Jag heter...`}</p>
-      </section>
+      </SectionGreen>
 
       <h3>Vad heter den?</h3>
-      <div className="btn-container">
+      <div>
         {friendsNames.map((item) => (
-          <button
-            className="story-btn"
-            type="submit"
+          <StoryButton
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}
-          >
-            {item.name}
-          </button>
+            text={item.name}
+          />
         ))}
       </div>
-    </div>
+    </BaseContainer>
   );
 };
 
 export default BaseStory6;
+
+const BaseContainer = styled.div`
+  display: grid;
+  padding: 2%;
+  width: 80%;
+  margin: 0 auto;
+
+  h3 {
+    margin-left: 2%;
+  }
+`;
+
+const SectionGreen = styled.div`
+  padding: 3% 9% 3%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
+  min-height: 60vh;
+  background-color: var(--green);
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
+  }
+`;

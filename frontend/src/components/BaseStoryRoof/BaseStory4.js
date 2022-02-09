@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../../reducers/storyElements';
 import { showPlaces } from '../../reducers/dynamicData';
 import { shuffleArray } from '../../utils/shuffleArray';
-// import { BASE_URL } from '../../utils/constants';
+import ImageButton from '../../styledComponents/ImageButton';
+import styled from 'styled-components';
 
 const BaseStory4 = () => {
   const character = useSelector(
@@ -25,36 +26,69 @@ const BaseStory4 = () => {
   }, [dispatch]);
 
   const onAnswerSubmit = (name, image) => {
-    // + prevent to add several sounds to a story
-    // if (character) return;
     dispatch(storyElements.actions.setSelectedPlace({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
 
   return (
-    <div className="base-container">
-      <section className="base-story-yellow">
-        <div className="img-container">
+    <BaseContainer>
+      <SectionYellow>
+        <ImageContainer>
           <img src={tool.image} alt={tool.name} />
-        </div>
+        </ImageContainer>
         <p>{`Exakt! ${tool.name}, tänker ${character}. Inne i förrådet kan det nog finnas ${tool.name}. Åhhh det är så tungt att bära ut. Det hade varit lättare om jag haft en kompis. Till slut får ${character} ut ${tool.name} från förrådet och tar sig närmare taket. Hej och hå. Det är tungt. Och ${feeling.name}. Det känns som att ${character} är...`}</p>
-      </section>
+      </SectionYellow>
 
       <h3>Vartdå?</h3>
-      <div className="btn-container">
+      <ImageButtonWrapper>
         {shuffleArray(places).map((item) => (
-          <button
-            className="img-btn"
-            type="submit"
+          <ImageButton
             key={item.name}
             onClick={() => onAnswerSubmit(item.name, item.image)}
-          >
-            {<img src={item.image} alt={item.image} />}
-          </button>
+            text={<img src={item.image} alt={item.image} />}
+          />
         ))}
-      </div>
-    </div>
+      </ImageButtonWrapper>
+    </BaseContainer>
   );
 };
 
 export default BaseStory4;
+
+const BaseContainer = styled.div`
+  display: grid;
+  padding: 2%;
+  width: 80%;
+  margin: 0 auto;
+
+  h3 {
+    margin-left: 2%;
+  }
+`;
+
+const SectionYellow = styled.div`
+  padding: 3% 9% 3%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
+  min-height: 60vh;
+  background-color: var(--yellow);
+`;
+
+const ImageButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
+  }
+`;

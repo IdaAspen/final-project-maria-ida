@@ -1,26 +1,41 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './navbar.css';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
+import styled from 'styled-components';
 
-// importing HamburgerMenu to NavBar
 const Navbar = () => {
   const username = useSelector((store) => store.user.username);
   const accessToken = useSelector((store) => store.user.accessToken);
 
   return (
     <>
-      <nav>
+      <Nav>
         <BurgerMenu />
         {accessToken && (
-          <p className="navbar-text">
+          <NavBarText>
             inloggad som: <span>{username}</span>
-          </p>
+          </NavBarText>
         )}
-      </nav>
+      </Nav>
     </>
   );
 };
 // };
 
 export default Navbar;
+
+const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--background);
+  height: 60px;
+`;
+
+const NavBarText = styled.p`
+  color: var(--attribute);
+  font-size: 10px;
+  align-self: center;
+  margin-left: 25px;
+  margin-right: 10px;
+`;

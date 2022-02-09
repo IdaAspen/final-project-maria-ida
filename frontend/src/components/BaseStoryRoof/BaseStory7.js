@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import storyElements from '../../reducers/storyElements';
+import StoryButton from '../../styledComponents/StoryButton';
+import styled from 'styled-components';
 
 const BaseStory7 = () => {
   const character = useSelector(
@@ -19,8 +21,6 @@ const BaseStory7 = () => {
   const navigate = useNavigate();
 
   const onAnswerSubmit = (name, image) => {
-    // + prevent to add several sounds to a story
-    // if (character) return;
     dispatch(storyElements.actions.setStoryPage());
   };
 
@@ -30,29 +30,47 @@ const BaseStory7 = () => {
   };
 
   return (
-    <div className="base-container">
-      <section className="base-story-yellow">
+    <BaseContainer>
+      <SectionYellow>
         <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig?`}</p>{' '}
         <p>{`– hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter.`}</p>
         <p>{`– Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friend}n.`}</p>
         <p>{`– Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
-      </section>
+      </SectionYellow>
 
       <h3>Vill du läsa hela sagan och spara den, eller starta om?</h3>
-      <div className="btn-container">
-        <button
-          className="story-btn"
-          type="submit"
-          onClick={() => onAnswerSubmit()}
-        >
-          Visa hela sagan
-        </button>
-        <button className="story-btn" type="submit" onClick={onRestart}>
-          Börja om
-        </button>
-      </div>
-    </div>
+      <StoryButtonWrapper>
+        <StoryButton text="Visa hela sagan" onClick={() => onAnswerSubmit()} />
+        <StoryButton text="Börja om" onClick={onRestart} />
+      </StoryButtonWrapper>
+    </BaseContainer>
   );
 };
 
 export default BaseStory7;
+
+const BaseContainer = styled.div`
+  display: grid;
+  padding: 2%;
+  width: 80%;
+  margin: 0 auto;
+
+  h3 {
+    margin-left: 2%;
+  }
+`;
+
+const SectionYellow = styled.div`
+  padding: 3% 9% 3%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
+  min-height: 60vh;
+  background-color: var(--yellow);
+`;
+
+const StoryButtonWrapper = styled.div`
+  display: grid;
+  grid-gap: 5%;
+  align-items: center;
+  margin: 0 auto;
+`;

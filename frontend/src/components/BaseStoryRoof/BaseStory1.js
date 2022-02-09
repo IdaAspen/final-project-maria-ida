@@ -10,7 +10,6 @@ const BaseStory1 = () => {
   const character = useSelector(
     (store) => store.storyElements.selectedCharacter
   );
-  const elements = useSelector((store) => store.storyElements.selectedElements);
   const sounds = useSelector((store) => store.dynamicData.sounds);
 
   // const accessToken = useSelector((store) => store.user.accessToken);
@@ -22,8 +21,6 @@ const BaseStory1 = () => {
   }, [dispatch]);
 
   const onAnswerSubmit = (name, image) => {
-    // + prevent to add several sounds to a story
-    // if (character) return;
     dispatch(storyElements.actions.setSelectedSound({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };

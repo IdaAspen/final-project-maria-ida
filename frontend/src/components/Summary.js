@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import storyElements from '../reducers/storyElements';
 import { onPostStory } from '../reducers/story';
-// import user from '../reducers/user';
+import StoryButton from '../styledComponents/StoryButton';
 import styled from 'styled-components';
 
 const Summary = () => {
@@ -76,21 +76,17 @@ const Summary = () => {
         <img src={feeling.image} alt={feeling.name} />
       </div>
       <p>{`Hej och hå. Det är tungt. Och ${feeling.name}. Det känns som att ${character.name} är högst upp ${place.name} däruppe på taket.`}</p>
-      <div className="img-container">
+      <ImageContainer>
         <img src={place.image} alt={place.name} />
-      </div>
+      </ImageContainer>
       <p>{` Allt ser liksom lite mystiskt och magiskt ut. Och nu hör ${sound.name} igen! Det kommer bakifrån skorstenen. ${character.name} går runt (men försiktig, för det är ju jättehögt upp), och ser en ${friend.name} som skalar nötter. 
       Tänk att ett ${sound.name} kom från de här små nötterna.`}</p>
       <p>{`– Hej, säger ${friend.name}n. Jag heter ${friendsName.name}. Vill du ha en nöt av mig?`}</p>
       <p>{`– hej, svarar ${character.name}. Jättegärna. Jag älskar faktiskt nötter.`}</p>
       <p>{`– Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friend.name}n.`}</p>
       <p>{`– Ja, jag vet, säger ${character.name} och så skrattar de båda två.`}</p>
-      <button className="story-btn" onClick={onRestart}>
-        Börja om
-      </button>
-      <button className="story-btn" onClick={onSave}>
-        Spara saga
-      </button>
+      <StoryButton onClick={onRestart} text="Börja om" />
+      <StoryButton onClick={onSave} text="Spara saga" />
     </SummarySection>
   );
 };

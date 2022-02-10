@@ -22,7 +22,7 @@ const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/finalproject';
 mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
 });
 mongoose.Promise = Promise;
 
@@ -31,16 +31,16 @@ const cloudinary = cloudinaryFramework.v2;
 cloudinary.config({
   cloud_name: 'cloudinary-story', // this needs to be whatever you get from cloudinary
   api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: 'storyimg',
-    allowedFormats: ['jpg', 'png']
+    allowedFormats: ['jpg', 'png'],
     // transformation: [{ width: 500, height: 500, crop: 'limit' }],
-  }
+  },
 });
 const parser = multer({ storage });
 
@@ -49,22 +49,22 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
-    required: true
+    required: true,
   },
   storyCollection: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'StoryCollection'
-    }
+      ref: 'StoryCollection',
+    },
   ],
   password: {
     type: String,
-    required: true
+    required: true,
   },
   accessToken: {
     type: String,
-    default: () => crypto.randomBytes(128).toString('hex')
-  }
+    default: () => crypto.randomBytes(128).toString('hex'),
+  },
 });
 
 const User = mongoose.model('User', UserSchema);
@@ -72,7 +72,7 @@ const User = mongoose.model('User', UserSchema);
 // Schema for showing a users own saved stories
 const StoryCollectionSchema = mongoose.Schema({
   description: Object,
-  character: Object
+  character: Object,
 });
 
 const StoryCollection = mongoose.model(
@@ -92,7 +92,7 @@ const StoryCollection = mongoose.model(
 // schema for uploaded images
 const StoryImg = mongoose.model('StoryImg', {
   name: String,
-  imageUrl: String
+  imageUrl: String,
 });
 
 const port = process.env.PORT || 8080;
@@ -164,16 +164,16 @@ app.post('/signup', async (req, res) => {
     if (password.match(strongPassword)) {
       const newUser = await new User({
         username,
-        password: bcrypt.hashSync(password, salt)
+        password: bcrypt.hashSync(password, salt),
       }).save();
       res.status(201).json({
         response: {
           userId: newUser._id,
           username: newUser.username,
-          accessToken: newUser.accessToken
+          accessToken: newUser.accessToken,
           // add storyCollection?
         },
-        success: true
+        success: true,
       });
     } else {
       throw 'Password must contain at least 8 characters, at least one letter, one number and one special character';
@@ -198,15 +198,15 @@ app.post('/signin', async (req, res) => {
         response: {
           userId: user._id,
           username: user.username,
-          accessToken: user.accessToken
+          accessToken: user.accessToken,
           // add storyCollection
         },
-        success: true
+        success: true,
       });
     } else {
       res.status(404).json({
         response: "Username or password doesn't match.",
-        success: false
+        success: false,
       });
     }
   } catch (error) {
@@ -219,7 +219,7 @@ app.post('/storyimg', parser.single('image'), async (req, res) => {
   try {
     const storyimg = await new StoryImg({
       name: req.body.filename,
-      imageUrl: req.file.path
+      imageUrl: req.file.path,
     }).save();
     res.json(storyimg);
   } catch (err) {
@@ -234,14 +234,36 @@ app.post('/storycollection', async (req, res) => {
   try {
     const newStoryCollection = await new StoryCollection({
       description,
-      character
+      character,
     }).save();
     const user = await User.findByIdAndUpdate(req.user._id, {
       $push: {
-        storyCollection: newStoryCollection
-      }
+        storyCollection: newStoryCollection,
+      },
     });
     res.status(201).json({ response: newStoryCollection, success: true });
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+});
+
+// maria testar GET
+app.get('/storycollection/:userid', async (req, res) => {
+  const { userId, storyCollectionId } = req.params;
+  console.log(userId, storyCollectionId);
+  try {
+    const filteredUser = await User.findById(userId);
+
+    if (filteredUser) {
+      const filteredStoryCollection = await StoryCollection.findById(
+        storyCollectionId
+      );
+      res
+        .status(200)
+        .json({ response: filteredStoryCollection, success: true });
+    } else {
+      res.status(404).json({ response: error, success: false });
+    }
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }
@@ -255,28 +277,6 @@ app.post('/storycollection', async (req, res) => {
 //     const storyUser = await User.findById(userId).populate('storyCollection');
 //     if (storyUser) {
 //       res.status(200).json({ response: storyUser, success: true });
-//     } else {
-//       res.status(404).json({ response: error, success: false });
-//     }
-//   } catch (error) {
-//     res.status(400).json({ response: error, success: false });
-//   }
-// });
-
-// maria testar GET
-// app.get('/storycollection/:userid', async (req, res) => {
-//   const { userId, storyCollectionId } = req.params;
-//   console.log(userId, storyCollectionId);
-//   try {
-//     const filteredUser = await User.findById(userId);
-
-//     if (filteredUser) {
-//       const filteredStoryCollection = await StoryCollection.findById(
-//         storyCollectionId
-//       );
-//       res
-//         .status(200)
-//         .json({ response: filteredStoryCollection, success: true });
 //     } else {
 //       res.status(404).json({ response: error, success: false });
 //     }
@@ -358,8 +358,8 @@ app.patch(
             userId,
             {
               $push: {
-                storyCollection: filteredStoryCollection
-              }
+                storyCollection: filteredStoryCollection,
+              },
             },
             { new: true }
           );

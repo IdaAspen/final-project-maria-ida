@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import StoryPage from './StoryPage';
-// import { API_URL } from '../utils/constants';
 import { showCharacters } from '../reducers/dynamicData';
 import { shuffleArray } from '../utils/shuffleArray';
-// import user from '../reducers/user';
 import Login from '../components/Login';
 import storyElements from '../reducers/storyElements';
 import BaseStoryRoof from '../components/BaseStoryRoof/BaseStoryRoof';
@@ -16,7 +13,6 @@ const CreateStory = () => {
   const selectedCharacter = useSelector(
     (store) => store.storyElements.selectedCharacter
   );
-  // const storyPage = useSelector((store) => store.storyElements.storyPage);
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const navigate = useNavigate();
@@ -28,14 +24,10 @@ const CreateStory = () => {
 
   // Listens to onClick and set the selectedCharacter
   const onAnswerSubmit = (name, image) => {
-    // if (selectedCharacter) return;
-    // preventing to add several characters to a story
-
     dispatch(storyElements.actions.setSelectedCharacter({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
     navigate('/skapasaga');
   };
-  console.log('selectedCharacter', selectedCharacter);
 
   if (!accessToken) {
     return <Login />;

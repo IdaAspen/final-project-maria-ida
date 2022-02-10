@@ -61,7 +61,7 @@ const BurgerList = ({ close }) => {
                 isActive ? 'menu-link-active' : 'menu-link'
               }
             >
-              <p onClick={onAboutClick}>Om sagoväljaren</p>
+              <p onClick={onAboutClick}>Om | About</p>
             </NavLink>
           </li>
         </ul>

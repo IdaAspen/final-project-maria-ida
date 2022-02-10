@@ -71,7 +71,7 @@ const SectionRed = styled.div`
   border-radius: 10px;
   box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
   min-height: 60vh;
-  background-color: var(--red);
+  background-color: var(--focus);
 `;
 
 const ImageButtonWrapper = styled.div`

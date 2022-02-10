@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { API_URL } from '../utils/constants';
 import rainbowLoader from './rainbowLoader';
-// Eller ska detta vara en API-fetch istället med olika endpoints, lafde in en json-fil i BE?
 
 export const dynamicData = createSlice({
   name: 'dynamicData',
@@ -12,7 +11,7 @@ export const dynamicData = createSlice({
     tools: [],
     places: [],
     friends: [],
-    friendsNames: []
+    friendsNames: [],
   },
   reducers: {
     setCharacters: (store, action) => {
@@ -38,8 +37,8 @@ export const dynamicData = createSlice({
     },
     setError: (store, action) => {
       store.error = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const showCharacters = (accessToken) => {
@@ -48,8 +47,8 @@ export const showCharacters = (accessToken) => {
     const options = {
       method: 'GET',
       headers: {
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     };
     fetch(API_URL('character'), options)
       .then((res) => res.json())
@@ -71,8 +70,8 @@ export const showSounds = (accessToken) => {
     const options = {
       method: 'GET',
       headers: {
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     };
     fetch(API_URL('sound'), options)
       .then((res) => res.json())
@@ -94,8 +93,8 @@ export const showFeelings = (accessToken) => {
     const options = {
       method: 'GET',
       headers: {
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     };
     fetch(API_URL('feeling'), options)
       .then((res) => res.json())
@@ -117,8 +116,8 @@ export const showTools = (accessToken) => {
     const options = {
       method: 'GET',
       headers: {
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     };
     fetch(API_URL('tool'), options)
       .then((res) => res.json())
@@ -140,8 +139,8 @@ export const showPlaces = (accessToken) => {
     const options = {
       method: 'GET',
       headers: {
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     };
     fetch(API_URL('place'), options)
       .then((res) => res.json())
@@ -163,8 +162,8 @@ export const showFriends = (accessToken) => {
     const options = {
       method: 'GET',
       headers: {
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     };
     fetch(API_URL('friend'), options)
       .then((res) => res.json())
@@ -186,8 +185,8 @@ export const showFriendsNames = (accessToken) => {
     const options = {
       method: 'GET',
       headers: {
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     };
     fetch(API_URL('friendname'), options)
       .then((res) => res.json())

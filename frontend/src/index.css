@@ -17,8 +17,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fdf4dc;
-  overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 button {

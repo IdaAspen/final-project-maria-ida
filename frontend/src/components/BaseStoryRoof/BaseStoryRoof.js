@@ -10,15 +10,8 @@ import BaseStory6 from './BaseStory6';
 import BaseStory7 from './BaseStory7';
 import Summary from '../Summary';
 
-import storyElements from '../../reducers/storyElements';
-
-// import CreateStory from '../components/CreateStory';
-
 const BaseStoryRoof = () => {
-  const elements = useSelector((store) => store.storyElements.selectedElements);
   const storyPage = useSelector((store) => store.storyElements.storyPage);
-
-  console.log('SELECTED ELEMENTS', elements);
 
   if (storyPage === 1) {
     return <BaseStory1 />;

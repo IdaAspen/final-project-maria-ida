@@ -81,13 +81,13 @@ const StoryCollection = mongoose.model(
 );
 
 // Schema for dynamicData.json
-// const ElementSchema = new mongoose.Schema({
-//   id: Number,
-//   name: String,
-//   image: String
-// });
+const ElementSchema = new mongoose.Schema({
+  id: Number,
+  name: String,
+  image: String,
+});
 
-// const Element = mongoose.model('Element', ElementSchema);
+const Element = mongoose.model('Element', ElementSchema);
 
 // schema for uploaded images
 const StoryImg = mongoose.model('StoryImg', {
@@ -101,16 +101,7 @@ const app = express();
 // Allow all domains
 app.use(cors());
 
-// Only allow one:
-// app.use(cors({
-//   origin: 'https://my-frontend.com'
-// }));
-
 app.use(express.json());
-// images
-// app.use('/media', express.static('public')); /////////////////// media //////////////
-
-// Add seedDatabase function
 
 // Error handling if the server is not running
 app.use((req, res, next) => {
@@ -138,25 +129,18 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
-// Start defining routes here
-// app.get('/', (req, res) => {
-//   res.send(
-//     'This is the backend of the final project by Maria Petersson and Ida Aspen. Please visit <a href="#">frontend</a> for the main page!'
-//   );
-// });
-
-// What you see when you are logged in added here, change "main"
-app.get('/', authenticateUser);
 app.get('/', (req, res) => {
-  // const secrets = await Secret.find({});
-  res.status(201).json({ response: 'ROAAAAR', success: true });
+  res.send({
+    Message:
+      'This is the backend of the final project by Maria Petersson and Ida Aspen. Please visit <a href="#">frontend</a> for the main page!',
+    Contributors: '',
+  });
 });
 
-// POST request for creating a user
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body;
   try {
-    const salt = bcrypt.genSaltSync(); // Create a randomizer to prevent to unhash it
+    const salt = bcrypt.genSaltSync();
     const strongPassword =
       /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{8,20}$/;
 
@@ -247,7 +231,7 @@ app.post('/storycollection', async (req, res) => {
   }
 });
 
-// maria testar GET
+// get bookshelf
 app.get('/storycollection/userid/:userid', async (req, res) => {
   const { userId, storyCollectionId } = req.params;
   console.log(userId, storyCollectionId);
@@ -269,76 +253,6 @@ app.get('/storycollection/userid/:userid', async (req, res) => {
   }
 });
 
-//nytt get.test
-//need to: find user, see if user has storycollection, fetch the id and then fetch the storycollection.
-// app.get('/storycollection/user/:userid', async (req, res) => {
-//   const { userId } = req.params;
-//   try {
-//     const storyUser = await User.findById(userId).populate('storyCollection');
-//     if (storyUser) {
-//       res.status(200).json({ response: storyUser, success: true });
-//     } else {
-//       res.status(404).json({ response: error, success: false });
-//     }
-//   } catch (error) {
-//     res.status(400).json({ response: error, success: false });
-//   }
-// });
-
-// IDAS START
-// app.get("/storycollection/:categoryId", authenticateUser);
-// app.get('/storycollection/:userId', async (req, res) => {
-//   const { userId } = req.params;
-//   try {
-//     const storyList = await StoryCollection.find({userId})
-//     // mer kod
-//     res.status(200).json({ response: storyCollection, success: true });
-//   } catch (error) {
-//     res.status(400).json({ response: error, success: false });
-//   }
-// });
-
-//IDAS TEST
-// app.get('/storycollection/:userId', authenticateUser);
-// app.get('/storycollection/:userId', async (req, res) => {
-//   const { userId } = req.params;
-
-//   try {
-//     const filteredStoryList = await StoryCollection.find(userId);
-//     if (filteredStoryCollection) {
-//       res.status(200).json({ response: filteredStoryList, success: true });
-//     } else {
-//       res.status(404).json({ response: error, success: false });
-//     }
-//   } catch (error) {
-//     res.status(400).json({ response: error, success: false });
-//   }
-// });
-
-//MARIA TESTAR NYTT
-// app.post("/storycollection/user/:userId", async (req, res) => {
-//   const { description, character } = req.body;
-//   const { userId } = req.params;
-
-//   try {
-//     const queriedUser = await User.findById(userId);
-
-//     if (queriedUser) {
-//       const newStoryCollection = await new storyCollection({
-//         title,
-//         description,
-//         user: queriedUser
-//       }).save();
-//       res.status(200).json({ response: newStory, success: true })
-//     } else {
-//       res.status(404).json({ response: "User not found", success: false });
-//     }
-//   } catch (error) {
-//     res.status(400).json({ response: error, success: false });
-//   }
-//slut på nytt test
-
-// MARIAS tidigare kod
 // PATCH req for adding a story-id to the user's id (the save-my-story-moment-button in the end)
 app.patch(
   '/user/:userId/storycollection/:storyCollectionId',

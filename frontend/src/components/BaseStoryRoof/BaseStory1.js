@@ -11,9 +11,6 @@ const BaseStory1 = () => {
     (store) => store.storyElements.selectedCharacter
   );
   const sounds = useSelector((store) => store.dynamicData.sounds);
-
-  // const accessToken = useSelector((store) => store.user.accessToken);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

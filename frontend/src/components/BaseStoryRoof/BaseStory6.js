@@ -26,7 +26,7 @@ const BaseStory6 = () => {
     dispatch(storyElements.actions.setStoryPage());
   };
 
-  // gets 4 random objects from elements-array and push it to a new array
+  // gets random objects from elements-array and push it to a new array
   const randomObjects = () => {
     const randomFriendsName = [];
     for (var i = 0; i < 5; i++) {
@@ -39,7 +39,6 @@ const BaseStory6 = () => {
     return randomFriendsName;
   };
 
-  console.log(randomObjects());
   return (
     <BaseContainer>
       <SectionGreen>

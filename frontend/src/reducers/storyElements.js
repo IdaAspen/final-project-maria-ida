@@ -5,32 +5,30 @@ const initialState = {
   selectedElements: {
     sound: {
       name: null,
-      image: null
+      image: null,
     },
     feeling: {
       name: null,
-      image: null
+      image: null,
     },
     tool: {
       name: null,
-      image: null
+      image: null,
     },
     place: {
       name: null,
-      image: null
+      image: null,
     },
     friend: {
       name: null,
-      image: null
+      image: null,
     },
     friendsName: {
       name: null,
-      image: null
-    }
+      image: null,
+    },
   },
-  history: [],
-  storyPage: 0
-  // storyId:
+  storyPage: 0,
 };
 
 const storyElements = createSlice({
@@ -41,22 +39,7 @@ const storyElements = createSlice({
     setSelectedCharacter: (store, action) => {
       store.selectedCharacter = action.payload;
     },
-
-    // save the last chosen element in history
-    // setSelectedElements: (store, action) => {
-    //   const { element, image } = action.payload;
-    //   store.history = [...store.history, store.selectedElements];
-    //   // store.selectedElements = action.payload;
-    //   store.selectedElements.push({
-    //     element,
-    //     image
-    //   });
-    // },
-
     setSelectedSound: (store, action) => {
-      // const { name, image } = action.payload;
-      // store.history = [...store.history, store.selectedElements];
-      // store.selectedElements = action.payload;
       store.selectedElements.sound = action.payload;
     },
     setSelectedFeeling: (store, action) => {
@@ -80,11 +63,8 @@ const storyElements = createSlice({
 
     restartGame: (store) => {
       return initialState;
-    }
-    // submitDynamicData: (state, action) => {
-    //   // Code that triggers when the user selects data for their story
-    // }
-  }
+    },
+  },
 });
 
 export default storyElements;

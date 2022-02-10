@@ -1,16 +1,12 @@
 import React from 'react';
-import { useSelector, useDispatch, batch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import storyElements from '../reducers/storyElements';
-import { story } from '../reducers/story';
-import { onPostStory } from '../reducers/story';
 import StoryButton from '../styledComponents/StoryButton';
 import styled from 'styled-components';
 
 const Summary = () => {
   const username = useSelector((store) => store.user.username);
-  // const userId = useSelector((store) => store.user.userId);
-  const accessToken = useSelector((store) => store.user.accessToken);
   const character = useSelector(
     (store) => store.storyElements.selectedCharacter
   );
@@ -32,24 +28,15 @@ const Summary = () => {
   const friendsName = useSelector(
     (store) => store.storyElements.selectedElements.friendsName
   );
-  const selectedElements = useSelector(
-    (store) => store.storyElements.selectedElements
-  );
-  // const savedElements = useSelector((store) => store.story.savedElementsArray);
-  // const savedCharacter = useSelector((store) => store.story.savedCharacter);
-
-  const storyArray = selectedElements;
-  const storyCharacter = character;
-
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSave = () => {
-    batch(() => {
-      dispatch(onPostStory(accessToken, storyArray, storyCharacter));
-      dispatch(story.actions.setSavedElementsArray(storyArray));
-      dispatch(story.actions.setSavedCharacter(storyCharacter));
-    });
+    // batch(() => {
+    //   dispatch(onPostStory(accessToken, storyArray, storyCharacter));
+    //   dispatch(story.actions.setSavedElementsArray(storyArray));
+    //   dispatch(story.actions.setSavedCharacter(storyCharacter));
+    // });
     navigate('/bokhylla');
   };
 
@@ -57,10 +44,6 @@ const Summary = () => {
     dispatch(storyElements.actions.restartGame());
     navigate('/skapasaga');
   };
-
-  console.log('SELECTED ELEMETS', selectedElements);
-  console.log('STORY ARRAY', storyArray);
-  console.log('SAVED CHARACTER', storyCharacter);
 
   return (
     <SummarySection>
@@ -81,9 +64,9 @@ const Summary = () => {
       <p>{`...${tool.name}, tänker ${character.name}. 
       Inne i förrådet kan det nog finnas ${tool.name}. Åhhh det är så tungt att bära ut. Det hade varit lättare om jag haft en kompis. 
       Till slut får ${character.name} ut ${tool.name} från förrådet och tar sig närmare taket.`}</p>
-      <div className="img-container">
+      <ImageContainer>
         <img src={feeling.image} alt={feeling.name} />
-      </div>
+      </ImageContainer>
       <p>{`Hej och hå. Det är tungt. Och ${feeling.name}. Det känns som att ${character.name} är högst upp ${place.name} däruppe på taket.`}</p>
       <ImageContainer>
         <img src={place.image} alt={place.name} />

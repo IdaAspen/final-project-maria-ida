@@ -248,7 +248,7 @@ app.post('/storycollection', async (req, res) => {
 });
 
 // maria testar GET
-app.get('/storycollection/:userid', async (req, res) => {
+app.get('/storycollection/userid/:userid', async (req, res) => {
   const { userId, storyCollectionId } = req.params;
   console.log(userId, storyCollectionId);
   try {

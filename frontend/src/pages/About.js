@@ -23,8 +23,8 @@ const About = () => {
             Technigo frontend bootcamp. Idén till sagomaskinen kommer från våra
             barn. De har fått vara med hitta på olika val som ska göras i sagan,
             och barnens namn har också smugit sig in i några av valen.
-            Sagomaskinen är byggd med React redux, Node.js, MongoDB, mongoose,
-            cloudinary och styled components.
+            Sagomaskinen är byggd med React redux, Node.js, RESTful API,
+            MongoDB, mongoose, cloudinary och styled components.
           </p>
         </SectionAbout>
         <AboutImg>
@@ -84,22 +84,22 @@ const About = () => {
         <SectionAbout>
           <h2>About Sagomaskinen</h2>
           <p>
-            Sagomaskinen means The fairy tale machine, and allows you to build
-            your own story. You can choose between different characters, things
-            and places - and your choices show up in the story. In the end you
-            can read the finished result - and the you can build another one,
-            and another one, and another one.
+            Sagomaskinen means The story machine, and allows you to build your
+            own story. You can choose between different characters, things and
+            places - and your choices show up in the story. In the end you can
+            read the finished result - and the you can build another one, and
+            another one, and another one.
           </p>
 
           <h3>Who made this?</h3>
           <p>
-            We who built Sagomaskinen are Ida Aspen and Maria Petersson. E are
+            We who built Sagomaskinen are Ida Aspen and Maria Petersson. We are
             frontend developers and this is our final project in the Technigo
             frontend bootcamp. The idea to this project comes from our kids.
             They have been a part in choosing som of the element and any you
             might spot their names in the storyline. This site is built with
-            React redux, Node.js, MongoDB, mongoose, cloudinary and styled
-            components.
+            React redux, Node.js, RESTful API, MongoDB, mongoose, cloudinary and
+            styled components.
           </p>
         </SectionAbout>
       </SectionGreen>
@@ -118,6 +118,9 @@ const BaseContainer = styled.div`
   h3 {
     margin-left: 2%;
   }
+  @media (max-width: 765px) {
+    width: 90%;
+  }
 `;
 const SectionAbout = styled.div`
   padding: 5% 0%;
@@ -134,6 +137,11 @@ const AboutImg = styled.div`
 
     border-radius: 50%;
     box-shadow: 1px 1px 5px 0px rgb(0 0 0 / 50%);
+
+    @media (max-width: 767px) {
+      width: 100px;
+      height: 100px;
+    }
   }
   p {
     margin: 0%;
@@ -142,11 +150,12 @@ const AboutImg = styled.div`
     color: var(--focus);
     text-decoration: none;
   }
+
   a:hover {
     color: var(--background);
   }
-  a:visited {
-    color: var(--focus);
+  @media (max-width: 765px) {
+    font-size: 10px;
   }
 `;
 
@@ -167,5 +176,9 @@ const SectionGreen = styled.div`
 
   p {
     padding-bottom: 5%;
+
+    @media (max-width: 765px) {
+      font-size: 12px;
+    }
   }
 `;

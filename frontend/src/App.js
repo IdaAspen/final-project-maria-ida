@@ -7,8 +7,7 @@ import user from './reducers/user';
 import { dynamicData } from './reducers/dynamicData';
 import storyElements from './reducers/storyElements';
 
-// import BaseStory from './components/BaseStory';
-import Login from './components/Login';
+import Login from './pages/Login';
 import NotFound from './components/NotFound';
 import Main from './pages/Main';
 import CreateStory from './pages/CreateStory';
@@ -16,12 +15,10 @@ import Bookshelf from './pages/Bookshelf';
 import About from './pages/About';
 import Navbar from './components/Navbar';
 
-// import CreateStory from './components/CreateStory';
-
 const reducer = combineReducers({
   user: user.reducer,
   dynamicData: dynamicData.reducer,
-  storyElements: storyElements.reducer,
+  storyElements: storyElements.reducer
 });
 
 const store = configureStore({ reducer });

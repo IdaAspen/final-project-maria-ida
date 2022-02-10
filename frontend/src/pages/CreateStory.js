@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { showCharacters } from '../reducers/dynamicData';
 import { shuffleArray } from '../utils/shuffleArray';
-import Login from '../components/Login';
 import storyElements from '../reducers/storyElements';
 import BaseStoryRoof from '../components/BaseStoryRoof/BaseStoryRoof';
 import styled from 'styled-components';
@@ -22,6 +21,12 @@ const CreateStory = () => {
     dispatch(showCharacters());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (!accessToken) {
+      navigate('/login');
+    }
+  }, [accessToken, navigate]);
+
   // Listens to onClick and set the selectedCharacter
   const onAnswerSubmit = (name, image) => {
     dispatch(storyElements.actions.setSelectedCharacter({ name, image }));
@@ -29,9 +34,6 @@ const CreateStory = () => {
     navigate('/skapasaga');
   };
 
-  if (!accessToken) {
-    return <Login />;
-  }
   if (selectedCharacter != null) {
     return <BaseStoryRoof />;
   } else {
@@ -65,6 +67,7 @@ const CreateStoryContainer = styled.div`
   padding: 5% 2% 15% 2%;
   width: 80%;
   margin: 0 auto;
+  margin-top: 3%;
   background-color: var(--yellow);
   border-radius: 10px;
   box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);

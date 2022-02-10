@@ -16,8 +16,6 @@ const BaseStory5 = () => {
     (store) => store.storyElements.selectedElements.place
   );
   const friends = useSelector((store) => store.dynamicData.friends);
-  // const accessToken = useSelector((store) => store.user.accessToken);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,12 +35,13 @@ const BaseStory5 = () => {
     return randomFriends;
   };
 
+  const newFriendsArray = randomObjects();
+
   const onAnswerSubmit = (name, image) => {
     dispatch(storyElements.actions.setSelectedFriend({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
 
-  console.log('RANDOMOBJECT', randomObjects());
   return (
     <BaseContainer>
       <SectionBlue>
@@ -54,11 +53,11 @@ const BaseStory5 = () => {
 
       <h3>Vem då?</h3>
       <ImageButtonWrapper>
-        {friends.map((item) => (
+        {newFriendsArray?.map((item) => (
           <ImageButton
-            key={item.name}
-            onClick={() => onAnswerSubmit(item.name, item.image)}
-            text={<img src={item.image} alt={item.image} />}
+            key={item?.name}
+            onClick={() => onAnswerSubmit(item?.name, item?.image)}
+            text={<img src={item?.image} alt={item?.name} />}
           />
         ))}
       </ImageButtonWrapper>
@@ -85,6 +84,11 @@ const SectionBlue = styled.div`
   box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
   min-height: 60vh;
   background-color: var(--blue);
+
+  @media (min-width: 767px) {
+    min-height: 40vh;
+    font-size: 18px;
+  }
 `;
 
 const ImageButtonWrapper = styled.div`
@@ -103,5 +107,9 @@ const ImageContainer = styled.div`
     margin: 5px;
     border-radius: 50%;
     box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
+  }
+
+  @media (min-width: 767px) {
+    padding-bottom: 2%;
   }
 `;

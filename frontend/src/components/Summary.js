@@ -32,14 +32,8 @@ const Summary = () => {
   const navigate = useNavigate();
 
   const onSave = () => {
-    // batch(() => {
-    //   dispatch(onPostStory(accessToken, storyArray, storyCharacter));
-    //   dispatch(story.actions.setSavedElementsArray(storyArray));
-    //   dispatch(story.actions.setSavedCharacter(storyCharacter));
-    // });
     navigate('/bokhylla');
   };
-
   const onRestart = () => {
     dispatch(storyElements.actions.restartGame());
     navigate('/skapasaga');
@@ -54,6 +48,9 @@ const Summary = () => {
       </ImageContainer>
       <p>{`Det var en helt vanlig dag. Ingen hade kunnat ana det som skulle hända. ${character.name} var bara hemma och åt lite nötter, för det var ${character.name}s bästa grej att knapra på. Ja, förutom pinnar, chips och det översta lagret på lasagne. De var också bra grejer att knapra på.
       Men mitt i allt knaprande hörde ${character.name} någonting.`}</p>
+      <ImageContainer>
+        <img src={sound.image} alt={sound.name} />
+      </ImageContainer>
       <p>{`${sound.name}!!!! 
       ${character.name} stelnade till. Vad var det? 
       Det kändes plötsligt lite ${feeling.name}. 
@@ -73,12 +70,17 @@ const Summary = () => {
       </ImageContainer>
       <p>{` Allt ser liksom lite mystiskt och magiskt ut. Och nu hör ${sound.name} igen! Det kommer bakifrån skorstenen. ${character.name} går runt (men försiktig, för det är ju jättehögt upp), och ser en ${friend.name} som skalar nötter. 
       Tänk att ett ${sound.name} kom från de här små nötterna.`}</p>
+      <ImageContainer>
+        <img src={friendsName.image} alt={friendsName.name} />
+      </ImageContainer>
       <p>{`– Hej, säger ${friend.name}n. Jag heter ${friendsName.name}. Vill du ha en nöt av mig?`}</p>
-      <p>{`– hej, svarar ${character.name}. Jättegärna. Jag älskar faktiskt nötter.`}</p>
+      <p>{`– Hej, svarar ${character.name}. Jättegärna. Jag älskar faktiskt nötter.`}</p>
       <p>{`– Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friend.name}n.`}</p>
       <p>{`– Ja, jag vet, säger ${character.name} och så skrattar de båda två.`}</p>
-      <StoryButton onClick={onRestart} text="Börja om" />
-      <StoryButton onClick={onSave} text="Spara saga" />
+      <StoryButtonWrapper>
+        <StoryButton onClick={onRestart} text="Börja om" />
+        <StoryButton onClick={() => onSave} text="Spara saga" />
+      </StoryButtonWrapper>
     </SummarySection>
   );
 };
@@ -89,6 +91,7 @@ const SummarySection = styled.section`
   padding: 15% 5%;
   width: 80%;
   margin: 0 auto;
+  margin-top: 3%;
   background-color: var(--links);
 
   border-radius: 10px;
@@ -106,4 +109,11 @@ const ImageContainer = styled.div`
     border-radius: 50%;
     box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
   }
+`;
+
+const StoryButtonWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
 `;

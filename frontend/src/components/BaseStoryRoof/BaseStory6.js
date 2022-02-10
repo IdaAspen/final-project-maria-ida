@@ -13,7 +13,6 @@ const BaseStory6 = () => {
     (store) => store.storyElements.selectedElements.friend
   );
   const friendsNames = useSelector((store) => store.dynamicData.friendsNames);
-  // const accessToken = useSelector((store) => store.user.accessToken);
 
   const dispatch = useDispatch();
 
@@ -39,25 +38,27 @@ const BaseStory6 = () => {
     return randomFriendsName;
   };
 
+  const newFriendsNameArray = randomObjects();
+
   return (
     <BaseContainer>
       <SectionGreen>
         <ImageContainer>
           <img src={friend.image} alt={friend.name} />
         </ImageContainer>
-        <p>{`Där sitter en ${friend.name}  och skalar nötter. Tänk att ett ${sound.name} kom från de här små nötterna. – Hej, säger ${friend.name}n. Jag heter...`}</p>
+        <p>{`Där sitter en ${friend.name} och skalar nötter. Tänk att ett ${sound.name} kom från de här små nötterna. – Hej, säger ${friend.name}n. Jag heter...`}</p>
       </SectionGreen>
 
       <h3>Vad heter den?</h3>
-      <div>
-        {friendsNames.map((item) => (
+      <StoryButtonWrapper>
+        {newFriendsNameArray?.map((item) => (
           <StoryButton
-            key={item.name}
-            onClick={() => onAnswerSubmit(item.name, item.image)}
-            text={item.name}
+            key={item?.name}
+            onClick={() => onAnswerSubmit(item?.name, item?.image)}
+            text={item?.name}
           />
         ))}
-      </div>
+      </StoryButtonWrapper>
     </BaseContainer>
   );
 };
@@ -81,6 +82,11 @@ const SectionGreen = styled.div`
   box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
   min-height: 60vh;
   background-color: var(--green);
+
+  @media (min-width: 767px) {
+    min-height: 40vh;
+    font-size: 18px;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -94,4 +100,15 @@ const ImageContainer = styled.div`
     border-radius: 50%;
     box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
   }
+
+  @media (min-width: 767px) {
+    padding-bottom: 2%;
+  }
+`;
+
+const StoryButtonWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
 `;

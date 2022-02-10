@@ -9,28 +9,22 @@ const BurgerList = ({ close }) => {
 
   const dispatch = useDispatch();
   const accessToken = useSelector((store) => store.user.accessToken);
-  // const forwardRef = useRef(null);
 
   const onCreateStoryClick = () => {
     navigate('/skapasaga');
-    // setVisible(false);
     dispatch(storyElements.actions.restartGame());
   };
   const onBookshelfClick = () => {
     navigate('/bokhylla');
-    // setVisible(false);
   };
   const onStartClick = () => {
     dispatch(storyElements.actions.restartGame());
     navigate('/');
-    // setVisible(false);
   };
   const onAboutClick = () => {
     navigate('/om');
-    // setVisible(false);
   };
   const onLogout = () => {
-    //  dispatch(user.actions.setUsername(null));
     dispatch(user.actions.setAccessToken(null));
     navigate('/');
   };
@@ -42,7 +36,6 @@ const BurgerList = ({ close }) => {
   if (!accessToken) {
     return (
       <div className="menu">
-        {/* <div className="menu" ref={forwardRef}> */}
         <ul>
           <li onClick={close}>
             <NavLink

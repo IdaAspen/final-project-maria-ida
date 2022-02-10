@@ -65,28 +65,3 @@ const MainButtonWrapper = styled.div`
   align-items: center;
   margin: 0 auto;
 `;
-
-// const StoryButton = styled.button.attrs({ type: 'submit' })`
-//   margin: 5px;
-//   display: inline-block;
-//   height: 38px;
-//   padding: 0 30px;
-//   color: var(--attribute);
-//   text-align: center;
-//   font-size: 11px;
-//   font-weight: 600;
-//   line-height: 38px;
-//   letter-spacing: 0.1rem;
-//   text-transform: uppercase;
-//   text-decoration: none;
-//   white-space: nowrap;
-//   background-color: transparent;
-//   border-radius: 4px;
-//   cursor: pointer;
-//   box-sizing: border-box;
-
-//   &:hover {
-//     color: var(--focus);
-//     background-color: var(--button);
-//   }
-// `;

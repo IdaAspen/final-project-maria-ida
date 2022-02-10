@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../utils/constants';
 import user from '../reducers/user';
 import styled from 'styled-components';
-import './login.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -59,25 +58,20 @@ const Login = () => {
   return (
     <LoginContainer>
       <StartCard>
-        {/* <h1>SAGOMASKINEN</h1>
-        <h2>
-          Följ med in i sagomaskinens värld och bestäm ingredienserna i din egen
-          saga.
-        </h2> */}
         <StartImage
           src="https://res.cloudinary.com/cloudinary-story/image/upload/v1644223877/storyimg/soglivvtho5tsg7ptigf.jpg"
           alt="huvudbild"
         ></StartImage>
       </StartCard>
       <LoginCard>
-        <label htmlFor="signup">Registrera dig</label>
+        <Label htmlFor="signup">Registrera dig</Label>
         <input
           id="signup"
           type="radio"
           checked={mode === 'signup'}
           onChange={() => setMode('signup')}
         ></input>
-        <label htmlFor="signin">Logga in</label>
+        <Label htmlFor="signin">Logga in</Label>
         <input
           id="signin"
           type="radio"
@@ -86,22 +80,22 @@ const Login = () => {
         ></input>
 
         <Form onSubmit={onFormSubmit}>
-          <label htmlFor="username"></label>
-          <input
+          <Label htmlFor="username"></Label>
+          <InputField
             id="username"
             type="text"
             placeholder="Användarnamn"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          ></input>
-          <label htmlFor="password"></label>
-          <input
+          ></InputField>
+          <Label htmlFor="password"></Label>
+          <InputField
             id="password"
             type="password"
             placeholder="Lösenord"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          ></input>
+          ></InputField>
           <LoginButton disabled={password.length < 8 || password.length > 20}>
             Logga in
           </LoginButton>
@@ -186,8 +180,31 @@ const Form = styled.form`
   background-color: var(--yellow);
 
   input,
-  button,
-  label {
+  button {
     margin: 5px;
+  }
+`;
+
+const Label = styled.label`
+  margin: 5px;
+  color: var(--attribute);
+
+  @media (max-width: 400px) {
+    font-size: 12px;
+  }
+`;
+
+const InputField = styled.input`
+  height: 38px;
+  padding: 6px 10px;
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+
+  &:focus {
+    border: 1px solid #dec;
+    outline: 0;
   }
 `;

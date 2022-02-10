@@ -15,8 +15,7 @@ const BaseStory7 = () => {
   const friendsName = useSelector(
     (store) => store.storyElements.selectedElements.friendsName.name
   );
-  // const accessToken = useSelector((store) => store.user.accessToken);
-  // const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -32,15 +31,18 @@ const BaseStory7 = () => {
   return (
     <BaseContainer>
       <SectionYellow>
+        <ImageContainer>
+          <img src={friendsName.image} alt={friendsName.name} />
+        </ImageContainer>
         <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig?`}</p>{' '}
-        <p>{`– hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter.`}</p>
+        <p>{`– Hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter.`}</p>
         <p>{`– Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friend}n.`}</p>
         <p>{`– Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>
       </SectionYellow>
 
       <h3>Vill du läsa hela sagan och spara den, eller starta om?</h3>
       <StoryButtonWrapper>
-        <StoryButton text="Visa hela sagan" onClick={() => onAnswerSubmit()} />
+        <StoryButton text="Visa sagan" onClick={() => onAnswerSubmit()} />
         <StoryButton text="Börja om" onClick={onRestart} />
       </StoryButtonWrapper>
     </BaseContainer>
@@ -66,11 +68,33 @@ const SectionYellow = styled.div`
   box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
   min-height: 60vh;
   background-color: var(--yellow);
+
+  @media (min-width: 767px) {
+    min-height: 40vh;
+    font-size: 18px;
+  }
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
+  }
+
+  @media (min-width: 767px) {
+    padding-bottom: 2%;
+  }
 `;
 
 const StoryButtonWrapper = styled.div`
-  display: grid;
-  grid-gap: 5%;
-  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
+  justify-content: center;
 `;

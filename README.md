@@ -1,4 +1,4 @@
-# Sago-maskinen
+# Sagomaskinen
 
 ---
 
@@ -28,3 +28,6 @@ Ida Aspen [GitHub profile](https://github.com/IdaAspen)
 
 - Figma
 - Trello
+
+Link to the live backend: #
+Link to the live frontend: #

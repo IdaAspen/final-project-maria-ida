@@ -17,7 +17,6 @@ const BaseStory3 = () => {
     (store) => store.storyElements.selectedElements.sound
   );
   const tools = useSelector((store) => store.dynamicData.tools);
-  // const accessToken = useSelector((store) => store.user.accessToken);
 
   const dispatch = useDispatch();
 
@@ -72,6 +71,11 @@ const SectionRed = styled.div`
   box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
   min-height: 60vh;
   background-color: var(--focus);
+
+  @media (min-width: 767px) {
+    min-height: 40vh;
+    font-size: 18px;
+  }
 `;
 
 const ImageButtonWrapper = styled.div`
@@ -90,5 +94,9 @@ const ImageContainer = styled.div`
     margin: 5px;
     border-radius: 50%;
     box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
+  }
+
+  @media (min-width: 767px) {
+    padding-bottom: 2%;
   }
 `;

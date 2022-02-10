@@ -8,6 +8,7 @@ const StoryButton = ({ onClick, text }) => {
 export default StoryButton;
 
 const StoryBtn = styled.button.attrs({ type: 'submit' })`
+  width: 150px;
   margin: 5px;
   display: inline-block;
   height: 38px;

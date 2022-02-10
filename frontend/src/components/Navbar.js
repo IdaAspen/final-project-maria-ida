@@ -34,8 +34,12 @@ const Nav = styled.nav`
 
 const NavBarText = styled.p`
   color: var(--attribute);
-  font-size: 10px;
+  font-size: 11px;
   align-self: center;
   margin-left: 25px;
   margin-right: 10px;
+
+  @media (min-width: 767px) {
+    font-size: 14px;
+  }
 `;

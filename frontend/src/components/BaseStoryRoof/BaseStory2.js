@@ -14,9 +14,6 @@ const BaseStory2 = () => {
     (store) => store.storyElements.selectedElements.sound
   );
   const feelings = useSelector((store) => store.dynamicData.feelings);
-
-  // const accessToken = useSelector((store) => store.user.accessToken);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,10 +24,13 @@ const BaseStory2 = () => {
     dispatch(storyElements.actions.setSelectedFeeling({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-  console.log(feelings);
+
   return (
     <BaseContainer>
       <SectionOrange>
+        <ImageContainer>
+          <img src={sound.image} alt={sound.name} />
+        </ImageContainer>
         <p>{`${sound.name}!!!! ${character} stelnade till. Vad var det? Det kändes plötsligt lite... `}</p>
       </SectionOrange>
 
@@ -67,10 +67,36 @@ const SectionOrange = styled.div`
   box-shadow: 0 2px 4px 2px rgb(66 66 66 / 16%);
   min-height: 60vh;
   background-color: var(--orange);
+
+  @media (min-width: 767px) {
+    min-height: 40vh;
+    font-size: 18px;
+  }
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 8px 0px rgb(0 0 0 / 50%);
+  }
+
+  @media (min-width: 767px) {
+    padding-bottom: 2%;
+  }
 `;
 
 const ImageButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+
+  @media (min-width: 767px) {
+    padding-bottom: 2%;
+  }
 `;

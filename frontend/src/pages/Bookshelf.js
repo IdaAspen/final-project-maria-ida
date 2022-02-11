@@ -25,8 +25,8 @@ const Bookshelf = () => {
   return (
     <BookshelfSection>
       <h1>BOKHYLLA... coming soon</h1>
-      <StoryButton onClick={{}} text="Visa sagor" />
-      <StoryButton onClick={onCreateStoryClick} text="Ny saga" />
+      <StoryButton onClick={() => onCreateStoryClick()} text="Visa sagor" />
+      <StoryButton onClick={() => onCreateStoryClick()} text="Ny saga" />
     </BookshelfSection>
   );
 };

@@ -43,7 +43,7 @@ const BaseStory7 = () => {
       <h3>Vill du läsa hela sagan och spara den, eller starta om?</h3>
       <StoryButtonWrapper>
         <StoryButton text="Visa sagan" onClick={() => onAnswerSubmit()} />
-        <StoryButton text="Börja om" onClick={onRestart} />
+        <StoryButton text="Börja om" onClick={() => onRestart()} />
       </StoryButtonWrapper>
     </BaseContainer>
   );

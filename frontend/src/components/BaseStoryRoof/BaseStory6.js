@@ -52,7 +52,7 @@ const BaseStory6 = () => {
       <StoryButtonWrapper>
         {randomArray(friendsNames)?.map((item) => (
           <StoryButton
-            key={item?.id}
+            key={item?.name}
             onClick={() => onAnswerSubmit(item?.name, item?.image)}
             text={item?.name}
           />

@@ -13,7 +13,7 @@ const BaseStory7 = () => {
     (store) => store.storyElements.selectedElements.friend.name
   );
   const friendsName = useSelector(
-    (store) => store.storyElements.selectedElements.friendsName.name
+    (store) => store.storyElements.selectedElements.friendsName
   );
 
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const BaseStory7 = () => {
         <ImageContainer>
           <img src={friendsName.image} alt={friendsName.name} />
         </ImageContainer>
-        <p>{`Jo, jag heter ${friendsName}. Vill du ha en nöt av mig?`}</p>{' '}
+        <p>{`Jo, jag heter ${friendsName.name}. Vill du ha en nöt av mig?`}</p>{' '}
         <p>{`– Hej, svarar ${character}. Jättegärna. Jag älskar faktiskt nötter.`}</p>
         <p>{`– Det gör jag med. Och de här låter så roligt när man skalar dem, säger ${friend}n.`}</p>
         <p>{`– Ja, jag vet, säger ${character} och så skrattar de båda två.`}</p>

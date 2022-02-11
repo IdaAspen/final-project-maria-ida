@@ -64,7 +64,7 @@ const About = () => {
               <a href="mailto:maria@wearebridget.com">Mail </a>
               <a
                 href="https://www.linkedin.com/in/maria-petersson-copy-frontend-developer/"
-                tabindex="0"
+                tabIndex="0"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -72,7 +72,7 @@ const About = () => {
               </a>
               <a
                 href="https://github.com/hejmaria"
-                tabindex="0"
+                tabIndex="0"
                 target="_blank"
                 rel="noreferrer"
               >

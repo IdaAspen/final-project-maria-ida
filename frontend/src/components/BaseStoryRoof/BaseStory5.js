@@ -40,7 +40,7 @@ const BaseStory5 = () => {
       <ImageButtonWrapper>
         {randomArray(friends)?.map((item) => (
           <ImageButton
-            key={item?.name}
+            key={item?.id}
             onClick={() => onAnswerSubmit(item?.name, item?.image)}
             text={<img src={item?.image} alt={item?.name} />}
           />

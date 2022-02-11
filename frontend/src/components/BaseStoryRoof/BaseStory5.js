@@ -4,6 +4,7 @@ import storyElements from '../../reducers/storyElements';
 import { showFriends } from '../../reducers/dynamicData';
 import ImageButton from '../../styledComponents/ImageButton';
 import styled from 'styled-components';
+import { randomArray } from '../../utils/randomArray';
 
 const BaseStory5 = () => {
   const character = useSelector(
@@ -22,26 +23,11 @@ const BaseStory5 = () => {
     dispatch(showFriends());
   }, [dispatch]);
 
-  // gets random objects from elements-array and push it to a new array
-  const randomObjects = () => {
-    const randomFriends = [];
-    for (var i = 0; i < 5; i++) {
-      const randomIndex = Math.floor(Math.random() * friends.length);
-      const object = friends[randomIndex];
-      if (!randomFriends.includes(object)) {
-        randomFriends.push(object);
-      }
-    }
-    return randomFriends;
-  };
-
-  const newFriendsArray = randomObjects();
-
   const onAnswerSubmit = (name, image) => {
     dispatch(storyElements.actions.setSelectedFriend({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-  console.log(newFriendsArray[0].name);
+
   return (
     <BaseContainer>
       <SectionBlue>
@@ -52,9 +38,9 @@ const BaseStory5 = () => {
       </SectionBlue>
       <h3>Vem då?</h3>
       <ImageButtonWrapper>
-        {newFriendsArray?.map((item) => (
+        {randomArray(friends)?.map((item) => (
           <ImageButton
-            key={item.name}
+            key={item?.name}
             onClick={() => onAnswerSubmit(item?.name, item?.image)}
             text={<img src={item?.image} alt={item?.name} />}
           />

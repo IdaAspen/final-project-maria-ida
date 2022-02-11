@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import storyElements from '../../reducers/storyElements';
 import { showFriendsNames } from '../../reducers/dynamicData';
 import StoryButton from '../../styledComponents/StoryButton';
+import { randomArray } from '../../utils/randomArray';
 import styled from 'styled-components';
 
 const BaseStory6 = () => {
@@ -26,19 +27,17 @@ const BaseStory6 = () => {
   };
 
   // gets random objects from elements-array and push it to a new array
-  const randomObjects = () => {
-    const randomFriendsName = [];
-    for (var i = 0; i < 5; i++) {
-      const randomIndex = Math.floor(Math.random() * friendsNames.length);
-      const object = friendsNames[randomIndex];
-      if (!randomFriendsName.includes(object)) {
-        randomFriendsName.push(object);
-      }
-    }
-    return randomFriendsName;
-  };
-
-  const newFriendsNameArray = randomObjects();
+  // const randomObjects = () => {
+  //   const randomFriendsName = [];
+  //   for (var i = 0; i < 5; i++) {
+  //     const randomIndex = Math.floor(Math.random() * friendsNames.length);
+  //     const object = friendsNames[randomIndex];
+  //     if (!randomFriendsName.includes(object)) {
+  //       randomFriendsName.push(object);
+  //     }
+  //   }
+  //   return randomFriendsName;
+  // };
 
   return (
     <BaseContainer>
@@ -51,9 +50,9 @@ const BaseStory6 = () => {
 
       <h3>Vad heter den?</h3>
       <StoryButtonWrapper>
-        {newFriendsNameArray?.map((item) => (
+        {randomArray(friendsNames)?.map((item) => (
           <StoryButton
-            key={item.name}
+            key={item?.id}
             onClick={() => onAnswerSubmit(item?.name, item?.image)}
             text={item?.name}
           />

@@ -32,6 +32,7 @@ const Summary = () => {
   const navigate = useNavigate();
 
   const onSave = () => {
+    dispatch(storyElements.actions.restartGame());
     navigate('/bokhylla');
   };
   const onRestart = () => {
@@ -79,7 +80,7 @@ const Summary = () => {
       <p>{`– Ja, jag vet, säger ${character.name} och så skrattar de båda två.`}</p>
       <StoryButtonWrapper>
         <StoryButton onClick={onRestart} text="Börja om" />
-        <StoryButton onClick={() => onSave} text="Spara saga" />
+        <StoryButton onClick={onSave} text="Spara saga" />
       </StoryButtonWrapper>
     </SummarySection>
   );

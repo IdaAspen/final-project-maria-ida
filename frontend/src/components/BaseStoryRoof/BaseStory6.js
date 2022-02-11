@@ -53,7 +53,7 @@ const BaseStory6 = () => {
       <StoryButtonWrapper>
         {newFriendsNameArray?.map((item) => (
           <StoryButton
-            key={item?.name}
+            key={item.name}
             onClick={() => onAnswerSubmit(item?.name, item?.image)}
             text={item?.name}
           />

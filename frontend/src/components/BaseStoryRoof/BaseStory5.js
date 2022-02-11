@@ -41,7 +41,7 @@ const BaseStory5 = () => {
     dispatch(storyElements.actions.setSelectedFriend({ name, image }));
     dispatch(storyElements.actions.setStoryPage());
   };
-
+  console.log(newFriendsArray[0].name);
   return (
     <BaseContainer>
       <SectionBlue>
@@ -50,12 +50,11 @@ const BaseStory5 = () => {
         </ImageContainer>
         <p>{`Ja precis, som att vara högst upp ${place.name} däruppe på taket. Allt ser liksom lite mystiskt och magiskt ut. Och nu hör ${sound.name} igen! Det kommer bakifrån skorstenen. ${character} går runt (men försiktig, för det är ju jättehögt upp), och ser...`}</p>
       </SectionBlue>
-
       <h3>Vem då?</h3>
       <ImageButtonWrapper>
         {newFriendsArray?.map((item) => (
           <ImageButton
-            key={item?.name}
+            key={item.name}
             onClick={() => onAnswerSubmit(item?.name, item?.image)}
             text={<img src={item?.image} alt={item?.name} />}
           />

@@ -7,7 +7,6 @@ import dotenv from 'dotenv';
 import cloudinaryFramework from 'cloudinary';
 import multer from 'multer';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
-
 import character from './data/character.json';
 import friend from './data/friend.json';
 import friendName from './data/friendName.json';
@@ -132,7 +131,7 @@ const authenticateUser = async (req, res, next) => {
 app.get('/', (req, res) => {
   res.send({
     Message:
-      'This is the backend of the final project by Maria Petersson and Ida Aspen. Please visit <a href="#">frontend</a> for the deployed page and <a href="https://github.com/IdaAspen/final-project-maria-ida">GitHub</a> for the repository.',
+      'This is the backend of the final project by Maria Petersson and Ida Aspen. Please visit <a href="https://sagomaskinen.netlify.app">frontend</a> for the deployed page and <a href="https://github.com/IdaAspen/final-project-maria-ida">GitHub</a> for the repository.',
     Contributors:
       '<a href="https://github.com/IdaAspen">Ida Aspen</a> & <a href="https://github.com/hejmaria">Maria Petersson</a>'
   });

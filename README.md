@@ -29,5 +29,5 @@ Ida Aspen [GitHub profile](https://github.com/IdaAspen)
 - Figma
 - Trello
 
-Link to the live backend: #
-Link to the live frontend: #
+Link to the live backend: `https://sagomaskinen.herokuapp.com/`
+Link to the live frontend: `sagomaskinen.netlify.app`

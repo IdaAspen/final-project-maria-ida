@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import cloudinaryFramework from 'cloudinary';
 import multer from 'multer';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
-// import character from './data/character.json';
+import character from './data/character.json';
 import friend from './data/friend.json';
 import friendName from './data/friendName.json';
 import place from './data/place.json';

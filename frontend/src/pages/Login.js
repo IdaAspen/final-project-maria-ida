@@ -28,9 +28,9 @@ const Login = () => {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password }),
     };
 
     fetch(API_URL(mode), options)
@@ -114,6 +114,10 @@ const LoginContainer = styled.div`
   align-items: center;
   padding: 2% 10% 10% 10%;
   background-color: var(--background);
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const StartCard = styled.div`
@@ -140,6 +144,10 @@ const LoginCard = styled.div`
   box-shadow: 0 1px 1px 0 rgb(66 66 66 / 8%), 0 1px 3px 1px rgb(66 66 66 / 16%);
   border-radius: 6px;
   background-color: var(--yellow);
+
+  @media (min-width: 1200px) {
+    margin-right: 10%;
+  }
 `;
 
 const LoginButton = styled.button.attrs({ type: 'submit' })`
